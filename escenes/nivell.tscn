@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cchfrqq0il6n6"]
+
+[ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
+
+[node name="Nivell" type="Node2D" unique_id=652851506]
+
+[node name="FGTetris" type="Sprite2D" parent="." unique_id=859680656]
+position = Vector2(343, 360.24997)
+scale = Vector2(0.6351852, 0.6351851)
+texture = ExtResource("1_opjtr")
