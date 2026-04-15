@@ -25,7 +25,14 @@ func _process(_delta: float) -> void:
 	elif Input.is_action_just_released("peça_avall"):
 		# Restableix l'interval de temps entre moviments
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
-	pass
+	elif tic_caiguda.get_wait_time() == INTERVAL_TIC:
+		# Fem això per assegurar que no estem accelerant ni desaccelerant
+		if Input.is_action_pressed("peça_esquerra"):
+			# Mou peça cap a l'esquerra
+			proper_moviment = Moviments.Esquerra
+		elif Input.is_action_pressed("peça_dreta"):
+			# Mou peça cap a la dreta
+			proper_moviment = Moviments.Dreta
 
 # Aquesta funció es crida a cada tic del joc de tetris, i executarà el darrer moviment
 # que tingui desat a la variable `proper_moviment`,
@@ -35,11 +42,9 @@ func _on_tic_caiguda_timeout() -> void:
 		Moviments.Caiguda:
 			peça.posicio_seguent = peça.posicio + Vector2i.DOWN
 		Moviments.Esquerra:
-			#TODO
-			print("La peça es mou 1 posició a l'esquerra!")
+			peça.posicio_seguent = peça.posicio + Vector2i.LEFT
 		Moviments.Dreta:
-			#TODO
-			print("La peça es mou 1 posició a la dreta!")
+			peça.posicio_seguent = peça.posicio + Vector2i.RIGHT
 		Moviments.Gir:
 			#TODO
 			print("La peça gira 90 graus en sentit horari!")

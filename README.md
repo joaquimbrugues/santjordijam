@@ -14,7 +14,7 @@ Els passos següents de cara a avançar amb el projecte:
     - [X] Escriure la lògica de la caiguda de la peça
     - [ ] Controlar col·lisions
     - [ ] Controls del teclat
-        - [ ] Moviments laterals
+        - [X] Moviments laterals
         - [ ] Rotació
         - [X] Acceleració
         - [ ] Frenada
