@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://eyu6uq6rd0w7"]
+
+[ext_resource type="TileSet" uid="uid://c2kvtnnwep3qm" path="res://recursos/tilesets/placeholder.tres" id="1_18f0b"]
+[ext_resource type="Script" uid="uid://clfuqouovbddu" path="res://scripts/peça.gd" id="2_lbd3g"]
+
+[node name="Peça" type="TileMapLayer" unique_id=1585660043]
+tile_set = ExtResource("1_18f0b")
+script = ExtResource("2_lbd3g")

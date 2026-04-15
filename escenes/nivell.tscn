@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://cchfrqq0il6n6"]
 
+[ext_resource type="Script" uid="uid://8m41heoy4ria" path="res://scripts/nivell.gd" id="1_34qa0"]
 [ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
+[ext_resource type="PackedScene" uid="uid://eyu6uq6rd0w7" path="res://escenes/peça.tscn" id="2_r0mg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
 size = Vector2(126.45776, 1024.0305)
@@ -9,6 +11,7 @@ size = Vector2(126.45776, 1024.0305)
 size = Vector2(1080, 110.20401)
 
 [node name="Nivell" type="Node2D" unique_id=652851506]
+script = ExtResource("1_34qa0")
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
@@ -34,3 +37,6 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0, 511.2683)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
+
+[node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
+position = Vector2(345, 120)
