@@ -13,13 +13,13 @@ Els passos següents de cara a avançar amb el projecte:
     - [X] Crear una classe i les seves propietats bàsiques
     - [X] Escriure la lògica de la caiguda de la peça
     - [ ] Controlar col·lisions
-    - [ ] Controls del teclat
+    - [X] Controls del teclat
         - [X] Moviments laterals
         - [X] Rotació
         - [X] Acceleració
-        - [ ] Frenada
-            - [ ] Posar stammina de frenada?
-            - [ ] Reacció a la frenada
+        - [X] Frenada
+            - [X] Posar stammina de frenada?
+            - [X] Reacció a la frenada
 - [ ] Flux del joc de "Tetris"
     - [ ] Programar la cua de peces a caure
     - [ ] Control del teclar per destruir peces

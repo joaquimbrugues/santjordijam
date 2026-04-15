@@ -46,4 +46,30 @@ shape = SubResource("RectangleShape2D_r0mg4")
 wait_time = 0.5
 autostart = true
 
+[node name="HUD_Esquerra" type="Control" parent="." unique_id=1632155265]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 686.0
+offset_bottom = 720.0
+
+[node name="ContenidorBaix" type="CenterContainer" parent="HUD_Esquerra" unique_id=1392005297]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.92
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Stamina" type="ProgressBar" parent="HUD_Esquerra/ContenidorBaix" unique_id=304225452]
+visible = false
+custom_minimum_size = Vector2(300, 20)
+layout_direction = 2
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.07745264, 0.74329865, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+value = 100.0
+show_percentage = false
+
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
+[connection signal="value_changed" from="HUD_Esquerra/ContenidorBaix/Stamina" to="." method="_on_stamina_value_changed"]
