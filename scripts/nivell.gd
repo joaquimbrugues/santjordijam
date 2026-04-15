@@ -1,10 +1,12 @@
 extends Node2D
 
+# Carrega els elements de l'escena
+@onready var peça: TileMapLayer = $Capes/Peça
+@onready var tic_caiguda: Timer = $TicCaiguda
+
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
 enum Moviments {Caiguda, Avall, Frena, Esquerra, Dreta, Gir}
 var proper_moviment: Moviments = Moviments.Caiguda
-
-@onready var peça: TileMapLayer = $Capes/Peça
 
 func _ready() -> void:
 	peça.crea_exemple()
