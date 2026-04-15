@@ -15,7 +15,7 @@ Els passos següents de cara a avançar amb el projecte:
     - [ ] Controlar col·lisions
     - [ ] Controls del teclat
         - [X] Moviments laterals
-        - [ ] Rotació
+        - [X] Rotació
         - [X] Acceleració
         - [ ] Frenada
             - [ ] Posar stammina de frenada?

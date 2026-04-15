@@ -33,6 +33,10 @@ func _process(_delta: float) -> void:
 		elif Input.is_action_pressed("peça_dreta"):
 			# Mou peça cap a la dreta
 			proper_moviment = Moviments.Dreta
+		elif Input.is_action_pressed("peça_gira"):
+			# Gira la peça 90 graus en sentit horari
+			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
+			proper_moviment = Moviments.Gir
 
 # Aquesta funció es crida a cada tic del joc de tetris, i executarà el darrer moviment
 # que tingui desat a la variable `proper_moviment`,
@@ -46,8 +50,8 @@ func _on_tic_caiguda_timeout() -> void:
 		Moviments.Dreta:
 			peça.posicio_seguent = peça.posicio + Vector2i.RIGHT
 		Moviments.Gir:
-			#TODO
-			print("La peça gira 90 graus en sentit horari!")
+			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
+			peça.gir_horari()
 	
 	#TODO: Comprovar col·lisions aquí
 	

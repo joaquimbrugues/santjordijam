@@ -28,7 +28,7 @@ var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la 
 # Funció usada només per a debugar
 func crea_exemple():
 	forma_actual = peces.pick_random()
-	forma_seguent = forma_actual
+	forma_seguent = forma_actual.duplicate()
 	posicio_seguent = posicio
 	posicio = Vector2i(ENTRADA_X, 0)
 	var index = randi_range(0, 7)
@@ -47,6 +47,12 @@ func esborra_peça():
 # Mou i/o rota la peça
 func actualitza():
 	esborra_peça()
-	forma_actual = forma_seguent
+	forma_actual = forma_seguent.duplicate()
 	posicio = posicio_seguent
 	dibuixa_peça()
+
+# Prepara una rotació en sentit horari
+func gir_horari():
+	for index in forma_actual.size():
+		forma_seguent[index].x = - forma_actual[index].y
+		forma_seguent[index].y = forma_actual[index].x
