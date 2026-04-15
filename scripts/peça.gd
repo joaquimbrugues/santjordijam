@@ -28,6 +28,8 @@ var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la 
 # Funció usada només per a debugar
 func crea_exemple():
 	forma_actual = peces.pick_random()
+	forma_seguent = forma_actual
+	posicio_seguent = posicio
 	posicio = Vector2i(ENTRADA_X, 0)
 	var index = randi_range(0, 7)
 	atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
@@ -37,6 +39,14 @@ func dibuixa_peça():
 	for index in forma_actual.size():
 		set_cell(posicio + forma_actual[index], 0, atlas[index])
 
+# Esborra la peça
 func esborra_peça():
 	for p in forma_actual:
 		erase_cell(posicio + p)
+
+# Mou i/o rota la peça
+func actualitza():
+	esborra_peça()
+	forma_actual = forma_seguent
+	posicio = posicio_seguent
+	dibuixa_peça()

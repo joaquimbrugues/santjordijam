@@ -40,3 +40,9 @@ shape = SubResource("RectangleShape2D_r0mg4")
 
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(345, 120)
+
+[node name="TicCaiguda" type="Timer" parent="." unique_id=1976850143]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]

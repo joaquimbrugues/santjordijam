@@ -11,7 +11,7 @@ Els passos següents de cara a avançar amb el projecte:
     - [ ] Banda dreta (taller)
 - [ ] Programar la lògica de les peces de "Tetris"
     - [X] Crear una classe i les seves propietats bàsiques
-    - [ ] Escriure la lògica de la "caiguda" de la peça
+    - [X] Escriure la lògica de la caiguda de la peça
     - [ ] Controlar col·lisions
     - [ ] Controls del teclat
         - [ ] Moviments laterals
