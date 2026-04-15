@@ -15,6 +15,10 @@ script = ExtResource("1_34qa0")
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
+[node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
+position = Vector2(345, 120)
+scale = Vector2(1.0000001, 1.0000001)
+
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
 position = Vector2(343, 360.24997)
 scale = Vector2(0.6351852, 0.6351851)
@@ -37,9 +41,6 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0, 511.2683)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
-
-[node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
-position = Vector2(345, 120)
 
 [node name="TicCaiguda" type="Timer" parent="." unique_id=1976850143]
 wait_time = 0.5
