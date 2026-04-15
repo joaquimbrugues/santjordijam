@@ -15,8 +15,11 @@ Els passos següents de cara a avançar amb el projecte:
     - [ ] Controlar col·lisions
     - [ ] Controls del teclat
         - [ ] Moviments laterals
-        - [ ] Acceleració i desacceleració
         - [ ] Rotació
+        - [ ] Acceleració
+        - [ ] Frenada
+            - [ ] Posar stammina de frenada?
+            - [ ] Reacció a la frenada
 - [ ] Flux del joc de "Tetris"
     - [ ] Programar la cua de peces a caure
     - [ ] Control del teclar per destruir peces
