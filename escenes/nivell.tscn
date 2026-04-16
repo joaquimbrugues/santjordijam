@@ -46,6 +46,10 @@ shape = SubResource("RectangleShape2D_r0mg4")
 wait_time = 0.5
 autostart = true
 
+[node name="TicMoviment" type="Timer" parent="." unique_id=1481264007]
+wait_time = 0.5
+autostart = true
+
 [node name="HUD_Esquerra" type="Control" parent="." unique_id=1632155265]
 layout_mode = 3
 anchors_preset = 0
@@ -72,4 +76,5 @@ value = 100.0
 show_percentage = false
 
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
+[connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
 [connection signal="value_changed" from="HUD_Esquerra/ContenidorBaix/Stamina" to="." method="_on_stamina_value_changed"]

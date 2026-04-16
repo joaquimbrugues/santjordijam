@@ -3,6 +3,7 @@ extends Node2D
 # Carrega els elements de l'escena
 @onready var peça: TileMapLayer = $Capes/Peça
 @onready var tic_caiguda: Timer = $TicCaiguda
+@onready var tic_moviment: Timer = $TicMoviment
 @onready var stamina: ProgressBar = $HUD_Esquerra/ContenidorBaix/Stamina
 
 # Constants del tic_caiguda
@@ -16,8 +17,8 @@ const INTERVAL_FRENAT: float = 0.75
 var recuperacio_per_segon = float(tics_frenada) / recuperacio_frenada
 
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
-enum Moviments {Caiguda, Esquerra, Dreta, Gir}
-var proper_moviment: Moviments = Moviments.Caiguda
+enum Moviments {Cap, Esquerra, Dreta, Gir}
+var proper_moviment: Moviments = Moviments.Cap
 
 func _ready() -> void:
 	# Crea peça d'exemple
@@ -46,26 +47,35 @@ func _process(delta: float) -> void:
 		elif Input.is_action_just_released("peça_avall"):
 			# Restableix l'interval de temps entre moviments
 			tic_caiguda.set_wait_time(INTERVAL_TIC)
-		elif tic_caiguda.get_wait_time() == INTERVAL_TIC:
-			# Fem això per assegurar que no estem accelerant ni desaccelerant
-			if Input.is_action_pressed("peça_esquerra"):
-				# Mou peça cap a l'esquerra
-				proper_moviment = Moviments.Esquerra
-			elif Input.is_action_pressed("peça_dreta"):
-				# Mou peça cap a la dreta
-				proper_moviment = Moviments.Dreta
-			elif Input.is_action_pressed("peça_gira"):
-				# Gira la peça 90 graus en sentit horari
-				#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
-				proper_moviment = Moviments.Gir
+		elif Input.is_action_pressed("peça_esquerra"):
+			# Mou peça cap a l'esquerra
+			proper_moviment = Moviments.Esquerra
+		elif Input.is_action_pressed("peça_dreta"):
+			# Mou peça cap a la dreta
+			proper_moviment = Moviments.Dreta
+		elif Input.is_action_pressed("peça_gira"):
+			# Gira la peça 90 graus en sentit horari
+			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
+			proper_moviment = Moviments.Gir
+
+# Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
+# i la intentarà fer baixar més.
+# TODO: En aquesta funció hem de comprovar les col·lisions que poden fer que una peça passi a formar
+# part de l'estructura "construïda"
+func _on_tic_caiguda_timeout() -> void:
+	# Prepara moviment cap avall
+	peça.posicio_seguent = peça.posicio + Vector2i.DOWN
+	
+	#TODO: Comprovar col·lisions aquí
+	
+	# Aplica el moviment de la peça
+	peça.actualitza()
 
 # Aquesta funció es crida a cada tic del joc de tetris, i executarà el darrer moviment
 # que tingui desat a la variable `proper_moviment`,
 # a més de resetejar aquesta variable a Caiguda
-func _on_tic_caiguda_timeout() -> void:
+func _on_tic_moviment_timeout() -> void:
 	match proper_moviment:
-		Moviments.Caiguda:
-			peça.posicio_seguent = peça.posicio + Vector2i.DOWN
 		Moviments.Esquerra:
 			peça.posicio_seguent = peça.posicio + Vector2i.LEFT
 		Moviments.Dreta:
@@ -79,7 +89,8 @@ func _on_tic_caiguda_timeout() -> void:
 	# Aplica el moviment de la peça
 	peça.actualitza()
 	# Reinicialitza la variable de proper_moviment a Caiguda (per defecte)
-	proper_moviment = Moviments.Caiguda
+	proper_moviment = Moviments.Cap
+
 
 # Per qüestions estètiques: fem desaparèixer la barra d'stamina quan el valor sigui màxim
 func _on_stamina_value_changed(value: float) -> void:
