@@ -67,6 +67,11 @@ func _on_tic_caiguda_timeout() -> void:
 	peça.posicio_seguent = peça.posicio + Vector2i.DOWN
 	
 	#TODO: Comprovar col·lisions aquí
+	# Pla: mirar el mètode _on_tic_moviment_timeout().
+	# Addicionalment, cal crear un nou TileMapLayer amb coordenades consistents
+	# amb les de Peça, i copiant-ne el TileSet. Afegir l'estructura a la comprovació
+	# de col·lisions (és més fàcil que els rectangles), i programar la lògica de
+	# despawnejar la Peça i spawnejar a aquest TileMapLayer nou.
 	
 	# Aplica el moviment de la peça
 	peça.actualitza()
@@ -85,6 +90,12 @@ func _on_tic_moviment_timeout() -> void:
 			peça.gir_horari()
 	
 	#TODO: Comprovar col·lisions aquí
+	# PLA: Fer servir TileMapLayer.map_to_local() per cada coordenada de peça.posicio_seguent,
+	# i tot seguit potser Node2D.to_global() per obtenir la posició absoluta de
+	# cada cel·la. Cal testejar si això retorna la posició de la cantonada o el centre
+	# de la cel·la. Crear el Rectangle2D (quadrat) de la cel·la en coords absolutes
+	# Aleshores, per cadascuna de les tres Vores, extreure'n el Rectangle2D.
+	# Llavors ja és fàcil: solament cal utilitzar el mètode Rect2D.intersects()
 	
 	# Aplica el moviment de la peça
 	peça.actualitza()
