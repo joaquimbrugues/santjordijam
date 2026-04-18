@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://8m41heoy4ria" path="res://scripts/nivell.gd" id="1_34qa0"]
 [ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
 [ext_resource type="PackedScene" uid="uid://eyu6uq6rd0w7" path="res://escenes/peça.tscn" id="2_r0mg4"]
+[ext_resource type="Texture2D" uid="uid://d3e10y3ieet12" path="res://recursos/sprites/taller_fons.png" id="2_vs0c2"]
 [ext_resource type="Texture2D" uid="uid://b7j7llo6x5u7o" path="res://recursos/sprites/fons_tetris.png" id="3_lkhql"]
 [ext_resource type="TileSet" uid="uid://c2kvtnnwep3qm" path="res://recursos/tilesets/placeholder.tres" id="4_e55k2"]
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
@@ -81,6 +82,10 @@ animations = [{
 script = ExtResource("1_34qa0")
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
+
+[node name="BGTaller" type="Sprite2D" parent="Capes" unique_id=1870866328]
+position = Vector2(1460, 540)
+texture = ExtResource("2_vs0c2")
 
 [node name="BGTetris" type="Sprite2D" parent="Capes" unique_id=1905633239]
 position = Vector2(515, 539.4636)
