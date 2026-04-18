@@ -28,7 +28,7 @@ func _ready() -> void:
 
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Reacciona als clics de la jugadora
 	if Input.is_action_pressed("peça_frena") and sprite_stamina.pot_frenar():
 		# Frena, augmentant l'interval entre moviments verticals
