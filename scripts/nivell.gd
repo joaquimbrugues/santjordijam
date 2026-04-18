@@ -21,8 +21,11 @@ var VORES
 @export var INTERVAL_CAIGUDA_FRENAT: float = 0.75
 
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
-enum Moviments {Cap, Esquerra, Dreta, Gir}
-var proper_moviment: Moviments = Moviments.Cap
+## Quants segons cal prèmer una tecla de moviment (esquerra, dreta, o gir) per tal de provocar
+## el moviment
+@export var sensibilitat_moviment: float = 0.1
+# Medeix el "moviment acumulat" en cadascuna de les direccions, respectivament Esquerra, Dreta i Avall
+var Moviments = [0.0, 0.0, 0.0]
 
 func _ready() -> void:
 	# Crea peça d'exemple
@@ -38,7 +41,7 @@ func _ready() -> void:
 		return rect
 		)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
 	if Input.is_action_pressed("peça_frena") and sprite_stamina.pot_frenar():
 		# Frena, augmentant l'interval entre moviments verticals
@@ -51,15 +54,14 @@ func _process(_delta: float) -> void:
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
 		# Moviments laterals/rotació
 		if Input.is_action_pressed("peça_esquerra"):
-			# Mou peça cap a l'esquerra
-			proper_moviment = Moviments.Esquerra
+			# Acumula moviment cap a l'esquerra
+			Moviments[0] += delta
 		elif Input.is_action_pressed("peça_dreta"):
-			# Mou peça cap a la dreta
-			proper_moviment = Moviments.Dreta
+			# Acumula moviment cap a la dreta
+			Moviments[1] += delta
 		elif Input.is_action_pressed("peça_gira"):
-			# Gira la peça 90 graus en sentit horari
-			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
-			proper_moviment = Moviments.Gir
+			# Acumula moviment cap al gir
+			Moviments[2] += delta
 
 # Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
 # amb una peça existent, o `false` altrament
@@ -91,15 +93,16 @@ func _on_tic_caiguda_timeout() -> void:
 # que tingui desat a la variable `proper_moviment`,
 # a més de resetejar aquesta variable a Caiguda
 func _on_tic_moviment_timeout() -> void:
-	# Prepara el proper moviment de la peça
-	match proper_moviment:
-		Moviments.Esquerra:
-			peça.posicio_seguent = peça.posicio + Vector2i.LEFT
-		Moviments.Dreta:
-			peça.posicio_seguent = peça.posicio + Vector2i.RIGHT
-		Moviments.Gir:
-			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
-			peça.gir_horari()
+	# Prepara el proper moviment de la peça en la direcció que sigui pertinent
+	if Moviments[0] > sensibilitat_moviment:
+		peça.posicio_seguent = peça.posicio + Vector2i.LEFT
+		Moviments[0] = 0.0	# Reinicialitza el medidor del moviment
+	elif Moviments[1] > sensibilitat_moviment:
+		peça.posicio_seguent = peça.posicio + Vector2i.RIGHT
+		Moviments[1] = 0.0	# Reinicialitza el medidor del moviment
+	elif Moviments[2] > sensibilitat_moviment:
+		peça.gir_horari()
+		Moviments[2] = 0.0	# Reinicialitza el medidor del moviment
 	
 	# Comprova col·lisions
 	if collisio():
@@ -108,6 +111,3 @@ func _on_tic_moviment_timeout() -> void:
 	else:
 		# Aplica el moviment de la peça
 		peça.actualitza()
-	
-	# Reinicialitza la variable de proper_moviment a Caiguda (per defecte)
-	proper_moviment = Moviments.Cap
