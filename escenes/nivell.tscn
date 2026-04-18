@@ -97,6 +97,24 @@ texture = ExtResource("3_lkhql")
 position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
 
+[node name="Cua1" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1836561402]
+position = Vector2(-347, 6)
+
+[node name="Cua2" type="Marker2D" parent="Capes/CuaObjectes" unique_id=210113274]
+position = Vector2(-205, 6)
+
+[node name="Cua3" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1780764721]
+position = Vector2(-64, 6)
+
+[node name="Cua4" type="Marker2D" parent="Capes/CuaObjectes" unique_id=801890279]
+position = Vector2(76, 6)
+
+[node name="Cua5" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1138988457]
+position = Vector2(217, 6)
+
+[node name="Cua6" type="Marker2D" parent="Capes/CuaObjectes" unique_id=60052969]
+position = Vector2(358, 6)
+
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(510, 200)
 scale = Vector2(1.0000001, 1.0000001)
