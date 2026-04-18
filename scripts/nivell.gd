@@ -11,20 +11,21 @@ extends Node2D
 var VORES
 
 # Paràmetres dels temporitzadors de caiguda i moviment
-## Interval de temps entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
+## Interval de temps (en segons) entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
 @export var INTERVAL_TIC: float = 0.5
-## Interval de temps entre moviments verticals de la peça, sense acceleració de la jugadora
+## Interval de temps (en segons) entre moviments verticals de la peça, sense acceleració de la jugadora
 @export var INTERVAL_CAIGUDA: float = 0.5
-## Interval de temps entre moviments verticals de la peça quan la jugadora prem "avall"
+## Interval de temps (en segons) entre moviments verticals de la peça quan la jugadora prem "avall"
 @export var INTERVAL_CAIGUDA_ACCELERAT: float = 0.25
-## Interval de temps entre moviments verticals de la peça quan la jugadora prem "amunt"
+## Interval de temps (en segons) entre moviments verticals de la peça quan la jugadora prem "amunt"
 @export var INTERVAL_CAIGUDA_FRENAT: float = 0.75
 
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
 ## Quants segons cal prèmer una tecla de moviment (esquerra, dreta, o gir) per tal de provocar
 ## el moviment
 @export var sensibilitat_moviment: float = 0.1
-# Medeix el "moviment acumulat" en cadascuna de les direccions, respectivament Esquerra, Dreta i Avall
+# Medeix el "moviment acumulat" en cadascuna de les direccions,
+# respectivament Esquerra, Dreta i Avall
 var Moviments = [0.0, 0.0, 0.0]
 
 func _ready() -> void:
