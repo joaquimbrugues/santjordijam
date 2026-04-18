@@ -52,16 +52,16 @@ func _process(delta: float) -> void:
 	else:
 		# No hi ha cap efecte sobre el moviment vertical, posem l'interval de temps per defecte
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
-		# Moviments laterals/rotació
-		if Input.is_action_pressed("peça_esquerra"):
-			# Acumula moviment cap a l'esquerra
-			Moviments[0] += delta
-		elif Input.is_action_pressed("peça_dreta"):
-			# Acumula moviment cap a la dreta
-			Moviments[1] += delta
-		elif Input.is_action_pressed("peça_gira"):
-			# Acumula moviment cap al gir
-			Moviments[2] += delta
+	# Moviments laterals/rotació
+	if Input.is_action_pressed("peça_esquerra"):
+		# Acumula moviment cap a l'esquerra
+		Moviments[0] += delta
+	elif Input.is_action_pressed("peça_dreta"):
+		# Acumula moviment cap a la dreta
+		Moviments[1] += delta
+	elif Input.is_action_pressed("peça_gira"):
+		# Acumula moviment cap al gir
+		Moviments[2] += delta
 
 # Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
 # amb una peça existent, o `false` altrament
