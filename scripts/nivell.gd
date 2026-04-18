@@ -52,6 +52,7 @@ func _process(delta: float) -> void:
 	else:
 		# No hi ha cap efecte sobre el moviment vertical, posem l'interval de temps per defecte
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
+	
 	# Moviments laterals/rotació
 	if Input.is_action_pressed("peça_esquerra"):
 		# Acumula moviment cap a l'esquerra
