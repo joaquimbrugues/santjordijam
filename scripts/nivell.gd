@@ -58,10 +58,10 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("peça_esquerra"):
 		# Acumula moviment cap a l'esquerra
 		Moviments[0] += delta
-	elif Input.is_action_pressed("peça_dreta"):
+	if Input.is_action_pressed("peça_dreta"):
 		# Acumula moviment cap a la dreta
 		Moviments[1] += delta
-	elif Input.is_action_pressed("peça_gira"):
+	if Input.is_action_pressed("peça_gira"):
 		# Acumula moviment cap al gir
 		Moviments[2] += delta
 
