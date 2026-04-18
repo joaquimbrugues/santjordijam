@@ -32,13 +32,13 @@ var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la 
 # Funció usada només per a debugar
 func crea_exemple():
 	#forma_actual = peces.pick_random()
-	forma_actual = [Vector2i.ZERO]
+	forma_actual = te
 	forma_seguent = forma_actual.duplicate()
 	posicio_seguent = posicio
 	posicio = Vector2i(ENTRADA_X, 0)
-	var index = randi_range(0, 7)
-	atlas = [Vector2i(index, 0)]
-	#atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
+	var index = randi_range(0, 6)
+	#atlas = [Vector2i(index, 0)]
+	atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
 	
 # Renderitza la peça
 func dibuixa_peça():

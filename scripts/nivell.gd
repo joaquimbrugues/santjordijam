@@ -81,6 +81,19 @@ func collisio() -> bool:
 	
 	return false
 
+# Elimina les caselles que es troben ara mateix a `Peça` i afegeix-les a la capa
+# `Casa`. Crea una nova peça
+func transicio_peça() -> void:
+	for index in peça.forma_actual.size():
+		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
+	
+	peça.esborra_peça()
+	
+	#TODO: Cua aquí
+	# Crea peça d'exemple
+	peça.crea_exemple()
+	peça.dibuixa_peça()
+
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
 # TODO: En aquesta funció hem de comprovar les col·lisions que poden fer que una peça passi a formar
@@ -91,8 +104,7 @@ func _on_tic_caiguda_timeout() -> void:
 	
 	# Comprova col·lisions
 	if collisio():
-		#TODO: Hi ha col·lisió: dipositar la peça i fer-ne caure una de nova
-		peça.posicio_seguent = peça.posicio
+		transicio_peça()
 	else:
 		# Aplica el moviment de la peça
 		peça.actualitza()

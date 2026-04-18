@@ -21,7 +21,7 @@ Els passos següents de cara a avançar amb el projecte:
             - [X] Posar stammina de frenada?
             - [X] Reacció a la frenada
 - [ ] Flux del joc de "Tetris"
-    - [ ] Crear capa de peces "construïdes"
+    - [X] Crear capa de peces "construïdes"
     - [ ] Programar la cua de peces a caure
     - [ ] Crear àrees "prohibides"
     - [ ] Crear sistema de puntuació
