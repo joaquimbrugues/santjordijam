@@ -2,6 +2,7 @@ extends Node2D
 
 # Carrega els elements de l'escena
 @onready var peça: TileMapLayer = $Capes/Peça
+@onready var cua_objectes: Sprite2D = $Capes/CuaObjectes
 @onready var tic_caiguda: Timer = $TicCaiguda
 @onready var tic_moviment: Timer = $TicMoviment
 @onready var sprite_stamina: AnimatedSprite2D = $Capes/Stamina
@@ -29,10 +30,6 @@ var VORES
 var Moviments = [0.0, 0.0, 0.0]
 
 func _ready() -> void:
-	# Crea peça d'exemple
-	peça.crea_exemple()
-	peça.dibuixa_peça()
-	
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
 	# Inicialitza col·lecció de vores (Rect2)
@@ -87,12 +84,13 @@ func transicio_peça() -> void:
 	for index in peça.forma_actual.size():
 		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
 	
-	peça.esborra_peça()
+	peça.clear()
 	
-	#TODO: Cua aquí
-	# Crea peça d'exemple
-	peça.crea_exemple()
-	peça.dibuixa_peça()
+	# Desactivem els timers de caiguda i de moviment
+	tic_moviment.stop()
+	tic_caiguda.stop()
+	# Activem el timer de reset
+	$RetardReset.start()
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
@@ -131,3 +129,19 @@ func _on_tic_moviment_timeout() -> void:
 	else:
 		# Aplica el moviment de la peça
 		peça.actualitza()
+
+# Afegeix una peça d'exemple nova a la cua
+func _on_entra_peça_timeout() -> void:
+	if cua_objectes.hi_ha_lloc():
+		cua_objectes.afegeix_exemple()
+
+# Afegeix l'objecte al capdavant de la cua com a següent peça a caure
+func _on_retard_reset_timeout() -> void:
+	if cua_objectes.CUA.size() > 0:
+		var parella = cua_objectes.dona_primer()
+		peça.importa(parella[0], parella[1])
+		tic_caiguda.start()
+		tic_moviment.start()
+	else:
+		#TODO: Ens hem d'assegurar de no caure mai en aquesta situació!
+		print("PROBLEMA: No tenim peça per caure!")

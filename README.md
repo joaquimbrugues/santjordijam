@@ -22,7 +22,7 @@ Els passos següents de cara a avançar amb el projecte:
             - [X] Reacció a la frenada
 - [ ] Flux del joc de "Tetris"
     - [X] Crear capa de peces "construïdes"
-    - [ ] Programar la cua de peces a caure
+    - [X] Programar la cua de peces a caure
     - [ ] Crear àrees "prohibides"
     - [ ] Crear sistema de puntuació
     - [ ] Crear final del nivell

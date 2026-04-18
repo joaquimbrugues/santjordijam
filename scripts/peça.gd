@@ -29,26 +29,18 @@ var posicio_seguent: Vector2i	# Posició de la peça al següent pas
 var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la peça
 # IMPORTANT: Els índexs d'`atlas` han de coincidir amb els de `forma_actual` i els de `forma_seguent`
 
-# Funció usada només per a debugar
-func crea_exemple():
-	#forma_actual = peces.pick_random()
-	forma_actual = te
+# Importa a partir d'un vector de forma i un d'atles (textures)
+func importa(forma: Array[Vector2i], atl: Array[Vector2i]):
+	forma_actual = forma
 	forma_seguent = forma_actual.duplicate()
-	posicio_seguent = posicio
 	posicio = Vector2i(ENTRADA_X, 0)
-	var index = randi_range(0, 6)
-	#atlas = [Vector2i(index, 0)]
-	atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
-	
+	posicio_seguent = posicio
+	atlas = atl
+
 # Renderitza la peça
 func dibuixa_peça():
 	for index in forma_actual.size():
 		set_cell(posicio + forma_actual[index], 0, atlas[index])
-
-# Esborra la peça
-func esborra_peça():
-	for p in forma_actual:
-		erase_cell(posicio + p)
 
 # "Oblida" la posicio i forma seguents
 func reset():
@@ -57,7 +49,7 @@ func reset():
 
 # Mou i/o rota la peça
 func actualitza():
-	esborra_peça()
+	clear()
 	forma_actual = forma_seguent.duplicate()
 	posicio = posicio_seguent
 	dibuixa_peça()

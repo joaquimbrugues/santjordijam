@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://c2kvtnnwep3qm" path="res://recursos/tilesets/placeholder.tres" id="4_e55k2"]
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
+[ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
 size = Vector2(233.9172, 975.6549)
@@ -127,24 +128,28 @@ shape = SubResource("RectangleShape2D_r0mg4")
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
+script = ExtResource("8_vv83r")
 
 [node name="Cua1" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1836561402]
-position = Vector2(-347, 6)
+position = Vector2(-353, 0)
 
 [node name="Cua2" type="Marker2D" parent="Capes/CuaObjectes" unique_id=210113274]
-position = Vector2(-205, 6)
+position = Vector2(-211, 0)
 
 [node name="Cua3" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1780764721]
-position = Vector2(-64, 6)
+position = Vector2(-70, 0)
 
 [node name="Cua4" type="Marker2D" parent="Capes/CuaObjectes" unique_id=801890279]
-position = Vector2(76, 6)
+position = Vector2(70, 0)
 
 [node name="Cua5" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1138988457]
-position = Vector2(217, 6)
+position = Vector2(211, 0)
 
 [node name="Cua6" type="Marker2D" parent="Capes/CuaObjectes" unique_id=60052969]
-position = Vector2(358, 6)
+position = Vector2(352, 0)
+
+[node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
+tile_set = ExtResource("4_e55k2")
 
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
 position = Vector2(513, 1013)
@@ -155,11 +160,18 @@ script = ExtResource("6_6usi0")
 
 [node name="TicCaiguda" type="Timer" parent="." unique_id=1976850143]
 wait_time = 0.5
-autostart = true
 
 [node name="TicMoviment" type="Timer" parent="." unique_id=1481264007]
 wait_time = 0.5
+
+[node name="EntraPeça" type="Timer" parent="." unique_id=94071566]
+autostart = true
+
+[node name="RetardReset" type="Timer" parent="." unique_id=1626713496]
+one_shot = true
 autostart = true
 
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
+[connection signal="timeout" from="EntraPeça" to="." method="_on_entra_peça_timeout"]
+[connection signal="timeout" from="RetardReset" to="." method="_on_retard_reset_timeout"]
