@@ -89,7 +89,6 @@ func _on_tic_caiguda_timeout() -> void:
 	peça.posicio_seguent = peça.posicio + Vector2i.DOWN
 	
 	# Comprova col·lisions
-	# TODO: Comprova col·lisions amb la capa Casa
 	if collisio():
 		#TODO: Hi ha col·lisió: dipositar la peça i fer-ne caure una de nova
 		peça.posicio_seguent = peça.posicio
