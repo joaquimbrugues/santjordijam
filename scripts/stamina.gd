@@ -3,7 +3,7 @@ extends AnimatedSprite2D
 # Indicador d'stamina
 # Aquesta escena controla tant el display com la lògica de l'escassetat i recuperació d'stamina
 
-## Quants tics (de durada Interval Caiguda Frenat) pot durar l'stamina de frenada, com a molt
+## Quants tics (de durada Interval Caiguda Frenat) pot durar l'stamina de frenada com a molt
 @export var tics_frenada: int = 2
 ## Quants tics (de durada Interval Caiguda) triga la barra d'stamina de frenada per recuperar-se de 0 a 100
 @export var tics_recuperacio_frenada: int = 4
