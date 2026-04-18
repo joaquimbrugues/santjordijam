@@ -4,9 +4,9 @@ extends Node2D
 @onready var peça: TileMapLayer = $Capes/Peça
 @onready var tic_caiguda: Timer = $TicCaiguda
 @onready var tic_moviment: Timer = $TicMoviment
-@onready var stamina: ProgressBar = $HUD_Esquerra/ContenidorBaix/Stamina
+@onready var sprite_stamina: AnimatedSprite2D = $Capes/Stamina
 
-# Constants del tic_caiguda
+# Paràmetres dels temporitzadors de caiguda i moviment
 ## Interval de temps entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
 @export var INTERVAL_TIC: float = 0.5
 ## Interval de temps entre moviments verticals de la peça, sense acceleració de la jugadora
@@ -16,13 +16,6 @@ extends Node2D
 ## Interval de temps entre moviments verticals de la peça quan la jugadora prem "amunt"
 @export var INTERVAL_CAIGUDA_FRENAT: float = 0.75
 
-# Constants per la frenada
-## Quants tics (de durada Interval Caiguda Frenat) pot durar l'stamina de frenada, com a molt
-@export var tics_frenada = 2
-## Quants tics (de durada Interval Caiguda) triga la barra d'stamina de frenada per recuperar-se de 0 a 100
-@export var tics_recuperacio_frenada = 4
-var recuperacio_per_segon = float(tics_frenada) / tics_recuperacio_frenada
-
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
 enum Moviments {Cap, Esquerra, Dreta, Gir}
 var proper_moviment: Moviments = Moviments.Cap
@@ -31,30 +24,23 @@ func _ready() -> void:
 	# Crea peça d'exemple
 	peça.crea_exemple()
 	peça.dibuixa_peça()
-	
-	# Inicialitza el medidor d'stamina
-	stamina.max_value = tics_frenada * INTERVAL_CAIGUDA_FRENAT
-	stamina.set_value_no_signal(stamina.max_value)
+	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
+
+
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
-	if Input.is_action_pressed("peça_frena"):
-		if stamina.get_value() <= 0.0:
-			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA)
-			stamina.set_value(0.0)
-		else:
-			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_FRENAT)
-			stamina.set_value(max(0.0, stamina.get_value() - delta))
+	if Input.is_action_pressed("peça_frena") and sprite_stamina.pot_frenar():
+		# Frena, augmentant l'interval entre moviments verticals
+		tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_FRENAT)
+	elif Input.is_action_pressed("peça_avall"):
+		# Accelera avall, reduïnt l'interval entre moviments verticals
+		tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_ACCELERAT)
 	else:
+		# No hi ha cap efecte sobre el moviment vertical, posem l'interval de temps per defecte
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
-		stamina.set_value(min(stamina.max_value, stamina.get_value() + (delta * recuperacio_per_segon)))
-		if Input.is_action_just_pressed("peça_avall"):
-			# Accelera cap avall, reduïnt l'interval de temps entre moviments
-			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_ACCELERAT)
-		elif Input.is_action_just_released("peça_avall"):
-			# Restableix l'interval de temps entre moviments
-			tic_caiguda.set_wait_time(INTERVAL_TIC)
-		elif Input.is_action_pressed("peça_esquerra"):
+		# Moviments laterals/rotació
+		if Input.is_action_pressed("peça_esquerra"):
 			# Mou peça cap a l'esquerra
 			proper_moviment = Moviments.Esquerra
 		elif Input.is_action_pressed("peça_dreta"):
@@ -108,11 +94,3 @@ func _on_tic_moviment_timeout() -> void:
 	peça.actualitza()
 	# Reinicialitza la variable de proper_moviment a Caiguda (per defecte)
 	proper_moviment = Moviments.Cap
-
-
-# Per qüestions estètiques: fem desaparèixer la barra d'stamina quan el valor sigui màxim
-func _on_stamina_value_changed(value: float) -> void:
-	if value >= stamina.max_value:
-		stamina.visible = false
-	else:
-		stamina.visible = true
