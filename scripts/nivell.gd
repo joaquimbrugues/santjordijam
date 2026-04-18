@@ -7,14 +7,21 @@ extends Node2D
 @onready var stamina: ProgressBar = $HUD_Esquerra/ContenidorBaix/Stamina
 
 # Constants del tic_caiguda
-const INTERVAL_TIC: float = 0.5
-const INTERVAL_ACCELERAT: float = 0.25
-const INTERVAL_FRENAT: float = 0.75
+## Interval de temps entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
+@export var INTERVAL_TIC: float = 0.5
+## Interval de temps entre moviments verticals de la peça, sense acceleració de la jugadora
+@export var INTERVAL_CAIGUDA: float = 0.5
+## Interval de temps entre moviments verticals de la peça quan la jugadora prem "avall"
+@export var INTERVAL_CAIGUDA_ACCELERAT: float = 0.25
+## Interval de temps entre moviments verticals de la peça quan la jugadora prem "amunt"
+@export var INTERVAL_CAIGUDA_FRENAT: float = 0.75
 
 # Constants per la frenada
-@export var tics_frenada = 2	# Quants tics (frenant) aguanta la frenada
-@export var recuperacio_frenada = 4	# Quants tics (normals) triga en recuperar-se l'stamina de frenada
-var recuperacio_per_segon = float(tics_frenada) / recuperacio_frenada
+## Quants tics (de durada Interval Caiguda Frenat) pot durar l'stamina de frenada, com a molt
+@export var tics_frenada = 2
+## Quants tics (de durada Interval Caiguda) triga la barra d'stamina de frenada per recuperar-se de 0 a 100
+@export var tics_recuperacio_frenada = 4
+var recuperacio_per_segon = float(tics_frenada) / tics_recuperacio_frenada
 
 # Possibles següents moviments de la peça, segons l'input de la jugadora del teclat
 enum Moviments {Cap, Esquerra, Dreta, Gir}
@@ -26,24 +33,24 @@ func _ready() -> void:
 	peça.dibuixa_peça()
 	
 	# Inicialitza el medidor d'stamina
-	stamina.max_value = tics_frenada * INTERVAL_FRENAT
+	stamina.max_value = tics_frenada * INTERVAL_CAIGUDA_FRENAT
 	stamina.set_value_no_signal(stamina.max_value)
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
 	if Input.is_action_pressed("peça_frena"):
 		if stamina.get_value() <= 0.0:
-			tic_caiguda.set_wait_time(INTERVAL_TIC)
+			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA)
 			stamina.set_value(0.0)
 		else:
-			tic_caiguda.set_wait_time(INTERVAL_FRENAT)
+			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_FRENAT)
 			stamina.set_value(max(0.0, stamina.get_value() - delta))
 	else:
 		tic_caiguda.set_wait_time(INTERVAL_TIC)
 		stamina.set_value(min(stamina.max_value, stamina.get_value() + (delta * recuperacio_per_segon)))
 		if Input.is_action_just_pressed("peça_avall"):
 			# Accelera cap avall, reduïnt l'interval de temps entre moviments
-			tic_caiguda.set_wait_time(INTERVAL_ACCELERAT)
+			tic_caiguda.set_wait_time(INTERVAL_CAIGUDA_ACCELERAT)
 		elif Input.is_action_just_released("peça_avall"):
 			# Restableix l'interval de temps entre moviments
 			tic_caiguda.set_wait_time(INTERVAL_TIC)
