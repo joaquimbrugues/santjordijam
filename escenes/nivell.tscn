@@ -3,42 +3,48 @@
 [ext_resource type="Script" uid="uid://8m41heoy4ria" path="res://scripts/nivell.gd" id="1_34qa0"]
 [ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
 [ext_resource type="PackedScene" uid="uid://eyu6uq6rd0w7" path="res://escenes/peça.tscn" id="2_r0mg4"]
+[ext_resource type="Texture2D" uid="uid://b7j7llo6x5u7o" path="res://recursos/sprites/fons_tetris.png" id="3_lkhql"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
-size = Vector2(126.45776, 1024.0305)
+size = Vector2(234.13654, 975.6549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mg4"]
-size = Vector2(1080, 110.20401)
+size = Vector2(1028.6362, 155.94478)
 
 [node name="Nivell" type="Node2D" unique_id=652851506]
 script = ExtResource("1_34qa0")
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
+[node name="BGTetris" type="Sprite2D" parent="Capes" unique_id=1905633239]
+position = Vector2(515, 539.4636)
+scale = Vector2(2.9912536, 2.9912536)
+texture = ExtResource("3_lkhql")
+
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
-position = Vector2(345, 120)
+position = Vector2(510, 200)
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
-position = Vector2(514, 539.7999)
-scale = Vector2(0.9518518, 0.9518517)
+position = Vector2(514.318, 539.9782)
+scale = Vector2(1.0003536, 1.0003536)
 texture = ExtResource("1_opjtr")
 
 [node name="VoresTetris" type="Area2D" parent="Capes/FGTetris" unique_id=499102405]
 input_pickable = false
 
 [node name="VoraEsquerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=821580220]
-position = Vector2(-477.28146, -52.70038)
+position = Vector2(-397.28726, -53.959137)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
 [node name="VoraDreta" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=1555196556]
-position = Vector2(475.45187, -49.198223)
+position = Vector2(388.95074, -49.96054)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
 [node name="VoraTerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=1014557641]
-position = Vector2(0, 511.2683)
+position = Vector2(0.1819458, 459.8592)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
 
@@ -51,6 +57,7 @@ wait_time = 0.5
 autostart = true
 
 [node name="HUD_Esquerra" type="Control" parent="." unique_id=1632155265]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1028.0
