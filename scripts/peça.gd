@@ -1,6 +1,10 @@
 extends TileMapLayer
 
-# Posició (horitzonal) on ha d'aparèixer la peça
+# SUPER IMPORTANT: El TileMapLayer `Peça` HA DE COMPARTIR TileSet amb el
+# TileMapLayer `Casa`, que representa les peces que ja s'han dipositat a l'estructura
+# Els dos TileMapLayers també han de compartir origen de coordenades (position)
+
+## Posició (horitzonal) on ha d'aparèixer la peça, respecte al centre del tauler de tetris
 @export var ENTRADA_X: int = 0
 
 #Peces bàsiques del tetris desades com a vectors de coordenades enteres
@@ -27,12 +31,14 @@ var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la 
 
 # Funció usada només per a debugar
 func crea_exemple():
-	forma_actual = peces.pick_random()
+	#forma_actual = peces.pick_random()
+	forma_actual = [Vector2i.ZERO]
 	forma_seguent = forma_actual.duplicate()
 	posicio_seguent = posicio
 	posicio = Vector2i(ENTRADA_X, 0)
 	var index = randi_range(0, 7)
-	atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
+	atlas = [Vector2i(index, 0)]
+	#atlas = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
 	
 # Renderitza la peça
 func dibuixa_peça():
@@ -43,6 +49,11 @@ func dibuixa_peça():
 func esborra_peça():
 	for p in forma_actual:
 		erase_cell(posicio + p)
+
+# "Oblida" la posicio i forma seguents
+func reset():
+	forma_seguent = forma_actual.duplicate()
+	posicio_seguent = posicio
 
 # Mou i/o rota la peça
 func actualitza():
@@ -56,3 +67,13 @@ func gir_horari():
 	for index in forma_actual.size():
 		forma_seguent[index].x = - forma_actual[index].y
 		forma_seguent[index].y = forma_actual[index].x
+
+# Obten els rectangles Rect2 (en aquest cas, quadrats) de col·lisió de la peça en la
+# posició i forma que tindrà tot seguit, en coordenades globals
+func quadrats() -> Array:
+	var tile_size = Vector2(tile_set.get_tile_size())
+	return forma_seguent.map(func (coord):
+		var pos = coord + posicio_seguent
+		var coords_abs = to_global(map_to_local(pos) - (tile_size / 2.0))
+		return Rect2(coords_abs, tile_size)
+	)

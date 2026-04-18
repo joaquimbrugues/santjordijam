@@ -9,10 +9,10 @@ Els passos següents de cara a avançar amb el projecte:
 - [ ] Disposició general: fer espais reservats a la pantalla per a les diverses parts del joc, amb identificadors.
     - [X] Banda esquerra (semblant al Tetris)
     - [ ] Banda dreta (taller)
-- [ ] Programar la lògica de les peces de "Tetris"
+- [X] Programar la lògica de les peces de "Tetris"
     - [X] Crear una classe i les seves propietats bàsiques
     - [X] Escriure la lògica de la caiguda de la peça
-    - [ ] Controlar col·lisions
+    - [X] Controlar col·lisions
     - [X] Controls del teclat
         - [X] Moviments laterals
         - [X] Rotació
@@ -21,8 +21,8 @@ Els passos següents de cara a avançar amb el projecte:
             - [X] Posar stammina de frenada?
             - [X] Reacció a la frenada
 - [ ] Flux del joc de "Tetris"
+    - [ ] Crear capa de peces "construïdes"
     - [ ] Programar la cua de peces a caure
-    - [ ] Control del teclat per destruir peces
     - [ ] Crear àrees "prohibides"
     - [ ] Crear sistema de puntuació
     - [ ] Crear final del nivell

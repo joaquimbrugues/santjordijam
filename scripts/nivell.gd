@@ -5,6 +5,10 @@ extends Node2D
 @onready var tic_caiguda: Timer = $TicCaiguda
 @onready var tic_moviment: Timer = $TicMoviment
 @onready var sprite_stamina: AnimatedSprite2D = $Capes/Stamina
+@onready var vora_esquerra: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraEsquerra
+@onready var vora_dreta: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraDreta
+@onready var vora_terra: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraTerra
+var VORES
 
 # Paràmetres dels temporitzadors de caiguda i moviment
 ## Interval de temps entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
@@ -27,6 +31,12 @@ func _ready() -> void:
 	
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
+	# Inicialitza col·lecció de vores (Rect2)
+	VORES = [vora_esquerra, vora_dreta, vora_terra].map(func (vora) -> Rect2:
+		var rect = vora.get_shape().get_rect()
+		rect.position = vora.to_global(rect.position)
+		return rect
+		)
 
 func _process(_delta: float) -> void:
 	# Reacciona als clics de la jugadora
@@ -51,6 +61,15 @@ func _process(_delta: float) -> void:
 			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
 			proper_moviment = Moviments.Gir
 
+# Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
+# amb una peça existent, o `false` altrament
+func collisio() -> bool:
+	for casella in peça.quadrats():
+		for rect_vora in VORES:
+			if casella.intersects(rect_vora):
+				return true
+	return false
+
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
 # TODO: En aquesta funció hem de comprovar les col·lisions que poden fer que una peça passi a formar
@@ -59,20 +78,20 @@ func _on_tic_caiguda_timeout() -> void:
 	# Prepara moviment cap avall
 	peça.posicio_seguent = peça.posicio + Vector2i.DOWN
 	
-	#TODO: Comprovar col·lisions aquí
-	# Pla: mirar el mètode _on_tic_moviment_timeout().
-	# Addicionalment, cal crear un nou TileMapLayer amb coordenades consistents
-	# amb les de Peça, i copiant-ne el TileSet. Afegir l'estructura a la comprovació
-	# de col·lisions (és més fàcil que els rectangles), i programar la lògica de
-	# despawnejar la Peça i spawnejar a aquest TileMapLayer nou.
-	
-	# Aplica el moviment de la peça
-	peça.actualitza()
+	# Comprova col·lisions
+	# TODO: Comprova col·lisions amb la capa Casa
+	if collisio():
+		#TODO: Hi ha col·lisió: dipositar la peça i fer-ne caure una de nova
+		peça.posicio_seguent = peça.posicio
+	else:
+		# Aplica el moviment de la peça
+		peça.actualitza()
 
 # Aquesta funció es crida a cada tic del joc de tetris, i executarà el darrer moviment
 # que tingui desat a la variable `proper_moviment`,
 # a més de resetejar aquesta variable a Caiguda
 func _on_tic_moviment_timeout() -> void:
+	# Prepara el proper moviment de la peça
 	match proper_moviment:
 		Moviments.Esquerra:
 			peça.posicio_seguent = peça.posicio + Vector2i.LEFT
@@ -82,15 +101,13 @@ func _on_tic_moviment_timeout() -> void:
 			#TODO: Possible bug? Sembla que de vegades la peça gira dos cops seguits...
 			peça.gir_horari()
 	
-	#TODO: Comprovar col·lisions aquí
-	# PLA: Fer servir TileMapLayer.map_to_local() per cada coordenada de peça.posicio_seguent,
-	# i tot seguit potser Node2D.to_global() per obtenir la posició absoluta de
-	# cada cel·la. Cal testejar si això retorna la posició de la cantonada o el centre
-	# de la cel·la. Crear el Rectangle2D (quadrat) de la cel·la en coords absolutes
-	# Aleshores, per cadascuna de les tres Vores, extreure'n el Rectangle2D.
-	# Llavors ja és fàcil: solament cal utilitzar el mètode Rect2D.intersects()
+	# Comprova col·lisions
+	if collisio():
+		# La peça no es pot moure
+		peça.reset()
+	else:
+		# Aplica el moviment de la peça
+		peça.actualitza()
 	
-	# Aplica el moviment de la peça
-	peça.actualitza()
 	# Reinicialitza la variable de proper_moviment a Caiguda (per defecte)
 	proper_moviment = Moviments.Cap

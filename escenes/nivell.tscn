@@ -4,11 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
 [ext_resource type="PackedScene" uid="uid://eyu6uq6rd0w7" path="res://escenes/peça.tscn" id="2_r0mg4"]
 [ext_resource type="Texture2D" uid="uid://b7j7llo6x5u7o" path="res://recursos/sprites/fons_tetris.png" id="3_lkhql"]
+[ext_resource type="TileSet" uid="uid://c2kvtnnwep3qm" path="res://recursos/tilesets/placeholder.tres" id="4_e55k2"]
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
-size = Vector2(234.13654, 975.6549)
+size = Vector2(233.9172, 975.6549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mg4"]
 size = Vector2(1028.6362, 155.94478)
@@ -90,6 +91,10 @@ texture = ExtResource("3_lkhql")
 position = Vector2(510, 200)
 scale = Vector2(1.0000001, 1.0000001)
 
+[node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
+position = Vector2(512, 200)
+tile_set = ExtResource("4_e55k2")
+
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
 position = Vector2(514.318, 539.9782)
 scale = Vector2(1.0003536, 1.0003536)
@@ -99,7 +104,7 @@ texture = ExtResource("1_opjtr")
 input_pickable = false
 
 [node name="VoraEsquerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=821580220]
-position = Vector2(-397.28726, -53.959137)
+position = Vector2(-397.17764, -53.959137)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
