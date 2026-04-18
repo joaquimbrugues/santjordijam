@@ -6,6 +6,8 @@ extends TileMapLayer
 
 ## Posició (horitzonal) on ha d'aparèixer la peça, respecte al centre del tauler de tetris
 @export var ENTRADA_X: int = 0
+## Posició vertical on ha d'aparèixer la peça, en caselles (de mida del tileset), respecte al terra del tetris
+@export var ENTRADA_Y: int = 58
 
 #Peces bàsiques del tetris desades com a vectors de coordenades enteres
 #(0,0) és el pivot
@@ -33,7 +35,7 @@ var atlas: Array[Vector2i]	# Coordenades dins del TileSet de les textures de la 
 func importa(forma: Array[Vector2i], atl: Array[Vector2i]):
 	forma_actual = forma
 	forma_seguent = forma_actual.duplicate()
-	posicio = Vector2i(ENTRADA_X, 0)
+	posicio = Vector2i(ENTRADA_X, - ENTRADA_Y)
 	posicio_seguent = posicio
 	atlas = atl
 

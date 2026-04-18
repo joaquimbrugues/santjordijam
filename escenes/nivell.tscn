@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
+[ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
 size = Vector2(233.9172, 975.6549)
@@ -82,6 +83,7 @@ animations = [{
 
 [node name="Nivell" type="Node2D" unique_id=652851506]
 script = ExtResource("1_34qa0")
+"FILES_ALÇADA_FINAL" = 10
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
@@ -95,11 +97,12 @@ scale = Vector2(2.9912536, 2.9912536)
 texture = ExtResource("3_lkhql")
 
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
-position = Vector2(510, 200)
+position = Vector2(510, 922)
 scale = Vector2(1.0000001, 1.0000001)
+ENTRADA_Y = 22
 
 [node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
-position = Vector2(510, 200)
+position = Vector2(510, 922)
 tile_set = ExtResource("4_e55k2")
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
@@ -124,6 +127,12 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0.1819458, 459.8592)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
+
+[node name="IndicadorFinal" type="Line2D" parent="Capes" unique_id=416525042]
+position = Vector2(0, 922)
+points = PackedVector2Array(234, 0, 786, 0)
+width = 4.0
+default_color = Color(0, 1, 0.37254903, 1)
 
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
@@ -170,6 +179,16 @@ autostart = true
 [node name="RetardReset" type="Timer" parent="." unique_id=1626713496]
 one_shot = true
 autostart = true
+
+[node name="PantallaFinal" parent="." unique_id=828522870 instance=ExtResource("11_a3qq8")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]

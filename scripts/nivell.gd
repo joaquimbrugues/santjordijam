@@ -29,6 +29,10 @@ var VORES
 # respectivament Esquerra, Dreta i Avall
 var Moviments = [0.0, 0.0, 0.0]
 
+# Paràmetre: Alçada de final del joc
+## A quantes files d'alçada s'acaba el nivell
+@export var FILES_ALÇADA_FINAL: int = 58
+
 func _ready() -> void:
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
@@ -38,6 +42,8 @@ func _ready() -> void:
 		rect.position = vora.to_global(rect.position)
 		return rect
 		)
+	# Col·loca la línia indicadora del final a l'alçada correcta
+	$Capes/IndicadorFinal.position.y -= FILES_ALÇADA_FINAL * peça.tile_set.get_tile_size().y
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
@@ -80,22 +86,33 @@ func collisio() -> bool:
 
 # Elimina les caselles que es troben ara mateix a `Peça` i afegeix-les a la capa
 # `Casa`. Crea una nova peça
+# A més, si alguna de les caselles queda per damunt de la línia de final, triggereja el final del joc
 func transicio_peça() -> void:
+	var final = false
 	for index in peça.forma_actual.size():
 		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
+		# Comprovem el final del joc
+		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
+		if peça.posicio.y - peça.forma_actual[index].y < - FILES_ALÇADA_FINAL:
+			print("S'ha acabat el món")
+			final = true
 	
 	peça.clear()
 	
 	# Desactivem els timers de caiguda i de moviment
 	tic_moviment.stop()
 	tic_caiguda.stop()
-	# Activem el timer de reset
-	$RetardReset.start()
+	
+	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
+	if final:
+		$"EntraPeça".stop()	#TODO Aquest Timer és només per a debugar!
+		$PantallaFinal.show()
+	else:
+		# Activem el timer de reset
+		$RetardReset.start()
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
-# TODO: En aquesta funció hem de comprovar les col·lisions que poden fer que una peça passi a formar
-# part de l'estructura "construïda"
 func _on_tic_caiguda_timeout() -> void:
 	# Prepara moviment cap avall
 	peça.posicio_seguent = peça.posicio + Vector2i.DOWN
@@ -137,11 +154,17 @@ func _on_entra_peça_timeout() -> void:
 
 # Afegeix l'objecte al capdavant de la cua com a següent peça a caure
 func _on_retard_reset_timeout() -> void:
+	# Reinicialitza els comandaments de moviment
+	Moviments = [0.0, 0.0, 0.0]
+	
+	# Comprova que queden objectes a la cua
 	if cua_objectes.CUA.size() > 0:
+		# Fes la transició de l'objecte a Peça
 		var parella = cua_objectes.dona_primer()
 		peça.importa(parella[0], parella[1])
 		tic_caiguda.start()
 		tic_moviment.start()
+		peça.dibuixa_peça()
 	else:
 		#TODO: Ens hem d'assegurar de no caure mai en aquesta situació!
 		print("PROBLEMA: No tenim peça per caure!")
