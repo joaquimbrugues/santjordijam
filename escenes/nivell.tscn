@@ -20,8 +20,8 @@ position = Vector2(345, 120)
 scale = Vector2(1.0000001, 1.0000001)
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
-position = Vector2(343, 360.24997)
-scale = Vector2(0.6351852, 0.6351851)
+position = Vector2(514, 539.7999)
+scale = Vector2(0.9518518, 0.9518517)
 texture = ExtResource("1_opjtr")
 
 [node name="VoresTetris" type="Area2D" parent="Capes/FGTetris" unique_id=499102405]
@@ -53,8 +53,8 @@ autostart = true
 [node name="HUD_Esquerra" type="Control" parent="." unique_id=1632155265]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 686.0
-offset_bottom = 720.0
+offset_right = 1028.0
+offset_bottom = 1078.9504
 
 [node name="ContenidorBaix" type="CenterContainer" parent="HUD_Esquerra" unique_id=1392005297]
 layout_mode = 1
