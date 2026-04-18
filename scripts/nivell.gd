@@ -66,10 +66,17 @@ func _process(delta: float) -> void:
 # Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
 # amb una peça existent, o `false` altrament
 func collisio() -> bool:
+	# Col·lisió amb les vores
 	for casella in peça.quadrats():
 		for rect_vora in VORES:
 			if casella.intersects(rect_vora):
 				return true
+	
+	# Col·lisió amb la part construïda
+	for p in peça.forma_seguent:
+		if $Capes/Casa.get_cell_source_id(p + peça.posicio_seguent) != -1:
+			return true
+	
 	return false
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,

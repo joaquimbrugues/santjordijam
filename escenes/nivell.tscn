@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cchfrqq0il6n6"]
+[gd_scene format=4 uid="uid://cchfrqq0il6n6"]
 
 [ext_resource type="Script" uid="uid://8m41heoy4ria" path="res://scripts/nivell.gd" id="1_34qa0"]
 [ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
@@ -93,6 +93,7 @@ scale = Vector2(1.0000001, 1.0000001)
 
 [node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
 position = Vector2(512, 200)
+tile_map_data = PackedByteArray("AAD3/xYAAAAHAAAAAAD4/xYAAAAHAAAAAAD5/xYAAAAHAAAAAAD6/xYAAAAHAAAAAAD6/xUAAAAHAAAAAAD7/xYAAAAHAAAAAAD8/xYAAAAHAAAAAAD9/xYAAAAHAAAAAAD+/xYAAAAHAAAAAAD+/xUAAAAHAAAAAAD+/xQAAAAHAAAAAAD+/xMAAAAHAAAAAAD9/xMAAAAHAAAAAAD//xYAAAAHAAAAAAAAABYAAAAHAAAAAAABABYAAAAHAAAAAAACABYAAAAHAAAAAAADABYAAAAHAAAAAAAEABYAAAAHAAAAAAAFABYAAAAHAAAAAAAGABYAAAAHAAAAAAAHABYAAAAHAAAAAAAIABYAAAAHAAAAAAAHABUAAAAHAAAAAAAGABUAAAAHAAAAAAAHABQAAAAHAAAAAAAHABMAAAAHAAAAAAACABUAAAAHAAAAAAACABQAAAAHAAAAAAA=")
 tile_set = ExtResource("4_e55k2")
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
