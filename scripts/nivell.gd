@@ -24,9 +24,9 @@ func _ready() -> void:
 	# Crea peça d'exemple
 	peça.crea_exemple()
 	peça.dibuixa_peça()
+	
+	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
-
-
 
 func _process(_delta: float) -> void:
 	# Reacciona als clics de la jugadora
