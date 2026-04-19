@@ -134,6 +134,12 @@ points = PackedVector2Array(234, 0, 786, 0)
 width = 4.0
 default_color = Color(0, 1, 0.37254903, 1)
 
+[node name="Terra" type="Line2D" parent="Capes" unique_id=1083760731]
+position = Vector2(0, 922)
+points = PackedVector2Array(234, 0, 786, 0)
+width = 4.0
+default_color = Color(0.71232206, 0.6107072, 0, 1)
+
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
