@@ -9,6 +9,7 @@
 [ext_resource type="TileSet" uid="uid://btihoclssu04c" path="res://recursos/tilesets/tileset_bo.tres" id="5_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
+[ext_resource type="Texture2D" uid="uid://bteitxcv02p4r" path="res://recursos/sprites/fons_forma_casa.png" id="6_lg165"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 
@@ -16,7 +17,7 @@
 size = Vector2(233.9172, 975.6549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mg4"]
-size = Vector2(1028.6362, 155.94478)
+size = Vector2(1028.6362, 168.94025)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6usi0"]
 atlas = ExtResource("5_l2idp")
@@ -97,14 +98,18 @@ scale = Vector2(2.9912536, 2.9912536)
 texture = ExtResource("3_lkhql")
 
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
-position = Vector2(510, 922)
+position = Vector2(510, 906)
 scale = Vector2(1.0000001, 1.0000001)
 tile_set = ExtResource("5_a3qq8")
 ENTRADA_Y = 22
 
 [node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
-position = Vector2(510, 922)
+position = Vector2(510, 906)
 tile_set = ExtResource("5_a3qq8")
+
+[node name="ContornCasa" type="Sprite2D" parent="Capes" unique_id=867266293]
+position = Vector2(527, 548)
+texture = ExtResource("6_lg165")
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
 position = Vector2(514.318, 539.9782)
@@ -125,7 +130,7 @@ scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
 [node name="VoraTerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=1014557641]
-position = Vector2(0.1819458, 459.8592)
+position = Vector2(0.1819458, 453.3615)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
 
@@ -136,35 +141,28 @@ points = PackedVector2Array(234, 0, 786, 0)
 width = 4.0
 default_color = Color(0, 1, 0.37254903, 1)
 
-[node name="Terra" type="Line2D" parent="Capes" unique_id=1083760731]
-position = Vector2(-21.446434, 922)
-scale = Vector2(1.0410714, 1)
-points = PackedVector2Array(234, 0, 786, 0)
-width = 4.0
-default_color = Color(0.71232206, 0.6107072, 0, 1)
-
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
 script = ExtResource("8_vv83r")
 
 [node name="Cua1" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1836561402]
-position = Vector2(-353, 0)
+position = Vector2(-348, 10)
 
 [node name="Cua2" type="Marker2D" parent="Capes/CuaObjectes" unique_id=210113274]
-position = Vector2(-211, 0)
+position = Vector2(-207, 10)
 
 [node name="Cua3" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1780764721]
-position = Vector2(-70, 0)
+position = Vector2(-65, 10)
 
 [node name="Cua4" type="Marker2D" parent="Capes/CuaObjectes" unique_id=801890279]
-position = Vector2(70, 0)
+position = Vector2(60, -5)
 
 [node name="Cua5" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1138988457]
-position = Vector2(211, 0)
+position = Vector2(201, -5)
 
 [node name="Cua6" type="Marker2D" parent="Capes/CuaObjectes" unique_id=60052969]
-position = Vector2(352, 0)
+position = Vector2(343, -4)
 
 [node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
 tile_set = ExtResource("5_a3qq8")
