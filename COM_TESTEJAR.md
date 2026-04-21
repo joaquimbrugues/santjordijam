@@ -10,6 +10,7 @@ Els paràmetres es poden trobar a:
     - Interval Caiguda Frenat: El temps entre dos moviments de caiguda de la peça quan la jugadora està frenant la peça (prement 'amunt')
     - Sensibilitat Moviment: Durant quants mil·lisegons cal prèmer dreta, esquerra o gir per produir realment un moviment
     - Files Alçada Final: Quantes files es poden completar com a màxim en un nivell abans que acabi el joc
+    - Files Per Punt: Quantes files cal completar per rebre un punt (mitja estrella)
 
 2. L'escena **Peça**: Hi ha els paràmetres
     - Entrada X: La posició (horitzontal) d'entrada de la peça quan comença a caure
