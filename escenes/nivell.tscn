@@ -265,44 +265,45 @@ texture = ExtResource("4_d5rco")
 script = ExtResource("8_vv83r")
 
 [node name="Cua1" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1747604099 groups=["origens"]]
-position = Vector2(-348, 11)
+position = Vector2(-365, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua1" unique_id=685912125]
-position = Vector2(0.75, 1)
+position = Vector2(18, 18)
 shape = SubResource("RectangleShape2D_8brn8")
 
 [node name="Cua2" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=527051922 groups=["origens"]]
-position = Vector2(-206, 11)
+position = Vector2(-224, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua2" unique_id=626266679]
+position = Vector2(18, 17)
 shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="Cua3" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1946620865 groups=["origens"]]
-position = Vector2(-65, 11)
+position = Vector2(-82, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua3" unique_id=180754494]
-position = Vector2(0, -0.875)
+position = Vector2(18, 14)
 shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="Cua4" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=507422816 groups=["origens"]]
-position = Vector2(76, 11)
+position = Vector2(59, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua4" unique_id=1404793115]
-position = Vector2(0, -0.875)
+position = Vector2(18, 16)
 shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="Cua5" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=720744279 groups=["origens"]]
-position = Vector2(218, 13)
+position = Vector2(200, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua5" unique_id=219208836]
-position = Vector2(0, -0.875)
+position = Vector2(17, 20)
 shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="Cua6" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=570544138 groups=["origens"]]
-position = Vector2(358, 10)
+position = Vector2(342, -7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua6" unique_id=670791449]
-position = Vector2(0, -0.875)
+position = Vector2(16, 19)
 shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
@@ -346,5 +347,5 @@ grow_vertical = 1
 
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
-[connection signal="timeout" from="EntraPeça" to="." method="_on_entra_peça_timeout"]
+[connection signal="timeout" from="EntraPeça" to="Capes/CuaObjectes" method="_on_entra_peça_timeout"]
 [connection signal="timeout" from="RetardReset" to="." method="_on_retard_reset_timeout"]

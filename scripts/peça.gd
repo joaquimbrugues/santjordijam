@@ -9,19 +9,6 @@ extends TileMapLayer
 ## Posició vertical on ha d'aparèixer la peça, en caselles (de mida del tileset), respecte al terra del tetris
 @export var ENTRADA_Y: int = 58
 
-#Peces bàsiques del tetris desades com a vectors de coordenades enteres
-#(0,0) és el pivot
-# Aquestes coordenades només serveixen com a exemple per debugar!
-const i : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(-2,0), Vector2i(1,0)]
-const zeta : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(1,1)]
-const essa : Array[Vector2i] = [Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,1)]
-const O : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(-1,1)]
-const jota : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(1,1)]
-const ela : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(-1,1), Vector2i(1,0)]
-const te : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(0,1)]
-
-var peces := [i, zeta, essa, O, jota, ela, te]
-
 var forma_actual: Array[Vector2i]	# Forma actual de la peça
 var forma_seguent: Array[Vector2i]	# Forma de la peça al següent pas
 

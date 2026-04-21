@@ -1,5 +1,7 @@
 extends Sprite2D
 
+var escena_peça: PackedScene = preload("res://escenes/peça_arrossegable.tscn")
+
 # TileMapLayer amb els dibuixos dels elements de la cua
 @onready var objectes_cua: TileMapLayer = $ObjectesCua
 
@@ -17,48 +19,54 @@ const jota : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Ve
 const ela : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(-1,1), Vector2i(1,0)]
 const te : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(0,1)]
 
-var peces := [i, zeta, essa, O, jota, ela, te]
+var peces = [i, zeta, essa, O, jota, ela, te]
 
-var CUA: Array = []
+var seguent_lliure: int
 
-var MARCADORS: Array
+var REGIONS: Array
 
 func _ready() -> void:
-	# Prepara els marcadors de la cua
-	MARCADORS = [ $Cua1, $Cua2, $Cua3, $Cua4, $Cua5, $Cua6]
+	# Prepara les regions de la cua
+	REGIONS = [ $Cua1, $Cua2, $Cua3, $Cua4, $Cua5, $Cua6]
+	seguent_lliure = 0
 
 # AQUESTA FUNCIÓ ÉS TEMPORAL I NOMÉS FA LA FUNCIÓ D'EXEMPLE
 func afegeix_exemple() -> void:
-	var primera = peces.pick_random()
+	var forma = peces.pick_random()
 	var index = randi_range(0, 4)
-	var atlas: Array[Vector2i] = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
-	CUA.push_back([primera , atlas])
+	var atles: Array[Vector2i] = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
+	var peça_arrossegable = escena_peça.instantiate()
+	peça_arrossegable.crea(forma, atles)
+	peça_arrossegable.dibuixa()
 	
-	# Renderitza els objectes de la cua
-	objectes_cua.clear()
-	dibuixa_cua()
+	REGIONS[seguent_lliure].add_child(peça_arrossegable)
+	seguent_lliure += 1
 
-func dibuixa_cua() -> void:
-	var index = 0
-	while index < MARCADORS.size() and index < CUA.size():
-		# Renderitza la peça CUA[index] al marcador MARCADORS[index]
-		var parella = CUA[index]
-		for j in parella[0].size():
-			objectes_cua.set_cell(
-				objectes_cua.local_to_map(MARCADORS[index].get_position()) + parella[0][j],
-				0,
-				parella[1][j]
-			)
-		index += 1
-
-# Entrega el primer element de la cua, i elimina'l
-# Torna a renderitzar els elements de la cua
-# RETORNA un Array de la forma [Posicions: Array[Vector2i], Atles: Array[Vector2i]] 
+# Entrega el primer element de la cua, i elimina'l de la cua
+# RETORNA un Array de la forma [Posicions: Array[Vector2i], Atles: Array[Vector2i]]
+# IMPORTANT: Cridar només si has cridat hi_ha_objectes i el resultat ha estat True
 func dona_primer() -> Array:
-	var parella = CUA.pop_front()
-	objectes_cua.clear()
-	dibuixa_cua()
+	var peça = $Cua1.get_node("PeçaArrossegable")
+	$Cua1.remove_child(peça)
+	var parella = peça.deconstrueix()
+	
+	# Hauríem de garantir que seguent_lliure > 0 (amb hi_ha_objectes)
+	# (És possible que entrem en aquest bucle 0 vegades, si seguent_lliure = 1)
+	for index in range(1, seguent_lliure):
+		var filla = REGIONS[index].get_node("PeçaArrossegable")
+		REGIONS[index].remove_child(filla)
+		REGIONS[index - 1].add_child(filla, true)
+	seguent_lliure -= 1
 	return parella
 
 func hi_ha_lloc() -> bool:
-	return CUA.size() < MAXIM_OBJECTES
+	return seguent_lliure < MAXIM_OBJECTES
+
+func hi_ha_objectes() -> bool:
+	return seguent_lliure > 0
+
+# A tall d'exemple: afegeix una peça d'exemple
+func _on_entra_peça_timeout() -> void:
+	# Primer, mira si hi ha lloc!
+	if hi_ha_lloc():
+		afegeix_exemple()

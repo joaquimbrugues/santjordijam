@@ -218,18 +218,13 @@ func _on_tic_moviment_timeout() -> void:
 		# Aplica el moviment de la peça
 		peça.actualitza()
 
-# Afegeix una peça d'exemple nova a la cua
-func _on_entra_peça_timeout() -> void:
-	if cua_objectes.hi_ha_lloc():
-		cua_objectes.afegeix_exemple()
-
 # Afegeix l'objecte al capdavant de la cua com a següent peça a caure
 func _on_retard_reset_timeout() -> void:
 	# Reinicialitza els comandaments de moviment
 	Moviments = [0.0, 0.0, 0.0]
 	
 	# Comprova que queden objectes a la cua
-	if cua_objectes.CUA.size() > 0:
+	if cua_objectes.hi_ha_objectes():
 		# Fes la transició de l'objecte a Peça
 		var parella = cua_objectes.dona_primer()
 		peça.importa(parella[0], parella[1])

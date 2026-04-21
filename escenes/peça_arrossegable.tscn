@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://0175afcg1bh8"]
+
+[ext_resource type="TileSet" uid="uid://btihoclssu04c" path="res://recursos/tilesets/tileset_bo.tres" id="1_nv561"]
+[ext_resource type="Script" uid="uid://dc352kn7bp8q3" path="res://scripts/peça_arrossegable.gd" id="2_m34te"]
+
+[node name="PeçaArrossegable" type="TileMapLayer" unique_id=274996434]
+tile_set = ExtResource("1_nv561")
+script = ExtResource("2_m34te")
