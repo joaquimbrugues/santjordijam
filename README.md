@@ -23,13 +23,13 @@ Els passos següents de cara a avançar amb el projecte:
 - [ ] Flux del joc de "Tetris"
     - [X] Crear capa de peces "construïdes"
     - [X] Programar la cua de peces a caure
-    - [ ] Crear àrees "prohibides"
-    - [ ] Crear sistema de puntuació
     - [X] Crear final del nivell
+    - [ ] Crear sistema de puntuació
+    - [ ] Crear àrees "prohibides"
 - [ ] Programar la meitat del "taller"
-    - [ ] Programar l'inventari
     - [ ] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí
     - [ ] Programar la confecció de peces
+    - [ ] Afegir peces preconfigurades
 - [ ] Afegir lògica dels NPCs
     - [ ] Programar alguns NPCs d'exemple (amb possibles peces)
     - [ ] Tria d'NPC (control del teclat)
