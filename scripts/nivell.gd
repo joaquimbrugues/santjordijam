@@ -37,7 +37,7 @@ var Moviments = [0.0, 0.0, 0.0]
 ## Quantes files s'han d'omplir per tal de guanyar un punt (mitja estrella)
 @export var FILES_PER_PUNT: int = 1
 # Files emplenades no comptades a la puntuació
-var files_plenes: int = 0
+var files_plenes: Array
 const COLUMNES: int = 14
 
 # Caselles prohibides: la fila només es considera "plena" si la zona es troba __buida__
@@ -88,7 +88,7 @@ func _ready() -> void:
 		)
 	
 	# En cas de reset: inicialitza les files plenes a 0
-	files_plenes = 0
+	files_plenes = []
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
@@ -143,40 +143,36 @@ func casella_puntua(casella: Vector2i) -> bool:
 # A més, si alguna de les caselles queda per damunt de la línia de final, triggereja el final del joc
 func transicio_peça() -> void:
 	var final = false
-	var files_a_mirar: Dictionary = {}
 	for index in peça.forma_actual.size():
-		var pos = peça.posicio + peça.forma_actual[index]
-		files_a_mirar[pos.y] = true
-		$Capes/Casa.set_cell(pos, 0, peça.atlas[index])
+		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
 		
 		# Comprovem el final del joc
 		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
 		if peça.posicio.y - peça.forma_actual[index].y < - FILES_ALÇADA_FINAL:
 			final = true
 	
+	# Esborrem la peça de la seva capa
 	peça.clear()
 	
 	# Desactivem els timers de caiguda i de moviment
 	tic_moviment.stop()
 	tic_caiguda.stop()
 	
-	# Comptem les caselles de les files que acabem d'ocupar per comprovar si hem omplert una filera
-	# TODO: caldrà tenir en compte espais buits!
-	for fila in files_a_mirar.keys():
-		# Fem un bucle per mirar si totes les caselles de la fila estan ocupades per alguna cel·la de la Casa
+	# Comprovem totes les files del tauler per veure quines hem omplert
+	# I, també, si hem fastidiat alguna fila omplint un forat prohibit!
+	# (Val, el missatge ha quedat estrany)
+	files_plenes = range(1, FILES_ALÇADA_FINAL).filter(func (fila):
 		var puntua: bool = true
 		var indx: int = 0
 		while puntua and indx < COLUMNES:
-			puntua = puntua and casella_puntua(Vector2i(indx, fila))
+			puntua = puntua and casella_puntua(Vector2i(indx, - fila))
 			indx += 1
-		if puntua:
-			# La fila és plena! Suma un punt
-			files_plenes += 1
-		if files_plenes >= FILES_PER_PUNT:
-			# Hem sumat punts! Visca!
-			@warning_ignore("integer_division")
-			estrelles.suma_punts(files_plenes / FILES_PER_PUNT)
-			files_plenes %= FILES_PER_PUNT	# Resetegem les files plenes a les que no hem comptat encara
+		return puntua
+	)
+	print(files_plenes)
+	# Sumem els punts i actualitzem el marcador
+	@warning_ignore("integer_division")
+	estrelles.actualitza_estrelles(files_plenes.size() / FILES_PER_PUNT)
 	
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:
