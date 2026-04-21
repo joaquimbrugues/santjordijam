@@ -31,7 +31,7 @@ var Moviments = [0.0, 0.0, 0.0]
 
 # Paràmetre: Alçada de final del joc
 ## A quantes files d'alçada s'acaba el nivell
-@export var FILES_ALÇADA_FINAL: int = 58
+@export var FILES_ALÇADA_FINAL: int = 20
 
 func _ready() -> void:
 	# Inicialitza els elements del joc
@@ -42,8 +42,6 @@ func _ready() -> void:
 		rect.position = vora.to_global(rect.position)
 		return rect
 		)
-	# Col·loca la línia indicadora del final a l'alçada correcta
-	$Capes/IndicadorFinal.position.y -= FILES_ALÇADA_FINAL * peça.tile_set.get_tile_size().y
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora

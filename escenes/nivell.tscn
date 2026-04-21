@@ -84,7 +84,6 @@ animations = [{
 
 [node name="Nivell" type="Node2D" unique_id=652851506]
 script = ExtResource("1_34qa0")
-"FILES_ALÇADA_FINAL" = 10
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
@@ -133,13 +132,6 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0.1819458, 453.3615)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
-
-[node name="IndicadorFinal" type="Line2D" parent="Capes" unique_id=416525042]
-position = Vector2(-19.625011, 922)
-scale = Vector2(1.0375, 1)
-points = PackedVector2Array(234, 0, 786, 0)
-width = 4.0
-default_color = Color(0, 1, 0.37254903, 1)
 
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
