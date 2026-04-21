@@ -12,9 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://bteitxcv02p4r" path="res://recursos/sprites/fons_forma_casa.png" id="6_lg165"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
+[ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
+[ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="13_3wqdi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
-size = Vector2(233.9172, 975.6549)
+size = Vector2(264.1366, 975.6549)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mg4"]
 size = Vector2(1028.6362, 168.94025)
@@ -82,6 +84,86 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wqdi"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(0, 0, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxf1e"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(0, 49, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5fb"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(0, 98, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4i3"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(0, 147, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8brn8"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(169, 0, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvn6l"]
+atlas = ExtResource("12_hkil0")
+region = Rect2(169, 49, 169, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqip2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wqdi")
+}],
+"loop": false,
+"name": &"0.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxf1e")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x5fb")
+}],
+"loop": false,
+"name": &"1.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4i3")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8brn8")
+}],
+"loop": false,
+"name": &"2.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvn6l")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Nivell" type="Node2D" unique_id=652851506]
 script = ExtResource("1_34qa0")
 
@@ -97,13 +179,14 @@ scale = Vector2(2.9912536, 2.9912536)
 texture = ExtResource("3_lkhql")
 
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
-position = Vector2(510, 906)
+position = Vector2(258, 906)
 scale = Vector2(1.0000001, 1.0000001)
 tile_set = ExtResource("5_a3qq8")
+ENTRADA_X = 7
 ENTRADA_Y = 22
 
 [node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
-position = Vector2(510, 906)
+position = Vector2(258, 906)
 tile_set = ExtResource("5_a3qq8")
 
 [node name="ContornCasa" type="Sprite2D" parent="Capes" unique_id=867266293]
@@ -119,12 +202,12 @@ texture = ExtResource("1_opjtr")
 input_pickable = false
 
 [node name="VoraEsquerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=821580220]
-position = Vector2(-410, -53.959)
+position = Vector2(-388.29575, -53.959015)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
 [node name="VoraDreta" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=1555196556]
-position = Vector2(401, -49.961)
+position = Vector2(382.54672, -48.960896)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
@@ -165,6 +248,12 @@ sprite_frames = SubResource("SpriteFrames_a3qq8")
 animation = &"100%"
 autoplay = "100%"
 script = ExtResource("6_6usi0")
+
+[node name="Estrelles" type="AnimatedSprite2D" parent="Capes" unique_id=25609754]
+position = Vector2(797, 48)
+sprite_frames = SubResource("SpriteFrames_mqip2")
+autoplay = "default"
+script = ExtResource("13_3wqdi")
 
 [node name="TicCaiguda" type="Timer" parent="." unique_id=1976850143]
 wait_time = 0.5

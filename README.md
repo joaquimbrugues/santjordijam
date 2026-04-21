@@ -24,7 +24,7 @@ Els passos següents de cara a avançar amb el projecte:
     - [X] Crear capa de peces "construïdes"
     - [X] Programar la cua de peces a caure
     - [X] Crear final del nivell
-    - [ ] Crear sistema de puntuació
+    - [X] Crear sistema de puntuació
     - [ ] Crear àrees "prohibides"
 - [ ] Programar la meitat del "taller"
     - [ ] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí

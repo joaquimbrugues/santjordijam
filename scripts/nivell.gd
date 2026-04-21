@@ -9,6 +9,7 @@ extends Node2D
 @onready var vora_esquerra: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraEsquerra
 @onready var vora_dreta: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraDreta
 @onready var vora_terra: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraTerra
+@onready var estrelles: AnimatedSprite2D = $Capes/Estrelles
 var VORES
 
 # Paràmetres dels temporitzadors de caiguda i moviment
@@ -33,6 +34,12 @@ var Moviments = [0.0, 0.0, 0.0]
 ## A quantes files d'alçada s'acaba el nivell
 @export var FILES_ALÇADA_FINAL: int = 20
 
+## Quantes files s'han d'omplir per tal de guanyar un punt (mitja estrella)
+@export var FILES_PER_PUNT: int = 1
+# Files emplenades no comptades a la puntuació
+var files_plenes: int = 0
+const COLUMNES: int = 14
+
 func _ready() -> void:
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
@@ -42,6 +49,9 @@ func _ready() -> void:
 		rect.position = vora.to_global(rect.position)
 		return rect
 		)
+	
+	# En cas de reset: inicialitza les files plenes a 0
+	files_plenes = 0
 
 func _process(delta: float) -> void:
 	# Reacciona als clics de la jugadora
@@ -83,11 +93,14 @@ func collisio() -> bool:
 	return false
 
 # Elimina les caselles que es troben ara mateix a `Peça` i afegeix-les a la capa
-# `Casa`. Crea una nova peça
+# `Casa`. Crea una nova peça.
+# Compta quantes files noves s'han afegit i actualitza les estrelles de la puntuació
 # A més, si alguna de les caselles queda per damunt de la línia de final, triggereja el final del joc
 func transicio_peça() -> void:
 	var final = false
+	var files_a_mirar: Dictionary = {}
 	for index in peça.forma_actual.size():
+		files_a_mirar[peça.posicio.y + peça.forma_actual[index].y] = true
 		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
 		# Comprovem el final del joc
 		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
@@ -99,6 +112,24 @@ func transicio_peça() -> void:
 	# Desactivem els timers de caiguda i de moviment
 	tic_moviment.stop()
 	tic_caiguda.stop()
+	
+	# Comptem les caselles de les files que acabem d'ocupar per comprovar si hem omplert una filera
+	# TODO: caldrà tenir en compte espais buits!
+	for fila in files_a_mirar.keys():
+		# Fem un bucle per mirar si totes les caselles de la fila estan ocupades per alguna cel·la de la Casa
+		var ocupada: bool = true
+		var indx: int = 0
+		while ocupada and indx < COLUMNES:
+			ocupada = ocupada and ($Capes/Casa.get_cell_source_id(Vector2i(indx, fila)) != -1)
+			indx += 1
+		if ocupada:
+			# La fila és plena! Suma un punt
+			files_plenes += 1
+		if files_plenes >= FILES_PER_PUNT:
+			# Hem sumat punts! Visca!
+			@warning_ignore("integer_division")
+			estrelles.suma_punts(files_plenes / FILES_PER_PUNT)
+			files_plenes %= FILES_PER_PUNT	# Resetegem les files plenes a les que no hem comptat encara
 	
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:
