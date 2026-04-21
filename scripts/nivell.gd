@@ -40,6 +40,43 @@ var Moviments = [0.0, 0.0, 0.0]
 var files_plenes: int = 0
 const COLUMNES: int = 14
 
+# Caselles prohibides: la fila només es considera "plena" si la zona es troba __buida__
+# Com a prova de concepte, farem un diccionari constant. De cara al futur podríem
+# fer formes més complicades
+const CASELLES_PROHIBIDES: Array[Vector2i] = [
+	Vector2i(3,-1),
+	Vector2i(4,-1),
+	Vector2i(5,-1),
+	Vector2i(6,-1),
+	Vector2i(3,-2),
+	Vector2i(4,-2),
+	Vector2i(5,-2),
+	Vector2i(6,-2),
+	Vector2i(3,-3),
+	Vector2i(4,-3),
+	Vector2i(5,-3),
+	Vector2i(6,-3),
+	Vector2i(3,-4),
+	Vector2i(4,-4),
+	Vector2i(5,-4),
+	Vector2i(6,-4),
+	Vector2i(3,-5),
+	Vector2i(4,-5),
+	Vector2i(5,-5),
+	Vector2i(6,-5),
+	Vector2i(3,-6),
+	Vector2i(4,-6),
+	Vector2i(5,-6),
+	Vector2i(6,-6),
+	Vector2i(10,-14),
+	Vector2i(11,-14),
+	Vector2i(10,-15),
+	Vector2i(11,-15),
+	Vector2i(13,-18),
+	Vector2i(0,-18),
+	Vector2i(1,-18),
+]
+
 func _ready() -> void:
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
@@ -92,6 +129,14 @@ func collisio() -> bool:
 	
 	return false
 
+# Retorna si la casella puntua:
+# Opció 1: la casella és prohibida i està buida
+# Opció 2: la casella no és prohibida i està ocupada
+func casella_puntua(casella: Vector2i) -> bool:
+	var buida: bool = $Capes/Casa.get_cell_source_id(casella) == -1
+	var prohibida: bool = CASELLES_PROHIBIDES.find(casella) != -1
+	return buida == prohibida
+
 # Elimina les caselles que es troben ara mateix a `Peça` i afegeix-les a la capa
 # `Casa`. Crea una nova peça.
 # Compta quantes files noves s'han afegit i actualitza les estrelles de la puntuació
@@ -100,8 +145,10 @@ func transicio_peça() -> void:
 	var final = false
 	var files_a_mirar: Dictionary = {}
 	for index in peça.forma_actual.size():
-		files_a_mirar[peça.posicio.y + peça.forma_actual[index].y] = true
-		$Capes/Casa.set_cell(peça.posicio + peça.forma_actual[index], 0, peça.atlas[index])
+		var pos = peça.posicio + peça.forma_actual[index]
+		files_a_mirar[pos.y] = true
+		$Capes/Casa.set_cell(pos, 0, peça.atlas[index])
+		
 		# Comprovem el final del joc
 		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
 		if peça.posicio.y - peça.forma_actual[index].y < - FILES_ALÇADA_FINAL:
@@ -117,12 +164,12 @@ func transicio_peça() -> void:
 	# TODO: caldrà tenir en compte espais buits!
 	for fila in files_a_mirar.keys():
 		# Fem un bucle per mirar si totes les caselles de la fila estan ocupades per alguna cel·la de la Casa
-		var ocupada: bool = true
+		var puntua: bool = true
 		var indx: int = 0
-		while ocupada and indx < COLUMNES:
-			ocupada = ocupada and ($Capes/Casa.get_cell_source_id(Vector2i(indx, fila)) != -1)
+		while puntua and indx < COLUMNES:
+			puntua = puntua and casella_puntua(Vector2i(indx, fila))
 			indx += 1
-		if ocupada:
+		if puntua:
 			# La fila és plena! Suma un punt
 			files_plenes += 1
 		if files_plenes >= FILES_PER_PUNT:
