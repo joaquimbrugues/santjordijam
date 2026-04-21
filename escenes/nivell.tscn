@@ -23,6 +23,18 @@ size = Vector2(264.1366, 975.6549)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r0mg4"]
 size = Vector2(1028.6362, 168.94025)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x5fb"]
+size = Vector2(320, 177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qq4i3"]
+size = Vector2(321, 177)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8brn8"]
+size = Vector2(120.5, 114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvn6l"]
+size = Vector2(119.5, 111.75)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6usi0"]
 atlas = ExtResource("5_l2idp")
 region = Rect2(226, 0, 113, 109)
@@ -225,36 +237,73 @@ position = Vector2(0.1819458, 453.3615)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
 
-[node name="PeçaSeguent" type="Sprite2D" parent="Capes" unique_id=944349881]
-position = Vector2(1474, 129)
+[node name="Fabricada" type="StaticBody2D" parent="Capes" unique_id=1113480906 groups=["destinacions"]]
+position = Vector2(1029, 0)
+
+[node name="PeçaSeguent" type="Sprite2D" parent="Capes/Fabricada" unique_id=944349881]
+position = Vector2(445, 129)
 texture = ExtResource("8_pxf1e")
 
-[node name="Taller" type="Sprite2D" parent="Capes" unique_id=1084519849]
-position = Vector2(1476, 713)
+[node name="Ancoratge" type="CollisionShape2D" parent="Capes/Fabricada" unique_id=1402198065]
+position = Vector2(196, 115.5)
+shape = SubResource("RectangleShape2D_4x5fb")
+
+[node name="Taller" type="StaticBody2D" parent="Capes" unique_id=1579723301 groups=["destinacions", "origens"]]
+position = Vector2(1333, 679)
+
+[node name="SpriteTaller" type="Sprite2D" parent="Capes/Taller" unique_id=1084519849]
+position = Vector2(141, 36)
 texture = ExtResource("9_4x5fb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/Taller" unique_id=1962242811]
+position = Vector2(160.5, 88.5)
+shape = SubResource("RectangleShape2D_qq4i3")
 
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
 script = ExtResource("8_vv83r")
 
-[node name="Cua1" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1836561402]
-position = Vector2(-348, 10)
+[node name="Cua1" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1747604099 groups=["origens"]]
+position = Vector2(-348, 11)
 
-[node name="Cua2" type="Marker2D" parent="Capes/CuaObjectes" unique_id=210113274]
-position = Vector2(-207, 10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua1" unique_id=685912125]
+position = Vector2(0.75, 1)
+shape = SubResource("RectangleShape2D_8brn8")
 
-[node name="Cua3" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1780764721]
-position = Vector2(-65, 10)
+[node name="Cua2" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=527051922 groups=["origens"]]
+position = Vector2(-206, 11)
 
-[node name="Cua4" type="Marker2D" parent="Capes/CuaObjectes" unique_id=801890279]
-position = Vector2(60, -5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua2" unique_id=626266679]
+shape = SubResource("RectangleShape2D_mvn6l")
 
-[node name="Cua5" type="Marker2D" parent="Capes/CuaObjectes" unique_id=1138988457]
-position = Vector2(201, -5)
+[node name="Cua3" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1946620865 groups=["origens"]]
+position = Vector2(-65, 11)
 
-[node name="Cua6" type="Marker2D" parent="Capes/CuaObjectes" unique_id=60052969]
-position = Vector2(343, -4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua3" unique_id=180754494]
+position = Vector2(0, -0.875)
+shape = SubResource("RectangleShape2D_mvn6l")
+
+[node name="Cua4" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=507422816 groups=["origens"]]
+position = Vector2(76, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua4" unique_id=1404793115]
+position = Vector2(0, -0.875)
+shape = SubResource("RectangleShape2D_mvn6l")
+
+[node name="Cua5" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=720744279 groups=["origens"]]
+position = Vector2(218, 13)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua5" unique_id=219208836]
+position = Vector2(0, -0.875)
+shape = SubResource("RectangleShape2D_mvn6l")
+
+[node name="Cua6" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=570544138 groups=["origens"]]
+position = Vector2(358, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua6" unique_id=670791449]
+position = Vector2(0, -0.875)
+shape = SubResource("RectangleShape2D_mvn6l")
 
 [node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
 tile_set = ExtResource("5_a3qq8")
