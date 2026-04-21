@@ -30,7 +30,7 @@ func _ready() -> void:
 # AQUESTA FUNCIÓ ÉS TEMPORAL I NOMÉS FA LA FUNCIÓ D'EXEMPLE
 func afegeix_exemple() -> void:
 	var primera = peces.pick_random()
-	var index = randi_range(0, 6)
+	var index = randi_range(0, 4)
 	var atlas: Array[Vector2i] = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
 	CUA.push_back([primera , atlas])
 	
@@ -44,7 +44,11 @@ func dibuixa_cua() -> void:
 		# Renderitza la peça CUA[index] al marcador MARCADORS[index]
 		var parella = CUA[index]
 		for j in parella[0].size():
-			objectes_cua.set_cell(objectes_cua.local_to_map(MARCADORS[index].get_position()) + parella[0][j], 0, parella[1][j])
+			objectes_cua.set_cell(
+				objectes_cua.local_to_map(MARCADORS[index].get_position()) + parella[0][j],
+				0,
+				parella[1][j]
+			)
 		index += 1
 
 # Entrega el primer element de la cua, i elimina'l

@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d3e10y3ieet12" path="res://recursos/sprites/taller_fons.png" id="2_vs0c2"]
 [ext_resource type="Texture2D" uid="uid://b7j7llo6x5u7o" path="res://recursos/sprites/fons_tetris.png" id="3_lkhql"]
 [ext_resource type="Texture2D" uid="uid://csw2t6od08uv3" path="res://recursos/sprites/cua_objectes.png" id="4_d5rco"]
-[ext_resource type="TileSet" uid="uid://c2kvtnnwep3qm" path="res://recursos/tilesets/placeholder.tres" id="4_e55k2"]
+[ext_resource type="TileSet" uid="uid://btihoclssu04c" path="res://recursos/tilesets/tileset_bo.tres" id="5_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
@@ -99,11 +99,12 @@ texture = ExtResource("3_lkhql")
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(510, 922)
 scale = Vector2(1.0000001, 1.0000001)
+tile_set = ExtResource("5_a3qq8")
 ENTRADA_Y = 22
 
 [node name="Casa" type="TileMapLayer" parent="Capes" unique_id=2146999724]
 position = Vector2(510, 922)
-tile_set = ExtResource("4_e55k2")
+tile_set = ExtResource("5_a3qq8")
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
 position = Vector2(514.318, 539.9782)
@@ -114,12 +115,12 @@ texture = ExtResource("1_opjtr")
 input_pickable = false
 
 [node name="VoraEsquerra" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=821580220]
-position = Vector2(-397.17764, -53.959137)
+position = Vector2(-410, -53.959)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
 [node name="VoraDreta" type="CollisionShape2D" parent="Capes/FGTetris/VoresTetris" unique_id=1555196556]
-position = Vector2(388.95074, -49.96054)
+position = Vector2(401, -49.961)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_opjtr")
 
@@ -129,13 +130,15 @@ scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
 
 [node name="IndicadorFinal" type="Line2D" parent="Capes" unique_id=416525042]
-position = Vector2(0, 922)
+position = Vector2(-19.625011, 922)
+scale = Vector2(1.0375, 1)
 points = PackedVector2Array(234, 0, 786, 0)
 width = 4.0
 default_color = Color(0, 1, 0.37254903, 1)
 
 [node name="Terra" type="Line2D" parent="Capes" unique_id=1083760731]
-position = Vector2(0, 922)
+position = Vector2(-21.446434, 922)
+scale = Vector2(1.0410714, 1)
 points = PackedVector2Array(234, 0, 786, 0)
 width = 4.0
 default_color = Color(0.71232206, 0.6107072, 0, 1)
@@ -164,10 +167,10 @@ position = Vector2(211, 0)
 position = Vector2(352, 0)
 
 [node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
-tile_set = ExtResource("4_e55k2")
+tile_set = ExtResource("5_a3qq8")
 
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
-position = Vector2(513, 1013)
+position = Vector2(513, 1012)
 sprite_frames = SubResource("SpriteFrames_a3qq8")
 animation = &"100%"
 autoplay = "100%"

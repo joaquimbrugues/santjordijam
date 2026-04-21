@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://qwhwa42w11wl"
-path="res://.godot/imported/blocs.png-afd41a6b69c02bb1d3a750ea6e772e66.ctex"
+uid="uid://cyoh3sdcrnctl"
+path="res://.godot/imported/p18.png-f92e0e222fead2a2b95b1b706ca3148a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://recursos/sprites/blocs.png"
-dest_files=["res://.godot/imported/blocs.png-afd41a6b69c02bb1d3a750ea6e772e66.ctex"]
+source_file="res://recursos/peces/p18.png"
+dest_files=["res://.godot/imported/p18.png-f92e0e222fead2a2b95b1b706ca3148a.ctex"]
 
 [params]
 

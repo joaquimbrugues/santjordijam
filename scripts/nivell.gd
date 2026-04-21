@@ -94,7 +94,6 @@ func transicio_peça() -> void:
 		# Comprovem el final del joc
 		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
 		if peça.posicio.y - peça.forma_actual[index].y < - FILES_ALÇADA_FINAL:
-			print("S'ha acabat el món")
 			final = true
 	
 	peça.clear()
