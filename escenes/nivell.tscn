@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 [ext_resource type="Texture2D" uid="uid://bteitxcv02p4r" path="res://recursos/sprites/fons_forma_casa.png" id="6_lg165"]
+[ext_resource type="Texture2D" uid="uid://bx0q7pr3g8cib" path="res://recursos/sprites/llançament_peça_muntada.png" id="8_pxf1e"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
+[ext_resource type="Texture2D" uid="uid://hggq5fakvi6f" path="res://recursos/sprites/interface_muntatge_peçes.png" id="9_4x5fb"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
 [ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="13_3wqdi"]
@@ -194,8 +196,8 @@ position = Vector2(527, 548)
 texture = ExtResource("6_lg165")
 
 [node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
-position = Vector2(514.318, 539.9782)
-scale = Vector2(1.0003536, 1.0003536)
+position = Vector2(514.31805, 539.99994)
+scale = Vector2(1.0003537, 1.0003537)
 texture = ExtResource("1_opjtr")
 
 [node name="VoresTetris" type="Area2D" parent="Capes/FGTetris" unique_id=499102405]
@@ -215,6 +217,14 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0.1819458, 453.3615)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
+
+[node name="PeçaSeguent" type="Sprite2D" parent="Capes" unique_id=944349881]
+position = Vector2(1474, 129)
+texture = ExtResource("8_pxf1e")
+
+[node name="Taller" type="Sprite2D" parent="Capes" unique_id=1084519849]
+position = Vector2(1476, 713)
+texture = ExtResource("9_4x5fb")
 
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
