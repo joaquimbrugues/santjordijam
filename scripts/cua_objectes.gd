@@ -2,9 +2,6 @@ extends Sprite2D
 
 var escena_peça: PackedScene = preload("res://escenes/peça_arrossegable.tscn")
 
-# TileMapLayer amb els dibuixos dels elements de la cua
-@onready var objectes_cua: TileMapLayer = $ObjectesCua
-
 ## Màxim d'objectes que pot haver-hi a la cua (independentment de si es poden renderitzar)
 @export var MAXIM_OBJECTES: int = 6
 
@@ -55,7 +52,7 @@ func dona_primer() -> Array:
 	for index in range(1, seguent_lliure):
 		var filla = REGIONS[index].get_node("PeçaArrossegable")
 		REGIONS[index].remove_child(filla)
-		REGIONS[index - 1].add_child(filla, true)
+		REGIONS[index - 1].add_child(filla, true)	# Cridem add_child amb force_readable_name = true per forçar que el nom de la filla seguirà sent PeçaArrossegable
 	seguent_lliure -= 1
 	return parella
 

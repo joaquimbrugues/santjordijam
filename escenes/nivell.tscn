@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://hggq5fakvi6f" path="res://recursos/sprites/interface_muntatge_peçes.png" id="9_4x5fb"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
+[ext_resource type="PackedScene" uid="uid://c23qy2wcantq" path="res://escenes/regio_cua.tscn" id="12_qq4i3"]
 [ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="13_3wqdi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
@@ -28,12 +29,6 @@ size = Vector2(320, 177)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq4i3"]
 size = Vector2(321, 177)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8brn8"]
-size = Vector2(120.5, 114)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mvn6l"]
-size = Vector2(119.5, 111.75)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6usi0"]
 atlas = ExtResource("5_l2idp")
@@ -264,50 +259,23 @@ position = Vector2(1470, 984)
 texture = ExtResource("4_d5rco")
 script = ExtResource("8_vv83r")
 
-[node name="Cua1" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1747604099 groups=["origens"]]
+[node name="Cua1" parent="Capes/CuaObjectes" unique_id=1257588723 instance=ExtResource("12_qq4i3")]
 position = Vector2(-365, -6)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua1" unique_id=685912125]
-position = Vector2(18, 18)
-shape = SubResource("RectangleShape2D_8brn8")
+[node name="Cua2" parent="Capes/CuaObjectes" unique_id=491128561 instance=ExtResource("12_qq4i3")]
+position = Vector2(-224, -8)
 
-[node name="Cua2" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=527051922 groups=["origens"]]
-position = Vector2(-224, -6)
+[node name="Cua3" parent="Capes/CuaObjectes" unique_id=668347376 instance=ExtResource("12_qq4i3")]
+position = Vector2(-82, -10)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua2" unique_id=626266679]
-position = Vector2(18, 17)
-shape = SubResource("RectangleShape2D_mvn6l")
+[node name="Cua4" parent="Capes/CuaObjectes" unique_id=1368211632 instance=ExtResource("12_qq4i3")]
+position = Vector2(55, -8)
 
-[node name="Cua3" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=1946620865 groups=["origens"]]
-position = Vector2(-82, -6)
+[node name="Cua5" parent="Capes/CuaObjectes" unique_id=808809798 instance=ExtResource("12_qq4i3")]
+position = Vector2(200, -7)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua3" unique_id=180754494]
-position = Vector2(18, 14)
-shape = SubResource("RectangleShape2D_mvn6l")
-
-[node name="Cua4" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=507422816 groups=["origens"]]
-position = Vector2(59, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua4" unique_id=1404793115]
-position = Vector2(18, 16)
-shape = SubResource("RectangleShape2D_mvn6l")
-
-[node name="Cua5" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=720744279 groups=["origens"]]
-position = Vector2(200, -6)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua5" unique_id=219208836]
-position = Vector2(17, 20)
-shape = SubResource("RectangleShape2D_mvn6l")
-
-[node name="Cua6" type="StaticBody2D" parent="Capes/CuaObjectes" unique_id=570544138 groups=["origens"]]
+[node name="Cua6" parent="Capes/CuaObjectes" unique_id=2036679122 instance=ExtResource("12_qq4i3")]
 position = Vector2(342, -7)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/CuaObjectes/Cua6" unique_id=670791449]
-position = Vector2(16, 19)
-shape = SubResource("RectangleShape2D_mvn6l")
-
-[node name="ObjectesCua" type="TileMapLayer" parent="Capes/CuaObjectes" unique_id=692458632]
-tile_set = ExtResource("5_a3qq8")
 
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
 position = Vector2(513, 1012)
