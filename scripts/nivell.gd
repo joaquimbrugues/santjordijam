@@ -169,7 +169,6 @@ func transicio_peça() -> void:
 			indx += 1
 		return puntua
 	)
-	print(files_plenes)
 	# Sumem els punts i actualitzem el marcador
 	@warning_ignore("integer_division")
 	estrelles.actualitza_estrelles(files_plenes.size() / FILES_PER_PUNT)

@@ -8,7 +8,6 @@ const MAX_MITGES_ESTRELLES: int = 6
 
 func actualitza_estrelles(estrelles: int = 0) -> void:
 	num_mitges_estrelles = estrelles
-	print(num_mitges_estrelles)
 	match num_mitges_estrelles:
 		0: play("default")
 		1: play("0.5")
