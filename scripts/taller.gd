@@ -5,7 +5,7 @@ const dimensions: Vector2i = Vector2i(9, 5)
 func _process(_delta: float) -> void:
 	if arrossegament.peça_arrossegant != null:
 		var posicio_local = to_local(arrossegament.peça_arrossegant.global_position) / 36.0
-		var posicio_entera = Vector2i(floori(posicio_local.x), floori(posicio_local.y))
+		var posicio_entera = Vector2i(roundi(posicio_local.x), roundi(posicio_local.y))
 		if arrossegament.peça_arrossegant.forma.all(func (casella):
 			# TODO: Adaptar aquesta lambda a mesura que s'acumulin peces al taller
 			var cas = posicio_entera + casella
