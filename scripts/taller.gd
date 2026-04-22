@@ -1,5 +1,7 @@
 extends Node2D
 
+var escena_peça = preload("res://escenes/peça_arrossegable.tscn")
+
 const dimensions: Vector2i = Vector2i(9, 5)
 
 var regions_ocupades: Array[Vector2i]
@@ -72,30 +74,35 @@ func _process(_delta: float) -> void:
 # Calcula el baricentre de la peça i calcula totes les posicions relatives a
 # aquest baricentre de cara a calcular el vector de forma
 # A més, calcula l'atles de la peça i retorna'l
+# A més a més, retorna el baricentre
 func crea_forma_i_atles() -> Array:
 	var forma: Array[Vector2i] = []
 	var atles: Array[Vector2i] = []
-	if regions_ocupades.size() > 0:
-		# Càlcul del baricentre
-		var acc: Vector2i = Vector2i.ZERO
-		for coord in regions_ocupades:
-			acc += coord
-		var baricentre = Vector2(acc)/ regions_ocupades.size()
-		baricentre = Vector2i(floori(baricentre.x), floori(baricentre.y))
-		
-		for p in peces:
-			var pos = p.position / 36.0
-			pos = Vector2i(floori(pos.x), floori(pos.y))
-			for f in p.forma:
-				var ff = pos + f - baricentre
-				forma.append(ff)
-			atles.append_array(p.atles)
-	return [forma, atles]
+	# Càlcul del baricentre
+	var acc: Vector2i = Vector2i.ZERO
+	for coord in regions_ocupades:
+		acc += coord
+	var baricentre = Vector2(acc)/ regions_ocupades.size()
+	baricentre = Vector2i(floori(baricentre.x), floori(baricentre.y))
+	
+	for p in peces:
+		var pos = p.position / 36.0
+		pos = Vector2i(floori(pos.x), floori(pos.y))
+		for f in p.forma:
+			var ff = pos + f - baricentre
+			forma.append(ff)
+		atles.append_array(p.atles)
+	return [forma, atles, baricentre]
 
 # Acció a dur a terme quan es prem el botó
 func construeix_peça() -> void:
-	var res = crea_forma_i_atles()
-	print(res)
+	if peces.size() > 0:
+		var res = crea_forma_i_atles()
+		var peça_nova = escena_peça.instantiate()
+		peça_nova.crea(res[0], res[1])
+		peça_nova.dibuixa()
+		%Fabricada.add_child(peça_nova,true)
+		peça_nova.global_position = to_global(Vector2(res[2]))
 
 # Si el ratolí entra a la regió del botó i no estem arrossegant, fem-lo clicable
 func _on_area_boto_mouse_entered() -> void:
