@@ -97,12 +97,23 @@ func crea_forma_i_atles() -> Array:
 # Acció a dur a terme quan es prem el botó
 func construeix_peça() -> void:
 	if peces.size() > 0:
+		# Crea la nova peça assemblada
 		var res = crea_forma_i_atles()
 		var peça_nova = escena_peça.instantiate()
 		peça_nova.crea(res[0], res[1])
 		peça_nova.dibuixa()
-		%Fabricada.add_child(peça_nova,true)
+		# Posa la peça nova a l'arbre i imposa-li la posició correcta
+		%Fabricada.add_child(peça_nova, true)
 		peça_nova.global_position = to_global(Vector2(res[2]))
+		# Mou la peça fins al seu lloc
+		var tween = get_tree().create_tween()
+		var prop = tween.tween_property(peça_nova, "position", Vector2(res[2]) * 36.0, 0.2)
+		prop.set_ease(Tween.EASE_OUT)
+		# Matar fills
+		for p in peces:
+			p.queue_free()
+		# Buidar
+		reset()
 
 # Si el ratolí entra a la regió del botó i no estem arrossegant, fem-lo clicable
 func _on_area_boto_mouse_entered() -> void:
