@@ -74,3 +74,13 @@ func _on_entra_peça_timeout() -> void:
 	# Primer, mira si hi ha lloc!
 	if hi_ha_lloc():
 		afegeix_exemple()
+
+# Acabem d'extreure un dels fills d'aquest arbre (una de les peces)
+# Ara hem de reparar-lo
+func repara_fulles() -> void:
+	seguent_lliure -= 1
+	for index in REGIONS.size() - 1:
+		if not REGIONS[index].has_node("PeçaArrossegable") and REGIONS[index+1].has_node("PeçaArrossegable"):
+			var fulla = REGIONS[index+1].get_node("PeçaArrossegable")
+			REGIONS[index+1].remove_child(fulla)
+			REGIONS[index].add_child(fulla, true)

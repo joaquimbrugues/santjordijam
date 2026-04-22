@@ -11,3 +11,8 @@ func _on_mouse_exited() -> void:
 		var peça = get_node("PeçaArrossegable")
 		peça.scale = Vector2(1.0, 1.0)
 		peça.pot_arrossegar = false
+
+func perd_fill():
+	var pare = get_parent()
+	if "repara_fulles" in pare:
+		pare.repara_fulles()
