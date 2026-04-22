@@ -1,7 +1,6 @@
 extends TileMapLayer
 
 var pot_arrossegar: bool = false
-var offset: Vector2
 var initialPos: Vector2
 var te_objectiu: bool = false
 var objectiu: Vector2
@@ -21,17 +20,18 @@ func _process(_delta: float) -> void:
 	if pot_arrossegar:
 		if Input.is_action_just_pressed("clic_esquerre"):
 			initialPos = global_position
-			offset = get_global_mouse_position() - global_position
+			arrossegament.offset = get_global_mouse_position() - global_position
 			scale = Vector2(1.0, 1.0)
 			z_index = 1
-			arrossegament.arrossegant = true
+			arrossegament.peça_arrossegant = self
 		if Input.is_action_pressed("clic_esquerre"):
-			global_position = get_global_mouse_position() - offset
+			global_position = get_global_mouse_position() - arrossegament.offset
 			if Input.is_action_just_pressed("gira_arrossegant"):
 				var tween = get_tree().create_tween()
 				tween.tween_property(self, "rotation_degrees", rotation_degrees + 90, 0.2).set_ease(Tween.EASE_OUT)
 		elif Input.is_action_just_released("clic_esquerre"):
-			arrossegament.arrossegant = false
+			arrossegament.offset = Vector2.ZERO
+			arrossegament.peça_arrossegant = null
 			pot_arrossegar = false
 			z_index = 0
 			var tween = get_tree().create_tween()

@@ -1,3 +1,4 @@
 extends Node2D
 
-var arrossegant = false
+var offset: Vector2
+var peça_arrossegant

@@ -1,4 +1,7 @@
 extends Area2D
 
-func _on_body_entered(body: Node2D) -> void:
-	print(body)
+const dimensions: Vector2i = Vector2i(9, 5)
+
+func _process(_delta: float) -> void:
+	if arrossegament.peça_arrossegant != null:
+		pass
