@@ -1,14 +1,19 @@
-extends Area2D
+extends Node2D
 
 const dimensions: Vector2i = Vector2i(9, 5)
 
 var regions_ocupades: Array[Vector2i]
+var peces: Array[Node2D]
+
+var boto_clicable: bool = false
 
 func _ready() -> void:
 	reset()
 
 func reset() -> void:
 	regions_ocupades = []
+	peces = []
+	boto_clicable = false
 
 # Calcula les coordenades locals en la graella del taller com a caselles enteres
 # Arrodonim les coordenades fraccionals per forçar-les a la graella
@@ -16,10 +21,11 @@ func coordenades_enteres(coords: Vector2) -> Vector2i:
 	var posicio_local = to_local(coords) / 36.0
 	return Vector2i(roundi(posicio_local.x), roundi(posicio_local.y))
 
-func omple_peces(pos_global: Vector2, forma: Array[Vector2i]) -> void:
-	var coords_enteres = coordenades_enteres(pos_global)
-	for f in forma:
+func omple_peces(node: Node2D) -> void:
+	var coords_enteres: Vector2i = coordenades_enteres(node.global_position)
+	for f in node.forma:
 		regions_ocupades.append(f + coords_enteres)
+	peces.append(node)
 
 func dins_rectangle(casella: Vector2i) -> bool:
 	return casella.x >= 0 and casella.x < dimensions.x and casella.y >= 0 and casella.y < dimensions.y
@@ -52,3 +58,48 @@ func _process(_delta: float) -> void:
 			arrossegament.peça_arrossegant.fixa_objectiu(posicio_global, self)
 		else:
 			arrossegament.peça_arrossegant.te_objectiu = false
+	else:
+		# No estem arrossegant. Vols prèmer el botó?
+		if boto_clicable and Input.is_action_just_pressed("clic_esquerre"):
+			$BotoTaller.play("premut")
+			$CampanaTaller.play("Tocant")
+			construeix_peça()
+		elif not boto_clicable or Input.is_action_just_released("clic_esquerre"):
+			$BotoTaller.play("lliure")
+			$CampanaTaller.play("Quieta")
+
+# Calcula la forma de la peça construïda
+# Calcula el baricentre de la peça i calcula totes les posicions relatives a
+# aquest baricentre de cara a calcular el vector de forma
+# A més, calcula l'atles de la peça i retorna'l
+func crea_forma_i_atles() -> Array:
+	var forma: Array[Vector2i] = []
+	var atles: Array[Vector2i] = []
+	if regions_ocupades.size() > 0:
+		# Càlcul del baricentre
+		var acc: Vector2i = Vector2i.ZERO
+		for coord in regions_ocupades:
+			acc += coord
+		var baricentre = Vector2(acc)/ regions_ocupades.size()
+		baricentre = Vector2i(floori(baricentre.x), floori(baricentre.y))
+		
+		for p in peces:
+			var pos: Vector2i = coordenades_enteres(p.position)
+			for f in p.forma:
+				var ff = pos + f - baricentre
+				forma.append(ff)
+			atles.append_array(p.atles)
+	return [forma, atles]
+
+# Acció a dur a terme quan es prem el botó
+func construeix_peça() -> void:
+	var res = crea_forma_i_atles()
+	print(res)
+
+# Si el ratolí entra a la regió del botó i no estem arrossegant, fem-lo clicable
+func _on_area_boto_mouse_entered() -> void:
+	boto_clicable = arrossegament.peça_arrossegant == null
+
+# Si el ratolí abandona la regió del botó, ja no és clicable
+func _on_area_boto_mouse_exited() -> void:
+	boto_clicable = false

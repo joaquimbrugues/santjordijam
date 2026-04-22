@@ -53,7 +53,7 @@ func _process(_delta: float) -> void:
 				if "perd_fill" in pare:
 					pare.perd_fill()
 				if "omple_peces" in objectiu_node:
-					objectiu_node.omple_peces(global_position, forma)
+					objectiu_node.omple_peces(self)
 			else:
 				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 

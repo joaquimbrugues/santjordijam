@@ -12,9 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://de1b7q8do7a6n" path="res://recursos/sprites/interficie_tetris2.png" id="7_8brn8"]
 [ext_resource type="Texture2D" uid="uid://bx0q7pr3g8cib" path="res://recursos/sprites/llançament_peça_muntada.png" id="8_pxf1e"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
-[ext_resource type="Texture2D" uid="uid://hggq5fakvi6f" path="res://recursos/sprites/interface_muntatge_peçes.png" id="9_4x5fb"]
 [ext_resource type="Script" uid="uid://gxk6f7rx8vq7" path="res://scripts/taller.gd" id="9_8brn8"]
+[ext_resource type="Texture2D" uid="uid://bv6fs16iyqlay" path="res://recursos/sprites/botons_muntatge.png" id="9_mvn6l"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
+[ext_resource type="Texture2D" uid="uid://c823n0k1glhho" path="res://recursos/sprites/botons_taller.png" id="11_mvn6l"]
 [ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
 [ext_resource type="PackedScene" uid="uid://c23qy2wcantq" path="res://escenes/regio_cua.tscn" id="12_qq4i3"]
 [ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="13_3wqdi"]
@@ -28,8 +29,87 @@ size = Vector2(1028.6362, 168.94025)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4x5fb"]
 size = Vector2(320, 177)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l502k"]
+atlas = ExtResource("9_mvn6l")
+region = Rect2(0, 0, 890, 386)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fb17v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l502k")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qq4i3"]
-size = Vector2(321, 177)
+size = Vector2(321.5, 177.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8hmt"]
+atlas = ExtResource("9_mvn6l")
+region = Rect2(148, 386, 148, 193)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tiglh"]
+atlas = ExtResource("9_mvn6l")
+region = Rect2(148, 386, 148, 193)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1q6i"]
+atlas = ExtResource("9_mvn6l")
+region = Rect2(1036, 0, 148, 193)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4s5l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8hmt")
+}],
+"loop": false,
+"name": &"Quieta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tiglh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1q6i")
+}],
+"loop": true,
+"name": &"Tocant",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fb17v"]
+atlas = ExtResource("11_mvn6l")
+region = Rect2(0, 0, 83, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4s5l"]
+atlas = ExtResource("11_mvn6l")
+region = Rect2(83, 0, 83, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_istj3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fb17v")
+}],
+"loop": false,
+"name": &"lliure",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4s5l")
+}],
+"loop": false,
+"name": &"premut",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8brn8"]
+radius = 48.010414
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6usi0"]
 atlas = ExtResource("5_l2idp")
@@ -183,21 +263,26 @@ animations = [{
 
 [node name="Nivell" type="Node2D" unique_id=652851506]
 script = ExtResource("1_34qa0")
+INTERVAL_CAIGUDA_FRENAT = 1.5
+sensibilitat_moviment = 0.05
 
 [node name="Capes" type="Node2D" parent="." unique_id=732824529]
 
 [node name="BGTaller" type="Sprite2D" parent="Capes" unique_id=1870866328]
 position = Vector2(1460, 540)
 texture = ExtResource("2_vs0c2")
+metadata/_edit_lock_ = true
 
 [node name="BGTetris" type="Sprite2D" parent="Capes" unique_id=1905633239]
 position = Vector2(515, 539.4636)
 scale = Vector2(2.9912536, 2.9912536)
 texture = ExtResource("3_lkhql")
+metadata/_edit_lock_ = true
 
 [node name="ContornCasa" type="Sprite2D" parent="Capes" unique_id=867266293]
 position = Vector2(527, 548)
 texture = ExtResource("6_lg165")
+metadata/_edit_lock_ = true
 
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(258, 906)
@@ -212,6 +297,7 @@ tile_set = ExtResource("5_8brn8")
 [node name="FGTetris" type="Node2D" parent="Capes" unique_id=518828742]
 position = Vector2(514.31805, 539.99994)
 scale = Vector2(1.0003537, 1.0003537)
+metadata/_edit_lock_ = true
 
 [node name="VoresTetris" type="Area2D" parent="Capes/FGTetris" unique_id=499102405]
 input_pickable = false
@@ -247,18 +333,41 @@ texture = ExtResource("8_pxf1e")
 position = Vector2(196, 115.5)
 shape = SubResource("RectangleShape2D_4x5fb")
 
-[node name="Taller" type="Area2D" parent="Capes" unique_id=1792037432 groups=["destinacions", "origens"]]
-position = Vector2(1333, 679)
-collision_layer = 0
+[node name="Taller" type="Node2D" parent="Capes" unique_id=255245531]
+position = Vector2(1335, 679)
 script = ExtResource("9_8brn8")
+metadata/_edit_lock_ = true
 
-[node name="SpriteTaller" type="Sprite2D" parent="Capes/Taller" unique_id=1084519849]
-position = Vector2(141, 36)
-texture = ExtResource("9_4x5fb")
+[node name="SpriteTaller" type="AnimatedSprite2D" parent="Capes/Taller" unique_id=1461121880]
+position = Vector2(140, 37)
+sprite_frames = SubResource("SpriteFrames_fb17v")
+autoplay = "default"
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/Taller" unique_id=1962242811]
-position = Vector2(160.5, 88.5)
+[node name="GridTaller" type="Area2D" parent="Capes/Taller" unique_id=1792037432 groups=["destinacions", "origens"]]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/Taller/GridTaller" unique_id=1962242811]
+position = Vector2(160.25, 88.25)
 shape = SubResource("RectangleShape2D_qq4i3")
+
+[node name="CampanaTaller" type="AnimatedSprite2D" parent="Capes/Taller" unique_id=992143748]
+position = Vector2(-78, -59.5)
+sprite_frames = SubResource("SpriteFrames_c4s5l")
+animation = &"Quieta"
+autoplay = "Quieta"
+frame_progress = 1.0
+
+[node name="BotoTaller" type="AnimatedSprite2D" parent="Capes/Taller" unique_id=1244378843]
+position = Vector2(-62, 91)
+sprite_frames = SubResource("SpriteFrames_istj3")
+animation = &"lliure"
+autoplay = "lliure"
+
+[node name="AreaBoto" type="Area2D" parent="Capes/Taller/BotoTaller" unique_id=1613231359]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Capes/Taller/BotoTaller/AreaBoto" unique_id=1650367586]
+shape = SubResource("CircleShape2D_8brn8")
 
 [node name="CuaObjectes" type="Sprite2D" parent="Capes" unique_id=2095780757]
 position = Vector2(1470, 984)
@@ -316,7 +425,9 @@ offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[connection signal="body_entered" from="Capes/Taller" to="Capes/Taller" method="_on_body_entered"]
+[connection signal="body_entered" from="Capes/Taller/GridTaller" to="Capes/Taller/GridTaller" method="_on_body_entered"]
+[connection signal="mouse_entered" from="Capes/Taller/BotoTaller/AreaBoto" to="Capes/Taller" method="_on_area_boto_mouse_entered"]
+[connection signal="mouse_exited" from="Capes/Taller/BotoTaller/AreaBoto" to="Capes/Taller" method="_on_area_boto_mouse_exited"]
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
 [connection signal="timeout" from="RetardReset" to="." method="_on_retard_reset_timeout"]
