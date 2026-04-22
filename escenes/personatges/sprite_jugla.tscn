@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://hqgvyrw455ym"]
+
+[ext_resource type="Texture2D" uid="uid://coql5c5ikv7dk" path="res://recursos/sprites/personatges/2.jugla.png" id="1_7xcp0"]
+
+[node name="SpriteJugla" type="Sprite2D" unique_id=328403022]
+texture = ExtResource("1_7xcp0")

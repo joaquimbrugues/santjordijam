@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b7p3qyiom5xc7"]
+
+[ext_resource type="Texture2D" uid="uid://c4nmeijcmhwbp" path="res://recursos/sprites/personatges/9.enterradora.png" id="1_7plwh"]
+
+[node name="SpriteEnterradora" type="Sprite2D" unique_id=473164308]
+texture = ExtResource("1_7plwh")

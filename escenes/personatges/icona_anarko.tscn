@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d2g6lxl75pf00"]
+
+[ext_resource type="Texture2D" uid="uid://cp8vnjxp2f6in" path="res://recursos/sprites/icones/icona_5.anarko.png" id="1_m1oi1"]
+
+[node name="IconaAnarko" type="Sprite2D" unique_id=1694502274]
+texture = ExtResource("1_m1oi1")

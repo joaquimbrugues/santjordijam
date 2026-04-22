@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://co6jnsfhaavki"]
+
+[ext_resource type="Texture2D" uid="uid://d2q3dpmmtoumt" path="res://recursos/sprites/icones/icona_8.borratxo.png" id="1_s3bkg"]
+
+[node name="IconaBorratxo" type="Sprite2D" unique_id=595295171]
+texture = ExtResource("1_s3bkg")

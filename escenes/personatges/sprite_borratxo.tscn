@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://igdvgefq2xh6"]
+
+[ext_resource type="Texture2D" uid="uid://bga4i3ir406yk" path="res://recursos/sprites/personatges/8.borratxo.png" id="1_ftcox"]
+
+[node name="SpriteBorratxo" type="Sprite2D" unique_id=1650476734]
+texture = ExtResource("1_ftcox")

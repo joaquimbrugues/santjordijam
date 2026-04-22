@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ddo5fal4uie6y"]
+
+[ext_resource type="Texture2D" uid="uid://b30ogdpryehaa" path="res://recursos/sprites/icones/icona_1.caçadora.png" id="1_5081l"]
+
+[node name="IconaCaçadora" type="Sprite2D" unique_id=1181760645]
+texture = ExtResource("1_5081l")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://3v17tjuy8byf"]
+
+[ext_resource type="Texture2D" uid="uid://dfh52fun3wnms" path="res://recursos/sprites/personatges/5.anarko.png" id="1_hiaxo"]
+
+[node name="SpriteAnarko" type="Sprite2D" unique_id=744075614]
+texture = ExtResource("1_hiaxo")

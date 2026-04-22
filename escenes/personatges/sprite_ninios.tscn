@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bcrrohmiadr5c"]
+
+[ext_resource type="Texture2D" uid="uid://d0pd5133bogah" path="res://recursos/sprites/personatges/6.ninios.png" id="1_ovtj5"]
+
+[node name="SpriteNinios" type="Sprite2D" unique_id=794702451]
+texture = ExtResource("1_ovtj5")

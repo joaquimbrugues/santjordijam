@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b174r27b6slri"]
+
+[ext_resource type="Texture2D" uid="uid://dsary25outpoo" path="res://recursos/sprites/personatges/1.caçadora.png" id="1_apj0s"]
+
+[node name="SpriteCaçadora" type="Sprite2D" unique_id=1663423617]
+texture = ExtResource("1_apj0s")

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c76bq4sdk463g"]
+
+[ext_resource type="Texture2D" uid="uid://bb067toog5i7n" path="res://recursos/sprites/icones/icona_6.ninios.png" id="1_sk0y5"]
+
+[node name="IconaNinios" type="Sprite2D" unique_id=1407197197]
+texture = ExtResource("1_sk0y5")

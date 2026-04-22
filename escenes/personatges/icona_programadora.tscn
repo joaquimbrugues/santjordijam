@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cu4qpjucnmw0k"]
+
+[ext_resource type="Texture2D" uid="uid://blbp0y2lewpdj" path="res://recursos/sprites/icones/icona_4.programadora.png" id="1_5637n"]
+
+[node name="IconaProgramadora" type="Sprite2D" unique_id=1212986062]
+texture = ExtResource("1_5637n")

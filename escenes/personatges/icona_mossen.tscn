@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cwbvw5tx1qwi5"]
+
+[ext_resource type="Texture2D" uid="uid://dbxpujvn2bw78" path="res://recursos/sprites/icones/icona_7.mossen.png" id="1_ehtu1"]
+
+[node name="IconaMossen" type="Sprite2D" unique_id=1916373662]
+texture = ExtResource("1_ehtu1")

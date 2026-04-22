@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ct78ycydshcnx"]
+
+[ext_resource type="Texture2D" uid="uid://bb22csu5ad7hv" path="res://recursos/sprites/icones/icona_3.vell.png" id="1_q184k"]
+
+[node name="IconaVell" type="Sprite2D" unique_id=1944612831]
+texture = ExtResource("1_q184k")
