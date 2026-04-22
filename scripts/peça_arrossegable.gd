@@ -40,8 +40,7 @@ func _process(_delta: float) -> void:
 			if te_objectiu:
 				tween.tween_property(self, "global_position", objectiu_pos, 0.2).set_ease(Tween.EASE_OUT)
 				var pare = get_parent()
-				pare.remove_child(self)
-				objectiu_node.add_child(self)
+				reparent(objectiu_node, true)
 				if "perd_fill" in pare:
 					pare.perd_fill()
 			else:
