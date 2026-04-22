@@ -34,12 +34,12 @@ func _process(delta: float) -> void:
 func actualitza_imatge() -> void:
 	var percentatge = stamina / max_stamina
 	if percentatge < 0.25:
-		play("0%")
+		play("100%")
 	elif percentatge < 0.5:
-		play("25%")
+		play("75%")
 	elif percentatge < 0.75:
 		play("50%")
 	elif percentatge < 1.0:
-		play("75%")
+		play("25%")
 	else:
-		play("100%")
+		play("0%")

@@ -282,8 +282,8 @@ position = Vector2(342, -7)
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
 position = Vector2(513, 1012)
 sprite_frames = SubResource("SpriteFrames_a3qq8")
-animation = &"100%"
-autoplay = "100%"
+animation = &"0%"
+autoplay = "0%"
 script = ExtResource("6_6usi0")
 
 [node name="Estrelles" type="AnimatedSprite2D" parent="Capes" unique_id=25609754]
