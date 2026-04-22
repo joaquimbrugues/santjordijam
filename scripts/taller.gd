@@ -65,7 +65,8 @@ func _process(_delta: float) -> void:
 		if boto_clicable and Input.is_action_just_pressed("clic_esquerre"):
 			$BotoTaller.play("premut")
 			$CampanaTaller.play("Tocant")
-			construeix_peça()
+			if not %Fabricada.has_node("PeçaArrossegable"):
+				construeix_peça()
 		elif not boto_clicable or Input.is_action_just_released("clic_esquerre"):
 			$BotoTaller.play("lliure")
 			$CampanaTaller.play("Quieta")
