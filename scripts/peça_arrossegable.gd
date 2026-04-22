@@ -22,6 +22,7 @@ func _process(_delta: float) -> void:
 		if Input.is_action_just_pressed("clic_esquerre"):
 			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
+			scale = Vector2(1.0, 1.0)
 			arrossegament.arrossegant = true
 		if Input.is_action_pressed("clic_esquerre"):
 			global_position = get_global_mouse_position() - offset

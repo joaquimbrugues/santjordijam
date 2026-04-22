@@ -44,6 +44,9 @@ func afegeix_exemple() -> void:
 # IMPORTANT: Cridar només si has cridat hi_ha_objectes i el resultat ha estat True
 func dona_primer() -> Array:
 	var peça = $Cua1.get_node("PeçaArrossegable")
+	if arrossegament.arrossegant and peça.pot_arrossegar:
+		# Estem arrossegant la peça ques'ha d'entregar! Li haurem de prendre a la jugadora
+		arrossegament.arrossegant = false
 	$Cua1.remove_child(peça)
 	var parella = peça.deconstrueix()
 	
@@ -53,6 +56,9 @@ func dona_primer() -> Array:
 		var filla = REGIONS[index].get_node("PeçaArrossegable")
 		REGIONS[index].remove_child(filla)
 		REGIONS[index - 1].add_child(filla, true)	# Cridem add_child amb force_readable_name = true per forçar que el nom de la filla seguirà sent PeçaArrossegable
+		if arrossegament.arrossegant and filla.pot_arrossegar:
+			# Estem arrossegant aquesta peça! Assegurem-nos d'actualitzar el seu anclatge
+			filla.initialPos = REGIONS[index-1].global_position
 	seguent_lliure -= 1
 	return parella
 
