@@ -68,10 +68,30 @@ func dibuixa() -> void:
 
 func crea_bloc() -> void:
 	forma = [Vector2i(0,0)]
-	var aindx = randi_range(0,4)
-	var aindy: int
-	if aindx == 4:
-		aindy = randi_range(0,3)
-	else:
-		aindy = randi_range(0,4)
-	atles = [Vector2i(aindx, aindy)]
+	atles = [ATLES_TEXTURES.pick_random()]
+
+const ATLES_TEXTURES: Array[Vector2i] = [
+	Vector2i(10,1),
+	Vector2i(11,1),
+	Vector2i(12,1),
+	Vector2i(10,2),
+	Vector2i(11,2),
+	Vector2i(12,2),
+	Vector2i(11,3),
+	Vector2i(12,3),
+	Vector2i(13,3),
+	Vector2i(11,4),
+	Vector2i(12,4),
+	Vector2i(13,4),
+	Vector2i(11,5),
+	Vector2i(12,5),
+	Vector2i(13,5),
+	Vector2i(11,6),
+	Vector2i(12,6),
+	Vector2i(13,6),
+	Vector2i(14,6),
+	Vector2i(13,7),
+	Vector2i(14,7),
+	Vector2i(13,8),
+	Vector2i(14,8),
+]

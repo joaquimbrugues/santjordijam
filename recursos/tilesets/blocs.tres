@@ -1,10 +1,9 @@
-[gd_scene format=3 uid="uid://eyu6uq6rd0w7"]
+[gd_resource type="TileSet" format=3 uid="uid://dmbciiq22llai"]
 
-[ext_resource type="Texture2D" uid="uid://cw17u2jh2e51i" path="res://recursos/sprites/blocs_definitius.png" id="1_18f0b"]
-[ext_resource type="Script" uid="uid://clfuqouovbddu" path="res://scripts/peça.gd" id="2_lbd3g"]
+[ext_resource type="Texture2D" uid="uid://cw17u2jh2e51i" path="res://recursos/sprites/blocs_definitius.png" id="1_3lomp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbd3g"]
-texture = ExtResource("1_18f0b")
+texture = ExtResource("1_3lomp")
 texture_region_size = Vector2i(36, 36)
 9:0/0 = 0
 10:0/0 = 0
@@ -121,10 +120,6 @@ texture_region_size = Vector2i(36, 36)
 11:7/size_in_atlas = Vector2i(2, 2)
 11:7/0 = 0
 
-[sub_resource type="TileSet" id="TileSet_vg6hc"]
+[resource]
 tile_size = Vector2i(36, 36)
 sources/0 = SubResource("TileSetAtlasSource_lbd3g")
-
-[node name="Peça" type="TileMapLayer" unique_id=1585660043]
-tile_set = SubResource("TileSet_vg6hc")
-script = ExtResource("2_lbd3g")
