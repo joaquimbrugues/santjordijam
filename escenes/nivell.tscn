@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cchfrqq0il6n6"]
 
 [ext_resource type="Script" uid="uid://8m41heoy4ria" path="res://scripts/nivell.gd" id="1_34qa0"]
-[ext_resource type="Texture2D" uid="uid://df3v6mt8qm1t0" path="res://recursos/sprites/interficie_tetris.png" id="1_opjtr"]
 [ext_resource type="PackedScene" uid="uid://eyu6uq6rd0w7" path="res://escenes/peça.tscn" id="2_r0mg4"]
 [ext_resource type="Texture2D" uid="uid://d3e10y3ieet12" path="res://recursos/sprites/taller_fons.png" id="2_vs0c2"]
 [ext_resource type="Texture2D" uid="uid://b7j7llo6x5u7o" path="res://recursos/sprites/fons_tetris.png" id="3_lkhql"]
@@ -10,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cpr8xkc4tal4s" path="res://recursos/sprites/quesitos.png" id="5_l2idp"]
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 [ext_resource type="Texture2D" uid="uid://bteitxcv02p4r" path="res://recursos/sprites/fons_forma_casa.png" id="6_lg165"]
+[ext_resource type="Texture2D" uid="uid://de1b7q8do7a6n" path="res://recursos/sprites/interficie_tetris2.png" id="7_8brn8"]
 [ext_resource type="Texture2D" uid="uid://bx0q7pr3g8cib" path="res://recursos/sprites/llançament_peça_muntada.png" id="8_pxf1e"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="Texture2D" uid="uid://hggq5fakvi6f" path="res://recursos/sprites/interface_muntatge_peçes.png" id="9_4x5fb"]
@@ -195,6 +195,10 @@ position = Vector2(515, 539.4636)
 scale = Vector2(2.9912536, 2.9912536)
 texture = ExtResource("3_lkhql")
 
+[node name="ContornCasa" type="Sprite2D" parent="Capes" unique_id=867266293]
+position = Vector2(527, 548)
+texture = ExtResource("6_lg165")
+
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(258, 906)
 scale = Vector2(1.0000001, 1.0000001)
@@ -205,14 +209,9 @@ ENTRADA_Y = 22
 position = Vector2(258, 906)
 tile_set = ExtResource("5_8brn8")
 
-[node name="ContornCasa" type="Sprite2D" parent="Capes" unique_id=867266293]
-position = Vector2(527, 548)
-texture = ExtResource("6_lg165")
-
-[node name="FGTetris" type="Sprite2D" parent="Capes" unique_id=859680656]
+[node name="FGTetris" type="Node2D" parent="Capes" unique_id=518828742]
 position = Vector2(514.31805, 539.99994)
 scale = Vector2(1.0003537, 1.0003537)
-texture = ExtResource("1_opjtr")
 
 [node name="VoresTetris" type="Area2D" parent="Capes/FGTetris" unique_id=499102405]
 input_pickable = false
@@ -231,6 +230,11 @@ shape = SubResource("RectangleShape2D_opjtr")
 position = Vector2(0.1819458, 453.3615)
 scale = Vector2(1.0000001, 1.0000001)
 shape = SubResource("RectangleShape2D_r0mg4")
+
+[node name="Marc" type="Sprite2D" parent="Capes/FGTetris" unique_id=1725121773]
+position = Vector2(0.84060705, 0.88228935)
+scale = Vector2(3.0067554, 3.0067556)
+texture = ExtResource("7_8brn8")
 
 [node name="Fabricada" type="StaticBody2D" parent="Capes" unique_id=1113480906 groups=["destinacions"]]
 position = Vector2(1029, 0)
@@ -280,7 +284,7 @@ position = Vector2(200, -7)
 position = Vector2(342, -7)
 
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
-position = Vector2(513, 1012)
+position = Vector2(514.5, 1014)
 sprite_frames = SubResource("SpriteFrames_a3qq8")
 animation = &"0%"
 autoplay = "0%"
