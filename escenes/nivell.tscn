@@ -323,6 +323,7 @@ scale = Vector2(3.0067554, 3.0067556)
 texture = ExtResource("7_8brn8")
 
 [node name="Fabricada" type="StaticBody2D" parent="Capes" unique_id=1113480906 groups=["destinacions"]]
+unique_name_in_owner = true
 position = Vector2(1029, 0)
 
 [node name="PeçaSeguent" type="Sprite2D" parent="Capes/Fabricada" unique_id=944349881]

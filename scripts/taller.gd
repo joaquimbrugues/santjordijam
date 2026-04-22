@@ -84,7 +84,8 @@ func crea_forma_i_atles() -> Array:
 		baricentre = Vector2i(floori(baricentre.x), floori(baricentre.y))
 		
 		for p in peces:
-			var pos: Vector2i = coordenades_enteres(p.position)
+			var pos = p.position / 36.0
+			pos = Vector2i(floori(pos.x), floori(pos.y))
 			for f in p.forma:
 				var ff = pos + f - baricentre
 				forma.append(ff)
