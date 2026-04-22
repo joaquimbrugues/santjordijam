@@ -47,11 +47,13 @@ func _process(_delta: float) -> void:
 			z_index = 0
 			var tween = get_tree().create_tween()
 			if te_objectiu:
-				tween.tween_property(self, "global_position", objectiu_pos, 0.2).set_ease(Tween.EASE_OUT)
+				tween.tween_property(self, "global_position", objectiu_pos, 0.1).set_ease(Tween.EASE_OUT)
 				var pare = get_parent()
 				reparent(objectiu_node, true)
 				if "perd_fill" in pare:
 					pare.perd_fill()
+				if "omple_peces" in objectiu_node:
+					objectiu_node.omple_peces(global_position, forma)
 			else:
 				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 

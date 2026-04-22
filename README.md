@@ -27,7 +27,7 @@ Els passos següents de cara a avançar amb el projecte:
     - [X] Crear sistema de puntuació
     - [X] Crear àrees "prohibides"
 - [ ] Programar la meitat del "taller"
-    - [ ] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí
+    - [X] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí
     - [ ] Programar la confecció de peces
     - [ ] Afegir peces preconfigurades
 - [ ] Afegir lògica dels NPCs
