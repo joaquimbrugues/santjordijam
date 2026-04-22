@@ -21,18 +21,33 @@ func omple_peces(pos_global: Vector2, forma: Array[Vector2i]) -> void:
 	for f in forma:
 		regions_ocupades.append(f + coords_enteres)
 
+func dins_rectangle(casella: Vector2i) -> bool:
+	return casella.x >= 0 and casella.x < dimensions.x and casella.y >= 0 and casella.y < dimensions.y
+
+# Si la construcció és buida, retorna True
+# Si hi ha peces construïdes, retorna False si hi ha alguna de les caselles es solapa amb les peces
+# Altrament, retorna True només si alguna casella és adjacent a la part construïda (és a dir, es troba exactament a distància entera 1)
+func adjacent_a_construccio(caselles: Array[Vector2i]) -> bool:
+	if regions_ocupades.is_empty():
+		return true
+	else:
+		var adjacent = false
+		for casella in caselles:
+			for regio in regions_ocupades:
+				if casella == regio:
+					return false
+				else:
+					adjacent = adjacent or ((regio - casella).length_squared() == 1)
+		return adjacent
+
 func _process(_delta: float) -> void:
 	if arrossegament.peça_arrossegant != null:
 		var posicio_entera = coordenades_enteres(arrossegament.peça_arrossegant.global_position)
-		if arrossegament.peça_arrossegant.forma.all(func (casella):
-			var cas = posicio_entera + casella
-			if not (cas.x >= 0 and cas.x < dimensions.x and cas.y >= 0 and cas.y < dimensions.y):
-				return false
-			else:
-				if regions_ocupades.find(cas) != -1:
-					return false
-			return true
-		):
+		var caselles: Array[Vector2i] = []
+		for p in arrossegament.peça_arrossegant.forma:
+			caselles.append(p + posicio_entera)
+		# Comprova que totes les caselles es trobin dins del rectangle i que es troben adjacents al que ja està construït
+		if caselles.all(dins_rectangle) and adjacent_a_construccio(caselles):
 			var posicio_global = to_global(posicio_entera * 36)
 			arrossegament.peça_arrossegant.fixa_objectiu(posicio_global, self)
 		else:
