@@ -23,6 +23,7 @@ func _process(_delta: float) -> void:
 			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
 			scale = Vector2(1.0, 1.0)
+			z_index = 1
 			arrossegament.arrossegant = true
 		if Input.is_action_pressed("clic_esquerre"):
 			global_position = get_global_mouse_position() - offset
@@ -31,6 +32,8 @@ func _process(_delta: float) -> void:
 				tween.tween_property(self, "rotation_degrees", rotation_degrees + 90, 0.2).set_ease(Tween.EASE_OUT)
 		elif Input.is_action_just_released("clic_esquerre"):
 			arrossegament.arrossegant = false
+			pot_arrossegar = false
+			z_index = 0
 			var tween = get_tree().create_tween()
 			if te_objectiu:
 				tween.tween_property(self, "position", objectiu, 0.2).set_ease(Tween.EASE_OUT)

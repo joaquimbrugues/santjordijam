@@ -47,6 +47,7 @@ func dona_primer() -> Array:
 	if arrossegament.arrossegant and peça.pot_arrossegar:
 		# Estem arrossegant la peça ques'ha d'entregar! Li haurem de prendre a la jugadora
 		arrossegament.arrossegant = false
+		peça.z_index = 0
 	$Cua1.remove_child(peça)
 	var parella = peça.deconstrueix()
 	
