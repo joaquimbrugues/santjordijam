@@ -67,6 +67,10 @@ gira_arrossegant={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Peces_Arrossegables"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

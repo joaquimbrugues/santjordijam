@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://bx0q7pr3g8cib" path="res://recursos/sprites/llançament_peça_muntada.png" id="8_pxf1e"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="Texture2D" uid="uid://hggq5fakvi6f" path="res://recursos/sprites/interface_muntatge_peçes.png" id="9_4x5fb"]
+[ext_resource type="Script" uid="uid://gxk6f7rx8vq7" path="res://scripts/taller.gd" id="9_8brn8"]
 [ext_resource type="PackedScene" uid="uid://cj1vp1ryy85qk" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
 [ext_resource type="PackedScene" uid="uid://c23qy2wcantq" path="res://escenes/regio_cua.tscn" id="12_qq4i3"]
@@ -197,7 +198,6 @@ texture = ExtResource("3_lkhql")
 [node name="Peça" parent="Capes" unique_id=1585660043 instance=ExtResource("2_r0mg4")]
 position = Vector2(258, 906)
 scale = Vector2(1.0000001, 1.0000001)
-tile_set = ExtResource("5_a3qq8")
 ENTRADA_X = 7
 ENTRADA_Y = 22
 
@@ -243,8 +243,10 @@ texture = ExtResource("8_pxf1e")
 position = Vector2(196, 115.5)
 shape = SubResource("RectangleShape2D_4x5fb")
 
-[node name="Taller" type="StaticBody2D" parent="Capes" unique_id=1579723301 groups=["destinacions", "origens"]]
+[node name="Taller" type="Area2D" parent="Capes" unique_id=1792037432 groups=["destinacions", "origens"]]
 position = Vector2(1333, 679)
+collision_layer = 0
+script = ExtResource("9_8brn8")
 
 [node name="SpriteTaller" type="Sprite2D" parent="Capes/Taller" unique_id=1084519849]
 position = Vector2(141, 36)
@@ -313,6 +315,7 @@ offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[connection signal="body_entered" from="Capes/Taller" to="Capes/Taller" method="_on_body_entered"]
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
 [connection signal="timeout" from="EntraPeça" to="Capes/CuaObjectes" method="_on_entra_peça_timeout"]

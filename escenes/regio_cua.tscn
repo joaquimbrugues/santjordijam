@@ -3,14 +3,14 @@
 [ext_resource type="Script" uid="uid://dcj2fpu8323wb" path="res://scripts/regio_cua.gd" id="1_t2rdd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8brn8"]
-size = Vector2(120.5, 114)
+size = Vector2(86, 114)
 
 [node name="Cua" type="StaticBody2D" unique_id=1257588723 groups=["origens"]]
 input_pickable = true
 script = ExtResource("1_t2rdd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1426712195]
-position = Vector2(18, 18)
+position = Vector2(12, 18)
 shape = SubResource("RectangleShape2D_8brn8")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
