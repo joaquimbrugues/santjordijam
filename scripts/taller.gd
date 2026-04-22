@@ -67,9 +67,9 @@ func _process(_delta: float) -> void:
 			$CampanaTaller.play("Tocant")
 			if not %Fabricada.has_node("PeçaArrossegable"):
 				construeix_peça()
-		elif not boto_clicable or Input.is_action_just_released("clic_esquerre"):
+		elif Input.is_action_just_released("clic_esquerre"):
 			$BotoTaller.play("lliure")
-			$CampanaTaller.play("Quieta")
+			$CampanaTaller/AturaCampana.start()
 
 # Calcula la forma de la peça construïda
 # Calcula el baricentre de la peça i calcula totes les posicions relatives a
@@ -122,4 +122,10 @@ func _on_area_boto_mouse_entered() -> void:
 
 # Si el ratolí abandona la regió del botó, ja no és clicable
 func _on_area_boto_mouse_exited() -> void:
+	$BotoTaller.play("lliure")
+	$CampanaTaller/AturaCampana.start()
 	boto_clicable = false
+
+# Atura l'animació de la campana
+func _on_atura_campana_timeout() -> void:
+	$CampanaTaller.play("Quieta")

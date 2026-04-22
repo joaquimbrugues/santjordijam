@@ -350,9 +350,12 @@ shape = SubResource("RectangleShape2D_qq4i3")
 [node name="CampanaTaller" type="AnimatedSprite2D" parent="Capes/Taller" unique_id=992143748]
 position = Vector2(-78, -59.5)
 sprite_frames = SubResource("SpriteFrames_c4s5l")
-animation = &"Quieta"
+animation = &"Tocant"
 autoplay = "Quieta"
-frame_progress = 1.0
+
+[node name="AturaCampana" type="Timer" parent="Capes/Taller/CampanaTaller" unique_id=1760975024]
+wait_time = 0.5
+one_shot = true
 
 [node name="BotoTaller" type="AnimatedSprite2D" parent="Capes/Taller" unique_id=1244378843]
 position = Vector2(-62, 91)
@@ -422,6 +425,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="body_entered" from="Capes/Taller/GridTaller" to="Capes/Taller/GridTaller" method="_on_body_entered"]
+[connection signal="timeout" from="Capes/Taller/CampanaTaller/AturaCampana" to="Capes/Taller" method="_on_atura_campana_timeout"]
 [connection signal="mouse_entered" from="Capes/Taller/BotoTaller/AreaBoto" to="Capes/Taller" method="_on_area_boto_mouse_entered"]
 [connection signal="mouse_exited" from="Capes/Taller/BotoTaller/AreaBoto" to="Capes/Taller" method="_on_area_boto_mouse_exited"]
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
