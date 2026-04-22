@@ -5,19 +5,6 @@ var escena_peça: PackedScene = preload("res://escenes/peça_arrossegable.tscn")
 ## Màxim d'objectes que pot haver-hi a la cua (independentment de si es poden renderitzar)
 @export var MAXIM_OBJECTES: int = 6
 
-#Peces bàsiques del tetris desades com a vectors de coordenades enteres
-#(0,0) és el pivot
-# Aquestes coordenades només serveixen com a exemple per debugar!
-const i : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(-2,0), Vector2i(1,0)]
-const zeta : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(1,1)]
-const essa : Array[Vector2i] = [Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(-1,1)]
-const O : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(-1,1)]
-const jota : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(1,1)]
-const ela : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(-1,1), Vector2i(1,0)]
-const te : Array[Vector2i] = [Vector2i(0,0), Vector2i(-1,0), Vector2i(1,0), Vector2i(0,1)]
-
-var peces = [i, zeta, essa, O, jota, ela, te]
-
 var seguent_lliure: int
 
 var REGIONS: Array
@@ -26,18 +13,6 @@ func _ready() -> void:
 	# Prepara les regions de la cua
 	REGIONS = [ $Cua1, $Cua2, $Cua3, $Cua4, $Cua5, $Cua6]
 	seguent_lliure = 0
-
-# AQUESTA FUNCIÓ ÉS TEMPORAL I NOMÉS FA LA FUNCIÓ D'EXEMPLE
-func afegeix_exemple() -> void:
-	var forma = peces.pick_random()
-	var index = randi_range(0, 4)
-	var atles: Array[Vector2i] = [Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0), Vector2i(index, 0)]
-	var peça_arrossegable = escena_peça.instantiate()
-	peça_arrossegable.crea(forma, atles)
-	peça_arrossegable.dibuixa()
-	
-	REGIONS[seguent_lliure].add_child(peça_arrossegable)
-	seguent_lliure += 1
 
 # Entrega el primer element de la cua, i elimina'l de la cua
 # RETORNA un Array de la forma [Posicions: Array[Vector2i], Atles: Array[Vector2i]]
@@ -69,11 +44,14 @@ func hi_ha_lloc() -> bool:
 func hi_ha_objectes() -> bool:
 	return seguent_lliure > 0
 
-# A tall d'exemple: afegeix una peça d'exemple
-func _on_entra_peça_timeout() -> void:
-	# Primer, mira si hi ha lloc!
+func _process(_delta: float) -> void:
 	if hi_ha_lloc():
-		afegeix_exemple()
+		# Crea una peça d'un bloc nova
+		var nova_peça = escena_peça.instantiate()
+		nova_peça.crea_bloc()
+		nova_peça.dibuixa()
+		REGIONS[seguent_lliure].add_child(nova_peça)
+		seguent_lliure += 1
 
 # Acabem d'extreure un dels fills d'aquest arbre (una de les peces)
 # Ara hem de reparar-lo

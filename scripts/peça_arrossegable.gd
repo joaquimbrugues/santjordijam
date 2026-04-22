@@ -63,3 +63,13 @@ func fixa_objectiu(pos: Vector2, node: Node) -> void:
 func dibuixa() -> void:
 	for index in forma.size():
 		set_cell(forma[index], 0, atles[index])
+
+func crea_bloc() -> void:
+	forma = [Vector2i(0,0)]
+	var aindx = randi_range(0,4)
+	var aindy: int
+	if aindx == 4:
+		aindy = randi_range(0,3)
+	else:
+		aindy = randi_range(0,4)
+	atles = [Vector2i(aindx, aindy)]

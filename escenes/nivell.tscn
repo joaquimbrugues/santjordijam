@@ -298,9 +298,6 @@ wait_time = 0.5
 [node name="TicMoviment" type="Timer" parent="." unique_id=1481264007]
 wait_time = 0.5
 
-[node name="EntraPeça" type="Timer" parent="." unique_id=94071566]
-autostart = true
-
 [node name="RetardReset" type="Timer" parent="." unique_id=1626713496]
 one_shot = true
 autostart = true
@@ -318,5 +315,4 @@ grow_vertical = 1
 [connection signal="body_entered" from="Capes/Taller" to="Capes/Taller" method="_on_body_entered"]
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
-[connection signal="timeout" from="EntraPeça" to="Capes/CuaObjectes" method="_on_entra_peça_timeout"]
 [connection signal="timeout" from="RetardReset" to="." method="_on_retard_reset_timeout"]
