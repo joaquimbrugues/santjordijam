@@ -112,6 +112,18 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("peça_gira"):
 		# Acumula moviment cap al gir
 		Moviments[2] += delta
+	if Input.is_action_just_pressed("NPC1"):
+		$Capes/NPCs/BotoQ.play("premut")
+	elif Input.is_action_just_released("NPC1"):
+		$Capes/NPCs/BotoQ.play("lliure")
+	elif Input.is_action_just_pressed("NPC2"):
+		$Capes/NPCs/BotoW.play("premut")
+	elif Input.is_action_just_released("NPC2"):
+		$Capes/NPCs/BotoW.play("lliure")
+	elif Input.is_action_just_pressed("NPC3"):
+		$Capes/NPCs/BotoE.play("premut")
+	elif Input.is_action_just_released("NPC3"):
+		$Capes/NPCs/BotoE.play("lliure")
 
 # Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
 # amb una peça existent, o `false` altrament

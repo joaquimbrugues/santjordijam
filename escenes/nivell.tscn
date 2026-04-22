@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="12_hkil0"]
 [ext_resource type="PackedScene" uid="uid://c23qy2wcantq" path="res://escenes/regio_cua.tscn" id="12_qq4i3"]
 [ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="13_3wqdi"]
+[ext_resource type="Texture2D" uid="uid://drsup2jorbs21" path="res://recursos/sprites/botons_npcs.png" id="15_mqip2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
 size = Vector2(264.1366, 975.6549)
@@ -107,6 +108,87 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8brn8"]
 radius = 48.010414
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_istj3"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(32, 26, 32, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v54yk"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(0, 26, 32, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mvn6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_istj3")
+}],
+"loop": false,
+"name": &"lliure",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v54yk")
+}],
+"loop": false,
+"name": &"premut",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd7fa"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(64, 26, 32, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by6fv"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(64, 0, 32, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp5y0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd7fa")
+}],
+"loop": false,
+"name": &"lliure",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by6fv")
+}],
+"loop": false,
+"name": &"premut",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_px4ac"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(32, 0, 32, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b4omi"]
+atlas = ExtResource("15_mqip2")
+region = Rect2(0, 0, 32, 26)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_syprm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_px4ac")
+}],
+"loop": false,
+"name": &"lliure",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b4omi")
+}],
+"loop": false,
+"name": &"premut",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6usi0"]
 atlas = ExtResource("5_l2idp")
@@ -390,6 +472,27 @@ position = Vector2(200, -7)
 
 [node name="Cua6" parent="Capes/CuaObjectes" unique_id=2036679122 instance=ExtResource("12_qq4i3")]
 position = Vector2(342, -7)
+
+[node name="NPCs" type="Node2D" parent="Capes" unique_id=560024425]
+position = Vector2(212, 50)
+
+[node name="BotoQ" type="AnimatedSprite2D" parent="Capes/NPCs" unique_id=1191415203]
+position = Vector2(-77, 42)
+sprite_frames = SubResource("SpriteFrames_mvn6l")
+animation = &"lliure"
+autoplay = "lliure"
+
+[node name="BotoW" type="AnimatedSprite2D" parent="Capes/NPCs" unique_id=1515130618]
+position = Vector2(1, 43)
+sprite_frames = SubResource("SpriteFrames_xp5y0")
+animation = &"lliure"
+autoplay = "lliure"
+
+[node name="BotoE" type="AnimatedSprite2D" parent="Capes/NPCs" unique_id=1926981174]
+position = Vector2(76, 43)
+sprite_frames = SubResource("SpriteFrames_syprm")
+animation = &"lliure"
+autoplay = "lliure"
 
 [node name="Stamina" type="AnimatedSprite2D" parent="Capes" unique_id=1298834874]
 position = Vector2(514.5, 1014)
