@@ -222,8 +222,15 @@ func _on_retard_reset_timeout() -> void:
 	# Reinicialitza els comandaments de moviment
 	Moviments = [0.0, 0.0, 0.0]
 	
-	# Comprova que queden objectes a la cua
-	if cua_objectes.hi_ha_objectes():
+	# Si hi ha algun objecte a la zona fabricada, afegim-lo en lloc de l'objecte de la cua
+	if %Fabricada.has_node("PeçaArrossegable"):
+		var peça_nova = %Fabricada.get_node("PeçaArrossegable")
+		peça.importa(peça_nova.forma, peça_nova.atles)
+		peça_nova.queue_free()
+		tic_caiguda.start()
+		tic_moviment.start()
+		peça.dibuixa_peça()
+	elif cua_objectes.hi_ha_objectes():
 		# Fes la transició de l'objecte a Peça
 		var parella = cua_objectes.dona_primer()
 		peça.importa(parella[0], parella[1])
