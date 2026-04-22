@@ -18,6 +18,14 @@ func deconstrueix() -> Array:
 	queue_free()
 	return [forma, atles]
 
+# Prepara una rotació en sentit horari
+func gir_horari():
+	var forma_seguent: Array[Vector2i] = forma.duplicate()
+	for index in forma.size():
+		forma_seguent[index].x = - forma[index].y
+		forma_seguent[index].y = forma[index].x
+	forma = forma_seguent
+
 func _process(_delta: float) -> void:
 	if pot_arrossegar:
 		if Input.is_action_just_pressed("clic_esquerre"):
@@ -31,6 +39,7 @@ func _process(_delta: float) -> void:
 			if Input.is_action_just_pressed("gira_arrossegant"):
 				var tween = get_tree().create_tween()
 				tween.tween_property(self, "rotation_degrees", rotation_degrees + 90, 0.2).set_ease(Tween.EASE_OUT)
+				gir_horari()
 		elif Input.is_action_just_released("clic_esquerre"):
 			offset = Vector2.ZERO
 			arrossegament.peça_arrossegant = null
