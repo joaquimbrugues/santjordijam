@@ -41,6 +41,9 @@ func dialeg_acabat() -> void:
 		peça.crea(forma, atles)
 		%Obsequi.add_child(peça, true)
 		peça.dibuixa()
+		peça.position -= Vector2(0, 100.0)
+		var tween = get_tree().create_tween()
+		tween.tween_property(peça, "position", Vector2.ZERO, 0.4).set_ease(Tween.EASE_OUT)
 	
 	# Augmenta les aparicions del personatge
 	Personatge.augmenta_aparicions(nom_personatge)
