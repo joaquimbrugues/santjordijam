@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b44jbn7k0po2t"]
+
+[ext_resource type="Texture2D" uid="uid://bem5lbsijqu8g" path="res://recursos/sprites/portada.png" id="1_k1rch"]
+[ext_resource type="Script" uid="uid://bfnowc5klns1a" path="res://scripts/pantalla_inici.gd" id="1_leq6f"]
+[ext_resource type="Texture2D" uid="uid://c0u384p4ppnys" path="res://recursos/sprites/botó_start_idle.png" id="2_8sr06"]
+[ext_resource type="Texture2D" uid="uid://bk6f4rfyhxb2d" path="res://recursos/sprites/botó_start_pressed.png" id="3_leq6f"]
+[ext_resource type="Texture2D" uid="uid://8bf258qg15q1" path="res://recursos/sprites/botó_start_hover.png" id="4_5icky"]
+[ext_resource type="PackedScene" uid="uid://cit3tpdejmthk" path="res://escenes/animacio_transicio_escena.tscn" id="6_5icky"]
+
+[node name="PantallaInici" type="Control" unique_id=1235339045]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leq6f")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2116745428]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k1rch")
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=236986954]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 776.0
+offset_right = 1289.0
+offset_bottom = 1006.0
+texture_normal = ExtResource("2_8sr06")
+texture_pressed = ExtResource("3_leq6f")
+texture_hover = ExtResource("4_5icky")
+
+[node name="AnimacioTransicioEscena" parent="." unique_id=79646807 instance=ExtResource("6_5icky")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
