@@ -21,3 +21,9 @@ Els paràmetres es poden trobar a:
     - Tics Recuperació Frenada: Nombre de tics (de durada Interval Caiguda) que trigarà la barra d'stamina a recuperar-se completament. *(Només es fa servir per calcular el temps en segons de recuperada, per tant si la jugadora està prement accelerar la recuperació d'stamina NO s'accelerarà)*
 
 4. El Timer **RetardReset**: Controla els segons entre que es diposita una peça i entra la primera peça de la cua. Es pot ajustar el Wait Time
+
+5. El Node2D **Personatge**, dins de Nivell: hi ha els paràmetres
+    - Offset Animacio Personatge: A quants píxels de la posició "estàndard" comença l'sprite del personatge quan fa el fade in i el fade out
+    - Escala Personatge: Literalment l'escala de l'sprite del personatge. **IMPORTANT:** si canvies aquest paràmetre potser hauràs de canviar la *position* del Node2D Personatge: *no canviïs cap altra posició!*.
+    - Offset Entrada Obsequi: A quants píxels d'alçada comença la peça d'obsequi del personatge quan fa l'animació d'entrada
+    - Delay Marxar: Temps, en segons, des del moment que el personatge et dóna l'obsequi i quan comença la seva animació de marxar

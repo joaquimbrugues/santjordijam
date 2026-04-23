@@ -404,7 +404,7 @@ texture = ExtResource("7_8brn8")
 
 [node name="Personatge" type="Node2D" parent="Capes" unique_id=1198594279]
 unique_name_in_owner = true
-position = Vector2(1750, 404)
+position = Vector2(1733, 470)
 script = ExtResource("8_l502k")
 
 [node name="Fabricada" type="Node2D" parent="Capes" unique_id=1156998626 groups=["destinacions"]]
