@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://cit3tpdejmthk"]
 
+[ext_resource type="Animation" uid="uid://dp2y1jret34m" path="res://recursos/animacions/fade_in.res" id="1_51m0i"]
+[ext_resource type="Animation" uid="uid://codk6na5cg33n" path="res://recursos/animacions/fade_out.res" id="2_2mhr2"]
+
 [sub_resource type="Animation" id="Animation_roxtl"]
 length = 0.001
 tracks/0/type = "value"
@@ -15,43 +18,11 @@ tracks/0/keys = {
 "values": [Color(0, 0, 0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_i76er"]
-resource_name = "fade_in"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_51m0i"]
-resource_name = "fade_out"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_2mhr2"]
 _data = {
 &"RESET": SubResource("Animation_roxtl"),
-&"fade_in": SubResource("Animation_i76er"),
-&"fade_out": SubResource("Animation_51m0i")
+&"fade_in": ExtResource("1_51m0i"),
+&"fade_out": ExtResource("2_2mhr2")
 }
 
 [node name="AnimacioTransicioEscena" type="Control" unique_id=79646807]
