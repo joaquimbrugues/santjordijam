@@ -33,6 +33,8 @@ func dialeg_acabat() -> void:
 	var index = Personatge.aparicions_per_personatge[nom_personatge]
 	var obsequi = Personatge.DADES[nom_personatge]["obsequis"][index]
 	if obsequi.size() > 1:
+		# Lliçó pel futur: cridem el constructor de l'Array per forçar un cast a Array[Vector2i],
+		# que és necessari si imposem tipus a les nostres arrays
 		var forma: Array[Vector2i] = Array(obsequi[0], TYPE_VECTOR2I, "", null)
 		var atles: Array[Vector2i] = Array(obsequi[1], TYPE_VECTOR2I, "", null)
 		var peça = escena_peça.instantiate()
