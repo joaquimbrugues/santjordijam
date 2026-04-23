@@ -243,7 +243,7 @@ const DADES: Dictionary = {
 				"Tava al costat del camí. L'hem punxat amb un pal i no es mou",
 			],
 			[
-				"Hola! Com us vau conèixer tu el drac?",
+				"Hola! Com us vau conèixer tu i el drac?",
 				"Us hem portat un altre regal",
 				"Aquesta si que es movia una mica, però li hem fotut amb el pal i ja no",
 			],
