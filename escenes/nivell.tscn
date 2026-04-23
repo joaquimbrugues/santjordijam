@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c4tbqh8stqqp3" path="res://scripts/stamina.gd" id="6_6usi0"]
 [ext_resource type="Texture2D" uid="uid://bteitxcv02p4r" path="res://recursos/sprites/fons_forma_casa.png" id="6_lg165"]
 [ext_resource type="Texture2D" uid="uid://de1b7q8do7a6n" path="res://recursos/sprites/interficie_tetris2.png" id="7_8brn8"]
+[ext_resource type="Script" uid="uid://dpvd5t57uax5a" path="res://scripts/personatge_accions.gd" id="8_l502k"]
 [ext_resource type="Texture2D" uid="uid://bx0q7pr3g8cib" path="res://recursos/sprites/llançament_peça_muntada.png" id="8_pxf1e"]
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="Script" uid="uid://gxk6f7rx8vq7" path="res://scripts/taller.gd" id="9_8brn8"]
@@ -400,6 +401,11 @@ shape = SubResource("RectangleShape2D_r0mg4")
 position = Vector2(0.84060705, 0.88228935)
 scale = Vector2(3.0067554, 3.0067556)
 texture = ExtResource("7_8brn8")
+
+[node name="Personatge" type="Node2D" parent="Capes" unique_id=1198594279]
+unique_name_in_owner = true
+position = Vector2(1673, 404)
+script = ExtResource("8_l502k")
 
 [node name="Fabricada" type="Node2D" parent="Capes" unique_id=1156998626 groups=["destinacions"]]
 unique_name_in_owner = true

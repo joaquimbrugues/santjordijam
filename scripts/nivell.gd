@@ -204,8 +204,8 @@ func transicio_peça() -> void:
 
 # Instancia el Personatge seleccionat, i recorda'l de cara a la propera tria
 func tria_npc(personatge: Personatge.Nom) -> void:
-	#TODO: Instanciar el personatge
-	print("Has triat " + str(personatge))
+	# Inicialitza escena del personatge
+	%Personatge.entra_personatge(personatge)
 	# Reseteja les variables de tria de personatge
 	for pare in [$Capes/NPCs/NPC1, $Capes/NPCs/NPC2, $Capes/NPCs/NPC3]:
 		for n in pare.get_children():
