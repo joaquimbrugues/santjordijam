@@ -15,11 +15,11 @@
 [ext_resource type="Script" uid="uid://bb82v6gwqmn5w" path="res://scripts/cua_objectes.gd" id="8_vv83r"]
 [ext_resource type="Script" uid="uid://gxk6f7rx8vq7" path="res://scripts/taller.gd" id="9_8brn8"]
 [ext_resource type="Texture2D" uid="uid://bv6fs16iyqlay" path="res://recursos/sprites/botons_muntatge.png" id="9_mvn6l"]
-[ext_resource type="PackedScene" uid="uid://dyt3vvcdjm35d" path="res://escenes/pantalla_final.tscn" id="11_a3qq8"]
 [ext_resource type="Texture2D" uid="uid://c823n0k1glhho" path="res://recursos/sprites/botons_taller.png" id="11_mvn6l"]
 [ext_resource type="PackedScene" uid="uid://c23qy2wcantq" path="res://escenes/regio_cua.tscn" id="12_qq4i3"]
 [ext_resource type="Texture2D" uid="uid://drsup2jorbs21" path="res://recursos/sprites/botons_npcs.png" id="15_mqip2"]
 [ext_resource type="PackedScene" uid="uid://dbrlm0kahwfss" path="res://escenes/estrelles.tscn" id="19_mqip2"]
+[ext_resource type="PackedScene" uid="uid://cit3tpdejmthk" path="res://escenes/animacio_transicio_escena.tscn" id="20_mqip2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_opjtr"]
 size = Vector2(264.1366, 975.6549)
@@ -453,8 +453,7 @@ wait_time = 3.0
 one_shot = true
 autostart = true
 
-[node name="PantallaFinal" parent="." unique_id=828522870 instance=ExtResource("11_a3qq8")]
-visible = false
+[node name="AnimacioTransicioEscena" parent="." unique_id=79646807 instance=ExtResource("20_mqip2")]
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0

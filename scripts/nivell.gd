@@ -10,6 +10,7 @@ extends Node2D
 @onready var vora_dreta: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraDreta
 @onready var vora_terra: CollisionShape2D = $Capes/FGTetris/VoresTetris/VoraTerra
 @onready var estrelles: AnimatedSprite2D = $Capes/Estrelles
+@onready var animacio_entrada: AnimationPlayer = $AnimacioTransicioEscena/AnimationPlayer
 var VORES
 
 # Paràmetres dels temporitzadors de caiguda i moviment
@@ -86,6 +87,10 @@ const CASELLES_PROHIBIDES: Array[Vector2i] = [
 ]
 
 func _ready() -> void:
+	animacio_entrada.play("fade_out")
+	animacio_entrada.animation_finished.connect(func (_nom):
+		$AnimacioTransicioEscena.set_visible(false)
+	)
 	# Inicialitza els elements del joc
 	sprite_stamina.inicialitza(INTERVAL_CAIGUDA, INTERVAL_CAIGUDA_FRENAT)
 	# Inicialitza col·lecció de vores (Rect2)
@@ -171,7 +176,7 @@ func transicio_peça() -> void:
 		
 		# Comprovem el final del joc
 		# (RECORDATORI: AL GODOT TOTES LES ALÇADES SÓN NEGATIVES, LA GRAVETAT ÉS POSITIVA
-		if peça.posicio.y - peça.forma_actual[index].y < - FILES_ALÇADA_FINAL:
+		if peça.posicio.y - peça.forma_actual[index].y <= - FILES_ALÇADA_FINAL:
 			final = true
 	
 	# Esborrem la peça de la seva capa
@@ -198,7 +203,11 @@ func transicio_peça() -> void:
 	
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:
-		$PantallaFinal.show()
+		$AnimacioTransicioEscena.set_visible(true)
+		animacio_entrada.play("fade_in")
+		animacio_entrada.animation_finished.connect(func (_nom):
+			get_tree().change_scene_to_file("res://escenes/pantalla_final.tscn")
+		)
 	else:
 		# Activem el timer de reset
 		$RetardReset.start()
@@ -220,7 +229,6 @@ func tria_npc(personatge: Personatge.Nom) -> void:
 # Comprova si la jugadora ja ha tret l'obsequi de la safata
 func no_hi_ha_obsequi() -> bool:
 	return  not %Obsequi.has_node("PeçaArrossegable")
-	
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.

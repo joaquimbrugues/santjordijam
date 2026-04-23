@@ -41,7 +41,6 @@ texture_pressed = ExtResource("5_rc3lr")
 texture_hover = ExtResource("6_4s23k")
 
 [node name="AnimacioTransicioEscena" parent="." unique_id=79646807 instance=ExtResource("7_rc3lr")]
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
