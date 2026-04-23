@@ -12,6 +12,18 @@ enum Nom {
 	ENTERRADORA,
 }
 
+var aparicions_per_personatge: Dictionary = {
+	Nom.CAÇADORA: 0,
+	Nom.JUGLA: 0,
+	Nom.VELL: 0,
+	Nom.PROGRAMADORA: 0,
+	Nom.ANARKO: 0,
+	Nom.NINIOS: 0,
+	Nom.MOSSEN: 0,
+	Nom.BORRATXO: 0,
+	Nom.ENTERRADORA: 0,
+}
+
 const DADES: Dictionary = {
 	Nom.CAÇADORA: {
 		"nom": "Caçadora",

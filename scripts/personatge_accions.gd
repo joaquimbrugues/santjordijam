@@ -3,9 +3,11 @@ extends Node2D
 const DURADA_ANIMACIO_ENTRADA: float = 1.4
 var nom_personatge: Personatge.Nom
 var sprite
+var escena_bafarada: PackedScene = preload("res://escenes/bafarada_dialeg.tscn")
 
 func entra_personatge(nom: Personatge.Nom) -> void:
 	# Instancia el personatge i afegeix-lo a l'arbre
+	nom_personatge = nom
 	sprite = Personatge.DADES[nom]["sprite"].instantiate()
 	add_child(sprite, true)
 	# Animació d'entrada
@@ -16,13 +18,17 @@ func entra_personatge(nom: Personatge.Nom) -> void:
 	var tween_translacio = get_tree().create_tween()
 	tween_translacio.tween_property(sprite, "position", Vector2.ZERO, DURADA_ANIMACIO_ENTRADA).set_ease(Tween.EASE_OUT)
 	# Esperem al final de les animacions
-	await tween_translacio.finished
-	inicia_dialeg()
+	tween_translacio.finished.connect(inicia_dialeg)
 
 func inicia_dialeg() -> void:
+	var llista_dialeg = Personatge.DADES[nom_personatge]["dialeg"][0]	#TODO: Augmentar l'índex
+	var bafarada = escena_bafarada.instantiate()
+	#bafarada.set_z_index(1)
+	bafarada.set_llista_dialeg(llista_dialeg)
+	add_child(bafarada)
+	bafarada.set_position(Vector2(-450.0, 0))
 	#TODO
-	await get_tree().create_timer(1.0).timeout
-	sortida_personatge()
+	#sortida_personatge()
 
 func sortida_personatge() -> void:
 	# Animacions de sortida del personatge

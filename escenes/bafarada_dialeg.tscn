@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://crxmxmm1ullf6"]
+
+[ext_resource type="Texture2D" uid="uid://deto2riitrw8a" path="res://recursos/sprites/globus1.png" id="1_p5n4x"]
+[ext_resource type="Script" uid="uid://d311fpnn8x376" path="res://scripts/bafarada_dialeg.gd" id="1_rw0p2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5n4x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rw0p2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b0j4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m0wf"]
+
+[node name="BafaradaDialeg" type="Node2D" unique_id=687439781]
+script = ExtResource("1_rw0p2")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=51565034]
+position = Vector2(0, 30)
+texture = ExtResource("1_p5n4x")
+flip_v = true
+
+[node name="Contenidor" type="Control" parent="." unique_id=830350708]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -203.0
+offset_top = -102.0
+offset_right = 204.0
+offset_bottom = 127.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Contenidor" unique_id=850483594]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Contenidor/VBoxContainer" unique_id=1073330876]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="TextDialeg" type="RichTextLabel" parent="Contenidor/VBoxContainer/MarginContainer" unique_id=351171665]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0.64842254, 0.0029648542, 1)
+scroll_active = false
+
+[node name="MarginContainer2" type="MarginContainer" parent="Contenidor/VBoxContainer" unique_id=486144013]
+layout_mode = 2
+theme_override_constants/margin_right = 20
+
+[node name="Boto" type="Button" parent="Contenidor/VBoxContainer/MarginContainer2" unique_id=963889216]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.3938817, 0.19275588, 1)
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxEmpty_p5n4x")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_rw0p2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_b0j4d")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5m0wf")
+text = "[Segueix]"
+alignment = 2
+
+[connection signal="pressed" from="Contenidor/VBoxContainer/MarginContainer2/Boto" to="." method="_on_boto_pressed"]
