@@ -206,15 +206,22 @@ func transicio_peça() -> void:
 
 # Instancia el Personatge seleccionat, i recorda'l de cara a la propera tria
 func tria_npc(personatge: Personatge.Nom) -> void:
-	# Inicialitza escena del personatge
-	%Personatge.entra_personatge(personatge)
-	# Reseteja les variables de tria de personatge
-	for pare in [$Capes/NPCs/NPC1, $Capes/NPCs/NPC2, $Capes/NPCs/NPC3]:
-		for n in pare.get_children():
-			n.queue_free()
-	darrer_npc = personatge
-	candidats_npc = []
-	npc_seleccionables = false
+	# Executa només si l'obsequi està buit
+	if no_hi_ha_obsequi():
+		# Inicialitza escena del personatge
+		%Personatge.entra_personatge(personatge)
+		# Reseteja les variables de tria de personatge
+		for pare in [$Capes/NPCs/NPC1, $Capes/NPCs/NPC2, $Capes/NPCs/NPC3]:
+			for n in pare.get_children():
+				n.queue_free()
+		darrer_npc = personatge
+		candidats_npc = []
+		npc_seleccionables = false
+
+# Comprova si la jugadora ja ha tret l'obsequi de la safata
+func no_hi_ha_obsequi() -> bool:
+	return  not %Obsequi.has_node("PeçaArrossegable")
+	
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.

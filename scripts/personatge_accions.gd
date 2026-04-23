@@ -4,6 +4,7 @@ const DURADA_ANIMACIO_ENTRADA: float = 1.4
 var nom_personatge: Personatge.Nom
 var sprite
 var escena_bafarada: PackedScene = preload("res://escenes/bafarada_dialeg.tscn")
+var escena_peça: PackedScene = preload("res://escenes/peça_arrossegable.tscn")
 
 func entra_personatge(nom: Personatge.Nom) -> void:
 	# Instancia el personatge i afegeix-lo a l'arbre
@@ -22,16 +23,28 @@ func entra_personatge(nom: Personatge.Nom) -> void:
 
 func inicia_dialeg() -> void:
 	var index = Personatge.aparicions_per_personatge[nom_personatge]
-	var llista_dialeg = Personatge.DADES[nom_personatge]["dialeg"][index]	#TODO: Augmentar l'índex
+	var llista_dialeg = Personatge.DADES[nom_personatge]["dialeg"][index]
 	var bafarada = escena_bafarada.instantiate()
 	bafarada.set_llista_dialeg(llista_dialeg)
 	add_child(bafarada)
 	bafarada.set_position(Vector2(-450.0, 0))
-	Personatge.augmenta_aparicions(nom_personatge)
 
 func dialeg_acabat() -> void:
-	#TODO: Entregar peça
-	sortida_personatge()
+	var index = Personatge.aparicions_per_personatge[nom_personatge]
+	var obsequi = Personatge.DADES[nom_personatge]["obsequis"][index]
+	if obsequi.size() > 1:
+		var forma: Array[Vector2i] = Array(obsequi[0], TYPE_VECTOR2I, "", null)
+		var atles: Array[Vector2i] = Array(obsequi[1], TYPE_VECTOR2I, "", null)
+		var peça = escena_peça.instantiate()
+		peça.crea(forma, atles)
+		%Obsequi.add_child(peça, true)
+		peça.dibuixa()
+	
+	# Augmenta les aparicions del personatge
+	Personatge.augmenta_aparicions(nom_personatge)
+	
+	# Donem un segon abans que el personatge marxi
+	get_tree().create_timer(1.0).timeout.connect(sortida_personatge)
 
 func sortida_personatge() -> void:
 	# Animacions de sortida del personatge
