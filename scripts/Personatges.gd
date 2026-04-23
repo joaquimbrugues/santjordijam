@@ -35,13 +35,13 @@ const DADES: Dictionary = {
 				"Sóc sols una humil caçadora, però he pensat que aquest tronc us ajudaria",
 			],
 			[
-				"Benvolguda, voltava pel bosc i he trobat.. un tronc",
+				"Benvolguda, voltava pel bosc i he trobat... un tronc",
 				"M'ha fet pensar en vós",
 				"Espero que us serveixi. Té una mica de molsa",
 			],
 			[
 				"Què passa, tronca? Es diu així, no?",
-				"Els nen m'han dit que és hilarant presentar-se així",
+				"Els nens m'han dit que és hilarant presentar-se així",
 				"És una frase còmica perquè us he dut un tronc",
 			],
 			[
