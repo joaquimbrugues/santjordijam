@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dbrlm0kahwfss"]
+
+[ext_resource type="Texture2D" uid="uid://tkn7xcey3sp4" path="res://recursos/sprites/estrelles.png" id="1_8vvef"]
+[ext_resource type="Script" uid="uid://la1o3ace818k" path="res://scripts/estrelles.gd" id="2_yf283"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wqdi"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(0, 0, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxf1e"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(0, 49, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4x5fb"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(0, 98, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4i3"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(0, 147, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8brn8"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(169, 0, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvn6l"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(169, 49, 169, 49)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqip2"]
+atlas = ExtResource("1_8vvef")
+region = Rect2(169, 98, 169, 49)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mqip2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wqdi")
+}],
+"loop": false,
+"name": &"0.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxf1e")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4x5fb")
+}],
+"loop": false,
+"name": &"1.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4i3")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8brn8")
+}],
+"loop": false,
+"name": &"2.5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvn6l")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mqip2")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Estrelles" type="AnimatedSprite2D" unique_id=2022750789]
+sprite_frames = SubResource("SpriteFrames_mqip2")
+autoplay = "default"
+script = ExtResource("2_yf283")

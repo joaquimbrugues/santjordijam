@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dyt3vvcdjm35d"]
+
+[ext_resource type="Texture2D" uid="uid://cghv1lsatcf20" path="res://recursos/sprites/portada_final.png" id="1_o6fr1"]
+[ext_resource type="Script" uid="uid://0jdm873dlgma" path="res://scripts/pantalla_final.gd" id="1_uvc1i"]
+[ext_resource type="PackedScene" uid="uid://dbrlm0kahwfss" path="res://escenes/estrelles.tscn" id="3_gb5kr"]
+[ext_resource type="Texture2D" uid="uid://c0u384p4ppnys" path="res://recursos/sprites/botó_start_idle.png" id="4_d1nlq"]
+[ext_resource type="Texture2D" uid="uid://bk6f4rfyhxb2d" path="res://recursos/sprites/botó_start_pressed.png" id="5_rc3lr"]
+[ext_resource type="Texture2D" uid="uid://8bf258qg15q1" path="res://recursos/sprites/botó_start_hover.png" id="6_4s23k"]
+[ext_resource type="PackedScene" uid="uid://cit3tpdejmthk" path="res://escenes/animacio_transicio_escena.tscn" id="7_rc3lr"]
+
+[node name="PantallaFinal" type="Control" unique_id=906502877]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uvc1i")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=703620918]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_o6fr1")
+
+[node name="Estrelles" parent="." unique_id=2022750789 instance=ExtResource("3_gb5kr")]
+position = Vector2(967, 572)
+scale = Vector2(2.3163264, 2.3163266)
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=975621544]
+layout_mode = 0
+offset_left = 890.0
+offset_top = 776.0
+offset_right = 1290.0
+offset_bottom = 1006.0
+texture_normal = ExtResource("4_d1nlq")
+texture_pressed = ExtResource("5_rc3lr")
+texture_hover = ExtResource("6_4s23k")
+
+[node name="AnimacioTransicioEscena" parent="." unique_id=79646807 instance=ExtResource("7_rc3lr")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
