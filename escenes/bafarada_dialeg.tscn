@@ -11,6 +11,8 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m0wf"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6jt0t"]
+
 [node name="BafaradaDialeg" type="Node2D" unique_id=687439781]
 script = ExtResource("1_rw0p2")
 
@@ -57,11 +59,21 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.3938817, 0.19275588, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.39215687, 0.19215687, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0.39215687, 0.19215687, 1)
+theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
+theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
 theme_override_font_sizes/font_size = 20
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p5n4x")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rw0p2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_b0j4d")
 theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5m0wf")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6jt0t")
 text = "[Segueix]"
 alignment = 2
 
