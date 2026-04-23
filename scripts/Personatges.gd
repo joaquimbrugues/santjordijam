@@ -12,7 +12,7 @@ enum Nom {
 	ENTERRADORA,
 }
 
-var aparicions_per_personatge: Dictionary = {
+static var aparicions_per_personatge: Dictionary = {
 	Nom.CAÇADORA: 0,
 	Nom.JUGLA: 0,
 	Nom.VELL: 0,
@@ -279,3 +279,7 @@ static func get_enum_from_string(string_value: String) -> int:
 	else:
 		push_error("Nom de personatge invàlid: " + string_value)
 		return -1
+
+static func augmenta_aparicions(nom: Personatge.Nom) -> void:
+	if aparicions_per_personatge[nom] < Personatge.DADES[nom]["dialeg"].size() - 1:
+		aparicions_per_personatge[nom] += 1

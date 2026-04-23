@@ -21,14 +21,17 @@ func entra_personatge(nom: Personatge.Nom) -> void:
 	tween_translacio.finished.connect(inicia_dialeg)
 
 func inicia_dialeg() -> void:
-	var llista_dialeg = Personatge.DADES[nom_personatge]["dialeg"][0]	#TODO: Augmentar l'índex
+	var index = Personatge.aparicions_per_personatge[nom_personatge]
+	var llista_dialeg = Personatge.DADES[nom_personatge]["dialeg"][index]	#TODO: Augmentar l'índex
 	var bafarada = escena_bafarada.instantiate()
-	#bafarada.set_z_index(1)
 	bafarada.set_llista_dialeg(llista_dialeg)
 	add_child(bafarada)
 	bafarada.set_position(Vector2(-450.0, 0))
-	#TODO
-	#sortida_personatge()
+	Personatge.augmenta_aparicions(nom_personatge)
+
+func dialeg_acabat() -> void:
+	#TODO: Entregar peça
+	sortida_personatge()
 
 func sortida_personatge() -> void:
 	# Animacions de sortida del personatge
