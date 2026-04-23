@@ -50,6 +50,24 @@ const DADES: Dictionary = {
 				"Espero que tingueu un dia especial",
 			],
 		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(9,4), Vector2i(9,5)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(7,4), Vector2i(7,5)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1), Vector2i(0,2)],
+				[Vector2i(6,6), Vector2i(6,7), Vector2i(6,8)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1), Vector2i(0,2)],
+				[Vector2i(8,4), Vector2i(8,5), Vector2i(8,6)],
+			],
+		],
 	},
 	Nom.JUGLA: {
 		"nom": "Jugla",
@@ -69,6 +87,20 @@ const DADES: Dictionary = {
 				"Què passa, penya?",
 				"Que estava jo pensant, si tan bé els hi van les llaunes, tant per tant...",
 				"... us en deixo una caixa sencera. Apa, salut i força al canut"
+			],
+		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(2,5), Vector2i(2,6)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(2,2), Vector2i(2,3)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(3,7), Vector2i(4,7), Vector2i(3,8), Vector2i(4,8)],
 			],
 		],
 	},
@@ -94,6 +126,20 @@ const DADES: Dictionary = {
 				"Deu haver sentit això del cop de bastó, he he",
 				"Doncs que les dues canonades d'abans aguantaven una paret",
 				"Tota per terra, ja us imagineu. Us n'he portat un tros, rai",
+			],
+		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(6,4), Vector2i(6,5)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(5,4), Vector2i(5,5)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(4,2), Vector2i(5,2), Vector2i(4,3), Vector2i(5,3)],
 			],
 		],
 	},
@@ -129,6 +175,22 @@ const DADES: Dictionary = {
 				"Si tampoc us el llegireu! Au, no em feu riure",
 			],
 		],
+		"obsequis": [
+			[],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(0,2), Vector2i(1,2), Vector2i(0,3), Vector2i(1,3)],
+			],
+			[],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(0,2), Vector2i(1,2), Vector2i(0,3), Vector2i(1,3)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(8,2), Vector2i(9,2), Vector2i(8,3), Vector2i(9,3)],
+			],
+		],
 	},
 	Nom.ANARKO: {
 		"nom": "Anarko",
@@ -154,6 +216,20 @@ const DADES: Dictionary = {
 				"... però crec que us farà molt de servei. Salut i força!",
 			],
 		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(1,0)],
+				[Vector2i(0,4), Vector2i(0,4)],
+			],
+			[
+				[Vector2i(-1,0), Vector2i(0,0), Vector2i(0,-1)],
+				[Vector2i(3,6), Vector2i(4,6), Vector2i(4,5)],
+			],
+			[
+				[Vector2i(0,-1), Vector2i(-1,0), Vector2i(0,0), Vector2i(0,1), Vector2i(0,1)],
+				[Vector2i(3,3), Vector2i(2,4), Vector2i(3,4), Vector2i(4,4), Vector2i(3,5)],
+			],
+		],
 	},
 	Nom.NINIOS: {
 		"nom": "Ninios",
@@ -176,6 +252,20 @@ const DADES: Dictionary = {
 				"Volem jugar amb el drac!",
 				"Us hem portat un altre regal. L'hem tocat amb el pal i no es movia gens",
 				"... però fa una mica més de pudor que els altres",
+			],
+		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(0,0), Vector2i(0,1)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(1,0), Vector2i(1,1)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(0,7), Vector2i(0,8)],
 			],
 		],
 	},
@@ -207,6 +297,15 @@ const DADES: Dictionary = {
 				"Tard o d'hora haureu d'expiar els vostres pecats",
 				"No perdo l'esperança per vosaltres, ja que us aveniu a obrir-me la porta",
 				"Us deixo aquest obsequi, que us sigui d'ajuda",
+			],
+		],
+		"obsequis": [
+			[],
+			[],
+			[],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(1,7), Vector2i(2,7), Vector2i(1,8), Vector2i(2,8)],
 			],
 		],
 	},
@@ -241,6 +340,20 @@ const DADES: Dictionary = {
 				"Espero que això us serveixi. Salut!",
 			],
 		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(1,0)],
+				[Vector2i(6,2), Vector2i(7,2)],
+			],
+			[
+				[Vector2i(-1,0), Vector2i(0,0), Vector2i(0,-1)],
+				[Vector2i(7,8), Vector2i(8,8), Vector2i(8,7)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1)],
+				[Vector2i(4,0), Vector2i(5,0), Vector2i(4,1), Vector2i(5,1)],
+			],
+		],
 	},
 	Nom.ENTERRADORA: {
 		"nom": "Enterradora",
@@ -267,6 +380,24 @@ const DADES: Dictionary = {
 				"No us ho creureu",
 				"He seguit cavant a la mateixa tomba, i mireu...",
 				"... quina bèstia més estranya. No sembla ni home ni drac",
+			],
+		],
+		"obsequis": [
+			[
+				[Vector2i(0,0), Vector2i(0,1)],
+				[Vector2i(7,6), Vector2i(7,7)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1), Vector2i(0,2)],
+				[Vector2i(10,3), Vector2i(10,4), Vector2i(10,5)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(0,1), Vector2i(0,2)],
+				[Vector2i(10,6), Vector2i(10,7), Vector2i(10,8)],
+			],
+			[
+				[Vector2i(0,0), Vector2i(1,0), Vector2i(0,1), Vector2i(1,1), Vector2i(2,1)],
+				[Vector2i(6,0), Vector2i(7,0), Vector2i(6,1), Vector2i(7,1), Vector2i(8,1)],
 			],
 		],
 	},
