@@ -29,8 +29,8 @@ Els passos següents de cara a avançar amb el projecte:
 - [X] Programar la meitat del "taller"
     - [X] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí
     - [X] Programar la confecció de peces
-- [ ] Afegir lògica dels NPCs
-    - [ ] Programar alguns NPCs d'exemple (amb possibles peces)
+- [X] Afegir lògica dels NPCs
+    - [X] Programar alguns NPCs d'exemple (amb possibles peces)
     - [X] Tria d'NPC (control del teclat)
-    - [ ] Entrada de l'NPC i entrega de peça a la cua
+    - [X] Entrada de l'NPC i entrega de peça a la cua
     - [X] Sortida de l'NPC
