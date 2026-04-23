@@ -2,6 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://deto2riitrw8a" path="res://recursos/sprites/globus1.png" id="1_p5n4x"]
 [ext_resource type="Script" uid="uid://d311fpnn8x376" path="res://scripts/bafarada_dialeg.gd" id="1_rw0p2"]
+[ext_resource type="FontFile" uid="uid://by6k4vxw0qojl" path="res://recursos/fonts/old_london/OldLondon.ttf" id="3_b0j4d"]
+[ext_resource type="FontFile" uid="uid://donmvhrfvsrfe" path="res://recursos/fonts/old_london/Olondon_.otf" id="4_5m0wf"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p5n4x"]
 
@@ -47,8 +49,11 @@ theme_override_constants/margin_right = 20
 [node name="TextDialeg" type="RichTextLabel" parent="Contenidor/VBoxContainer/MarginContainer" unique_id=351171665]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/default_color = Color(0, 0.64842254, 0.0029648542, 1)
+theme_override_colors/default_color = Color(0, 0.36078432, 0.25490198, 1)
+theme_override_fonts/normal_font = ExtResource("3_b0j4d")
+theme_override_font_sizes/normal_font_size = 38
 scroll_active = false
+vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="Contenidor/VBoxContainer" unique_id=486144013]
 layout_mode = 2
@@ -58,11 +63,11 @@ theme_override_constants/margin_right = 20
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.3938817, 0.19275588, 1)
-theme_override_colors/font_focus_color = Color(0, 0.39215687, 0.19215687, 1)
-theme_override_colors/font_pressed_color = Color(0, 0.39215687, 0.19215687, 1)
-theme_override_colors/font_hover_color = Color(0, 0.39215687, 0.19215687, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0.39215687, 0.19215687, 1)
+theme_override_colors/font_color = Color(0, 0.36078432, 0.25490198, 1)
+theme_override_colors/font_focus_color = Color(0, 0.36078432, 0.25490198, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.36078432, 0.25490198, 1)
+theme_override_colors/font_hover_color = Color(0.019607844, 0.5137255, 0.37254903, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.019607844, 0.5137255, 0.37254903, 1)
 theme_override_colors/font_disabled_color = Color(0.8745098, 0.8745098, 0.8745098, 0)
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_focus_color = Color(1, 1, 1, 0)
@@ -70,7 +75,8 @@ theme_override_colors/icon_pressed_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_hover_pressed_color = Color(1, 1, 1, 0)
 theme_override_colors/icon_disabled_color = Color(1, 1, 1, 0)
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("4_5m0wf")
+theme_override_font_sizes/font_size = 32
 theme_override_styles/normal = SubResource("StyleBoxEmpty_p5n4x")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_rw0p2")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_b0j4d")
