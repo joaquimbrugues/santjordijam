@@ -1,14 +1,13 @@
 extends AnimatedSprite2D
 
-# Compta el nombre de (mitges) estrelles que s'haurien d'estar mostrant en aquest moment
-var num_mitges_estrelles: int = 0
-
 # Nombre màxim d'estrelles que es poden mostrar en un moment donat
 const MAX_MITGES_ESTRELLES: int = 6
 
-func actualitza_estrelles(estrelles: int = 0) -> void:
-	num_mitges_estrelles = estrelles
-	match num_mitges_estrelles:
+func _ready() -> void:
+	actualitza_estrelles()
+
+func actualitza_estrelles() -> void:
+	match puntuacio.puntuacio:
 		0: play("default")
 		1: play("0.5")
 		2: play("1")

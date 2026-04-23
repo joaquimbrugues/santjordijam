@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 arrossegament="*uid://dcc6mba1usucy"
+puntuacio="*uid://f28in5kiasqh"
 
 [display]
 

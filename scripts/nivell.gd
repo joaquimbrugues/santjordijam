@@ -199,7 +199,8 @@ func transicio_peça() -> void:
 	)
 	# Sumem els punts i actualitzem el marcador
 	@warning_ignore("integer_division")
-	estrelles.actualitza_estrelles(files_plenes.size() / FILES_PER_PUNT)
+	puntuacio.puntuacio = files_plenes.size() / FILES_PER_PUNT
+	estrelles.actualitza_estrelles()
 	
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:

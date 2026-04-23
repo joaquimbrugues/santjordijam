@@ -25,9 +25,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_o6fr1")
+metadata/_edit_lock_ = true
 
 [node name="Estrelles" parent="." unique_id=2022750789 instance=ExtResource("3_gb5kr")]
-position = Vector2(967, 572)
+position = Vector2(919.99994, 677)
 scale = Vector2(2.3163264, 2.3163266)
 
 [node name="TextureButton" type="TextureButton" parent="." unique_id=975621544]
@@ -39,8 +40,10 @@ offset_bottom = 1006.0
 texture_normal = ExtResource("4_d1nlq")
 texture_pressed = ExtResource("5_rc3lr")
 texture_hover = ExtResource("6_4s23k")
+metadata/_edit_lock_ = true
 
 [node name="AnimacioTransicioEscena" parent="." unique_id=79646807 instance=ExtResource("7_rc3lr")]
 layout_mode = 1
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
