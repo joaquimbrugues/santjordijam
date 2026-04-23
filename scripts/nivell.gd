@@ -45,6 +45,8 @@ const COLUMNES: int = 14
 var darrer_npc: Personatge.Nom = -1
 # Les opcions d'NPC
 var candidats_npc: Array[Personatge.Nom]
+# Indica si es poden seleccionar NPCs
+var npc_seleccionables: bool = false
 
 # Caselles prohibides: la fila només es considera "plena" si la zona es troba __buida__
 # Com a prova de concepte, farem un diccionari constant. De cara al futur podríem
@@ -118,19 +120,19 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("peça_gira"):
 		# Acumula moviment cap al gir
 		Moviments[2] += delta
-	if Input.is_action_pressed("NPC1") and candidats_npc.size() > 0:
+	if Input.is_action_pressed("NPC1") and npc_seleccionables:
 		$Capes/NPCs/BotoQ.play("premut")
-	elif Input.is_action_just_released("NPC1") and candidats_npc.size() > 0:
+	elif Input.is_action_just_released("NPC1") and npc_seleccionables:
 		$Capes/NPCs/BotoQ.play("lliure")
 		tria_npc(candidats_npc[0])
-	elif Input.is_action_pressed("NPC2") and candidats_npc.size() > 0:
+	elif Input.is_action_pressed("NPC2") and npc_seleccionables:
 		$Capes/NPCs/BotoW.play("premut")
-	elif Input.is_action_just_released("NPC2") and candidats_npc.size() > 0:
+	elif Input.is_action_just_released("NPC2") and npc_seleccionables:
 		$Capes/NPCs/BotoW.play("lliure")
 		tria_npc(candidats_npc[1])
-	elif Input.is_action_pressed("NPC3") and candidats_npc.size() > 0:
+	elif Input.is_action_pressed("NPC3") and npc_seleccionables:
 		$Capes/NPCs/BotoE.play("premut")
-	elif Input.is_action_just_released("NPC3") and candidats_npc.size() > 0:
+	elif Input.is_action_just_released("NPC3") and npc_seleccionables:
 		$Capes/NPCs/BotoE.play("lliure")
 		tria_npc(candidats_npc[2])
 
@@ -212,6 +214,7 @@ func tria_npc(personatge: Personatge.Nom) -> void:
 			n.queue_free()
 	darrer_npc = personatge
 	candidats_npc = []
+	npc_seleccionables = false
 
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
@@ -285,8 +288,21 @@ func _on_entrada_np_cs_timeout() -> void:
 	
 	# Dibuixa les icones dels candidats
 	var icona1 = Personatge.DADES[candidats_npc[0]]["icona"].instantiate()
+	icona1.self_modulate = Color.TRANSPARENT
+	var tween_fade_in1 = get_tree().create_tween()
+	tween_fade_in1.tween_property(icona1, "self_modulate", Color.WHITE, 0.6).set_ease(Tween.EASE_OUT)
 	$Capes/NPCs/NPC1.add_child(icona1)
 	var icona2 = Personatge.DADES[candidats_npc[1]]["icona"].instantiate()
+	icona2.self_modulate = Color.TRANSPARENT
+	var tween_fade_in2 = get_tree().create_tween()
+	tween_fade_in2.tween_property(icona2, "self_modulate", Color.WHITE, 0.6).set_ease(Tween.EASE_OUT)
 	$Capes/NPCs/NPC2.add_child(icona2)
 	var icona3 = Personatge.DADES[candidats_npc[2]]["icona"].instantiate()
+	icona3.self_modulate = Color.TRANSPARENT
+	var tween_fade_in3 = get_tree().create_tween()
+	tween_fade_in3.tween_property(icona3, "self_modulate", Color.WHITE, 0.6).set_ease(Tween.EASE_OUT)
 	$Capes/NPCs/NPC3.add_child(icona3)
+	
+	# Esperem a que acabin les animacions d'entrada
+	await tween_fade_in3.finished
+	npc_seleccionables = true
