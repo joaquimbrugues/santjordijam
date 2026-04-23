@@ -35,6 +35,9 @@ func dona_primer() -> Array:
 		if arrossegament.peça_arrossegant == filla:
 			# Estem arrossegant aquesta peça! Assegurem-nos d'actualitzar el seu anclatge
 			filla.initialPos = REGIONS[index-1].global_position
+		else:
+			filla.pot_arrossegar = false
+			filla.scale = Vector2.ONE
 	seguent_lliure -= 1
 	return parella
 
