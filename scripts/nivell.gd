@@ -40,6 +40,12 @@ var Moviments = [0.0, 0.0, 0.0]
 var files_plenes: Array
 const COLUMNES: int = 14
 
+# Identificador del darrer NPC que ha entrat
+@warning_ignore("int_as_enum_without_cast", "int_as_enum_without_match")
+var darrer_npc: Personatge.Nom = -1
+# Les opcions d'NPC
+var candidats_npc: Array[Personatge.Nom]
+
 # Caselles prohibides: la fila només es considera "plena" si la zona es troba __buida__
 # Com a prova de concepte, farem un diccionari constant. De cara al futur podríem
 # fer formes més complicades
@@ -112,18 +118,21 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("peça_gira"):
 		# Acumula moviment cap al gir
 		Moviments[2] += delta
-	if Input.is_action_just_pressed("NPC1"):
+	if Input.is_action_pressed("NPC1") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoQ.play("premut")
-	elif Input.is_action_just_released("NPC1"):
+	elif Input.is_action_just_released("NPC1") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoQ.play("lliure")
-	elif Input.is_action_just_pressed("NPC2"):
+		tria_npc(candidats_npc[0])
+	elif Input.is_action_pressed("NPC2") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoW.play("premut")
-	elif Input.is_action_just_released("NPC2"):
+	elif Input.is_action_just_released("NPC2") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoW.play("lliure")
-	elif Input.is_action_just_pressed("NPC3"):
+		tria_npc(candidats_npc[1])
+	elif Input.is_action_pressed("NPC3") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoE.play("premut")
-	elif Input.is_action_just_released("NPC3"):
+	elif Input.is_action_just_released("NPC3") and candidats_npc.size() > 0:
 		$Capes/NPCs/BotoE.play("lliure")
+		tria_npc(candidats_npc[2])
 
 # Retorna `true` si el moviment projectat de la peça intersecta amb una de les vores o
 # amb una peça existent, o `false` altrament
@@ -193,6 +202,17 @@ func transicio_peça() -> void:
 		# Activem el timer de reset
 		$RetardReset.start()
 
+# Instancia el Personatge seleccionat, i recorda'l de cara a la propera tria
+func tria_npc(personatge: Personatge.Nom) -> void:
+	#TODO: Instanciar el personatge
+	print("Has triat " + str(personatge))
+	# Reseteja les variables de tria de personatge
+	for pare in [$Capes/NPCs/NPC1, $Capes/NPCs/NPC2, $Capes/NPCs/NPC3]:
+		for n in pare.get_children():
+			n.queue_free()
+	darrer_npc = personatge
+	candidats_npc = []
+
 # Aquest funció es crida a cada tic del joc, corresponent a la caiguda de la peça,
 # i la intentarà fer baixar més.
 func _on_tic_caiguda_timeout() -> void:
@@ -252,3 +272,21 @@ func _on_retard_reset_timeout() -> void:
 	else:
 		#TODO: Ens hem d'assegurar de no caure mai en aquesta situació!
 		print("PROBLEMA: No tenim peça per caure!")
+
+# Selecciona tres NPCs perquè la jugadora drac pugui triar
+func _on_entrada_np_cs_timeout() -> void:
+	# Tria els candidats (tres de diferents, excloent el darrer npc triat)
+	var exclosos = [ darrer_npc ]
+	while exclosos.size() < 4:
+		var nom = Personatge.Nom.values().pick_random()
+		if exclosos.find(nom) == -1:
+			exclosos.push_back(nom)
+	candidats_npc = [ exclosos[1], exclosos[2], exclosos[3] ]
+	
+	# Dibuixa les icones dels candidats
+	var icona1 = Personatge.DADES[candidats_npc[0]]["icona"].instantiate()
+	$Capes/NPCs/NPC1.add_child(icona1)
+	var icona2 = Personatge.DADES[candidats_npc[1]]["icona"].instantiate()
+	$Capes/NPCs/NPC2.add_child(icona2)
+	var icona3 = Personatge.DADES[candidats_npc[2]]["icona"].instantiate()
+	$Capes/NPCs/NPC3.add_child(icona3)

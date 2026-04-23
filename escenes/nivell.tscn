@@ -476,6 +476,15 @@ position = Vector2(342, -7)
 [node name="NPCs" type="Node2D" parent="Capes" unique_id=560024425]
 position = Vector2(212, 50)
 
+[node name="NPC1" type="Node2D" parent="Capes/NPCs" unique_id=465414359]
+position = Vector2(-77, -5)
+
+[node name="NPC2" type="Node2D" parent="Capes/NPCs" unique_id=258965454]
+position = Vector2(-1, -5)
+
+[node name="NPC3" type="Node2D" parent="Capes/NPCs" unique_id=450244124]
+position = Vector2(75, -5)
+
 [node name="BotoQ" type="AnimatedSprite2D" parent="Capes/NPCs" unique_id=1191415203]
 position = Vector2(-77, 42)
 sprite_frames = SubResource("SpriteFrames_mvn6l")
@@ -527,6 +536,11 @@ offset_bottom = 1080.0
 grow_horizontal = 1
 grow_vertical = 1
 
+[node name="EntradaNPCs" type="Timer" parent="." unique_id=833400216]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [connection signal="body_entered" from="Capes/Taller/GridTaller" to="Capes/Taller/GridTaller" method="_on_body_entered"]
 [connection signal="timeout" from="Capes/Taller/CampanaTaller/AturaCampana" to="Capes/Taller" method="_on_atura_campana_timeout"]
 [connection signal="mouse_entered" from="Capes/Taller/BotoTaller/AreaBoto" to="Capes/Taller" method="_on_area_boto_mouse_entered"]
@@ -534,3 +548,4 @@ grow_vertical = 1
 [connection signal="timeout" from="TicCaiguda" to="." method="_on_tic_caiguda_timeout"]
 [connection signal="timeout" from="TicMoviment" to="." method="_on_tic_moviment_timeout"]
 [connection signal="timeout" from="RetardReset" to="." method="_on_retard_reset_timeout"]
+[connection signal="timeout" from="EntradaNPCs" to="." method="_on_entrada_np_cs_timeout"]

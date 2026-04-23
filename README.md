@@ -31,6 +31,6 @@ Els passos següents de cara a avançar amb el projecte:
     - [X] Programar la confecció de peces
 - [ ] Afegir lògica dels NPCs
     - [ ] Programar alguns NPCs d'exemple (amb possibles peces)
-    - [ ] Tria d'NPC (control del teclat)
+    - [X] Tria d'NPC (control del teclat)
     - [ ] Entrada de l'NPC i entrega de peça a la cua
     - [ ] Sortida de l'NPC
