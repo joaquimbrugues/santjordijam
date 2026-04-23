@@ -198,7 +198,6 @@ func transicio_peça() -> void:
 	
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:
-		$"EntraPeça".stop()	#TODO Aquest Timer és només per a debugar!
 		$PantallaFinal.show()
 	else:
 		# Activem el timer de reset
