@@ -106,7 +106,7 @@ const DADES: Dictionary = {
 				"Bones, m'he assabentat que voleu reconstruir el poble",
 				"Jo només vinc a dir-vos que si voleu fer una casa hauríeu de tenir els permisos",
 				"Heu llegit el manual de construcció, com a mínim...?",
-				"Mira, feu el que vulgueu. Jo he aviat. Xau",
+				"Mira, feu el que vulgueu. Jo he avisat. Xau",
 			],
 			[
 				"Al final he anat a buscar el manual de construcció",
