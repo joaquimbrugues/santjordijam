@@ -33,4 +33,4 @@ Els passos següents de cara a avançar amb el projecte:
     - [ ] Programar alguns NPCs d'exemple (amb possibles peces)
     - [X] Tria d'NPC (control del teclat)
     - [ ] Entrada de l'NPC i entrega de peça a la cua
-    - [ ] Sortida de l'NPC
+    - [X] Sortida de l'NPC
