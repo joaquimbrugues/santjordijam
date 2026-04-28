@@ -1,8 +1,8 @@
 extends AudioStreamPlayer
 
-func play_FX(stream: AudioStream, volume = 0.0):
+func play_FX(astream: AudioStream, volume = 0.0):
 	var fx_player = AudioStreamPlayer.new()
-	fx_player.stream = stream
+	fx_player.stream = astream
 	fx_player.name = "FX_PLAYER"
 	fx_player.volume_db = volume
 	add_child(fx_player)

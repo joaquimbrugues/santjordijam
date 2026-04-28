@@ -13,6 +13,12 @@ extends Node2D
 @onready var animacio_entrada: AnimationPlayer = $AnimacioTransicioEscena/AnimationPlayer
 var VORES
 
+#Efectes de so
+@onready var música_nivell = preload("res://sons/Pufino - Warriors (freetouse.com).wav")
+@onready var drac1 = preload("res://sons/drac1.wav")
+@onready var plof = preload("res://sons/plof.wav")
+@onready var woosh = preload("res://sons/woosh.wav")
+
 # Paràmetres dels temporitzadors de caiguda i moviment
 ## Interval de temps (en segons) entre moviments de la peça provocats per la jugadora (esquerra-dreta i rotacions)
 @export var INTERVAL_TIC: float = 0.5
@@ -87,6 +93,8 @@ const CASELLES_PROHIBIDES: Array[Vector2i] = [
 ]
 
 func _ready() -> void:
+	Música_Intro.stop()
+	Música.play_music_level()
 	animacio_entrada.play("fade_out")
 	animacio_entrada.animation_finished.connect(func (_nom):
 		$AnimacioTransicioEscena.set_visible(false)
@@ -205,6 +213,7 @@ func transicio_peça() -> void:
 	# Si hem arribat al final del joc, no cal activar res. Mostra la pantalla de final
 	if final:
 		$AnimacioTransicioEscena.set_visible(true)
+		Música.stop()
 		animacio_entrada.play("fade_in")
 		animacio_entrada.animation_finished.connect(func (_nom):
 			get_tree().change_scene_to_file("res://escenes/pantalla_final.tscn")
@@ -216,6 +225,7 @@ func transicio_peça() -> void:
 # Instancia el Personatge seleccionat, i recorda'l de cara a la propera tria
 func tria_npc(personatge: Personatge.Nom) -> void:
 	# Executa només si l'obsequi està buit
+	Efectes.play_FX(woosh, 4.0)
 	if no_hi_ha_obsequi():
 		# Inicialitza escena del personatge
 		%Personatge.entra_personatge(personatge)
@@ -239,6 +249,7 @@ func _on_tic_caiguda_timeout() -> void:
 	
 	# Comprova col·lisions
 	if collisio():
+		Efectes.play_FX(plof, 5.0)
 		transicio_peça()
 	else:
 		# Aplica el moviment de la peça
@@ -271,7 +282,7 @@ func _on_tic_moviment_timeout() -> void:
 func _on_retard_reset_timeout() -> void:
 	# Reinicialitza els comandaments de moviment
 	Moviments = [0.0, 0.0, 0.0]
-	
+	Efectes.play_FX(drac1, 5.0)
 	# Si hi ha algun objecte a la zona fabricada, afegim-lo en lloc de l'objecte de la cua
 	if %Fabricada.has_node("PeçaArrossegable"):
 		var peça_nova = %Fabricada.get_node("PeçaArrossegable")

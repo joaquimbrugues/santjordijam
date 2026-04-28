@@ -2,6 +2,10 @@ extends Node2D
 
 var escena_peça = preload("res://escenes/peça_arrossegable.tscn")
 
+#Efectes de so
+@onready var campana = preload("res://sons/campana.wav")
+@onready var campana2 = preload("res://sons/campana2.wav")
+
 const dimensions: Vector2i = Vector2i(9, 5)
 
 var regions_ocupades: Array[Vector2i]
@@ -67,6 +71,7 @@ func _process(_delta: float) -> void:
 			$CampanaTaller.play("Tocant")
 			if not %Fabricada.has_node("PeçaArrossegable"):
 				construeix_peça()
+				Efectes.play_FX(campana, 5.0)
 		elif Input.is_action_just_released("clic_esquerre"):
 			$BotoTaller.play("lliure")
 			$CampanaTaller/AturaCampana.start()

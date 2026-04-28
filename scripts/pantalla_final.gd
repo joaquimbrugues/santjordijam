@@ -5,6 +5,8 @@ extends Control
 
 func _ready() -> void:
 	animacio_transicio.play("fade_out")
+	Música.stop()
+	Música_Intro.play_music_level()
 	animacio_transicio.animation_finished.connect(func (_nom):
 		$AnimacioTransicioEscena.set_visible(false)
 		estrelles.actualitza_estrelles()
