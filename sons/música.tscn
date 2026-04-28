@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b65enurdyipc4"]
+
+[ext_resource type="Script" uid="uid://4pp1ctym1p6q" path="res://sons/música.gd" id="1_c8mmu"]
+
+[node name="Música" type="Node2D" unique_id=450512951]
+script = ExtResource("1_c8mmu")

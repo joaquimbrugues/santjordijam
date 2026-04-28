@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cmutungt6xqbw"
+path="res://.godot/imported/Pufino - Warriors (freetouse.com).wav-8d33f60ded78fdcd5bc931520085cd2e.sample"
+
+[deps]
+
+source_file="res://sons/Pufino - Warriors (freetouse.com).wav"
+dest_files=["res://.godot/imported/Pufino - Warriors (freetouse.com).wav-8d33f60ded78fdcd5bc931520085cd2e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

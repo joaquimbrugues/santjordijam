@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="SantJordiJam"
@@ -19,6 +23,9 @@ config/icon="res://icon.svg"
 
 arrossegament="*uid://dcc6mba1usucy"
 puntuacio="*uid://f28in5kiasqh"
+"Música"="*uid://4pp1ctym1p6q"
+Efectes="*uid://dhhdhdp6ktcgh"
+"Música_Intro"="*uid://6p4yn4h5i501"
 
 [display]
 
