@@ -2,35 +2,21 @@
 
 Aquest és el repositori compartit per avançar amb el projecte de joc de cara a la [Sant Jordi Jam 2026](https://itch.io/jam/sant-jordi-jam-2026), juntament amb col·laboradors.
 
-## Full de ruta
+El joc ja es troba publicat! El podeu trobar [aquí](https://gromans.itch.io/roc-a-roc), tal i com el vam mostrar a la presentació de la Jam.
 
-Els passos següents de cara a avançar amb el projecte:
+## Full de ruta per a la versió 1.1
 
-- [X] Disposició general: fer espais reservats a la pantalla per a les diverses parts del joc, amb identificadors.
-    - [X] Banda esquerra (semblant al Tetris)
-    - [X] Banda dreta (taller)
-- [X] Programar la lògica de les peces de "Tetris"
-    - [X] Crear una classe i les seves propietats bàsiques
-    - [X] Escriure la lògica de la caiguda de la peça
-    - [X] Controlar col·lisions
-    - [X] Controls del teclat
-        - [X] Moviments laterals
-        - [X] Rotació
-        - [X] Acceleració
-        - [X] Frenada
-            - [X] Posar stammina de frenada?
-            - [X] Reacció a la frenada
-- [X] Flux del joc de "Tetris"
-    - [X] Crear capa de peces "construïdes"
-    - [X] Programar la cua de peces a caure
-    - [X] Crear final del nivell
-    - [X] Crear sistema de puntuació
-    - [X] Crear àrees "prohibides"
-- [X] Programar la meitat del "taller"
-    - [X] Programar l'arrossegament de peces entre cua, inventari i taula de treball - controls del ratolí
-    - [X] Programar la confecció de peces
-- [X] Afegir lògica dels NPCs
-    - [X] Programar alguns NPCs d'exemple (amb possibles peces)
-    - [X] Tria d'NPC (control del teclat)
-    - [X] Entrada de l'NPC i entrega de peça a la cua
-    - [X] Sortida de l'NPC
+- [ ] Arreglar el gir de les peces globalment
+    - [ ] Millorar el gir de les peces amb el ratolí
+    - [ ] Refactoritzar + unificar la lògica de les peces a tot el joc:
+        - [ ] Crear la classe abstracta "Peça", heretant de Recurs
+        - [ ] Crear dos nodes físics que utilitzin la "Peça" per implementar la funcionalitat "arrossegable" i, d'altra banda, "caiguda"+"col·lisions".
+        - [ ] Implementar els girs en els TileMaps de les peces (concretament, en el moment que s'uneixen peces al taller i quan es fan girs al tetris).
+- [ ] El diàleg dels personatges s'hauria de resetejar al final de cada partida!
+- [ ] Afegir crèdits
+- [ ] Afegir controls de volum i sfx
+- [ ] Afegir un highlight a les caselles del taller quan es vagi a arrossegar
+- [ ] Millorar la interfície del diàleg (es trepitja amb la campaneta)
+- [ ] Afegir un mini tutorial
+- [ ] Bug: de vegades la música s'atura entre partides?
+
